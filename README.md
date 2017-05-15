@@ -32,11 +32,10 @@ The main you have
 
 [Link](url) and ![Image](src)
 ```
-![Main Page]( http://newapi.wedhoc.com/git/main.png)
 
 <p align="center">
-  <img src=" http://newapi.wedhoc.com/git/main.png" width="350"/>
-  <img src=" http://newapi.wedhoc.com/git/login.png" width="350"/>
+  ![]( http://newapi.wedhoc.com/git/main.png)
+  ![]( http://newapi.wedhoc.com/git/login.png)
 </p>
 
 
