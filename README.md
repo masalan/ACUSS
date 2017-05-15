@@ -32,6 +32,8 @@ The main you have
 
 [Link](url) and ![Image](src)
 ```
+![Main Page]( http://newapi.wedhoc.com/git/main.png)
+
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
