@@ -33,15 +33,17 @@ The main you have
 [Link](url) and ![Image](src)
 ```
 
-### Main Page
+### Welcome and Login Page
   ![Welcome Pgae]( http://newapi.wedhoc.com/git/main.png)
   ![Login page]( http://newapi.wedhoc.com/git/login.png)
 
 <br>
 
-### After verify the user 
-  ![Welcome Pgae]( http://newapi.wedhoc.com/git/main.png)
-  ![Login page]( http://newapi.wedhoc.com/git/login.png)
+### Schools - Students- Cities - Me 
+  ![schools Pgae]( http://newapi.wedhoc.com/git/schools.png)
+  ![students page]( http://newapi.wedhoc.com/git/students.png)
+  ![cities Pgae]( http://newapi.wedhoc.com/git/cities.png)
+  ![me page]( http://newapi.wedhoc.com/git/me.png)
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
