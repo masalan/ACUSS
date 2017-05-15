@@ -49,6 +49,7 @@ The main you have
   ### Student Apply for the schoolarship - Schools list- School details - School details Major - Apply for 
   
   Student select the university-->
+  <br>
   ![schools Pgae]( http://newapi.wedhoc.com/git/schools.png)
   ![students page]( http://newapi.wedhoc.com/git/schoolView.png)
   ![cities Pgae]( http://newapi.wedhoc.com/git/schoolView_major.png)
