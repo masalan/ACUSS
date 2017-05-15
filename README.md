@@ -1,19 +1,26 @@
-## Welcome to GitHub Pages
+## Welcome to ACUSS App
 
 You can use the [editor on GitHub](https://github.com/masalan/ACUSS/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### Main Features
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
-Syntax highlighted code block
+The main you have
 
-# Header 1
-## Header 2
-### Header 3
+# - Social Login (Facebook, Google,Linkedln) 
+# - Sign up  User
+# - Sign In user
+# - Search Engine Students 
+# - Search Engine Schools
+
+# Schools List 
+# Students List 
+# Cities List 
+# User Profile 
 
 - Bulleted
 - List
