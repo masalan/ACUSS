@@ -1,0 +1,148 @@
+/* 
+  Localizable.strings
+  HHSD
+
+  Created by alain serge on 3/17/17.
+  Copyright © 2017 Alain Serge. All rights reserved.
+*/
+
+
+//  NSLocalizedString(@"COMMUN_cancel",comment:"")
+
+/***************************** START Localizable App *******************************/
+
+
+// COMMUN
+"COMMUN_OK" = "Ok";
+"COMMUN_OK_valide" = "Ok";
+"COMMUN_yes" = "Oui";
+"COMMUN_cancel" = "Annuler";
+"COMMUN_no" = "Non";
+"COMMUN_search" = "Chercher";
+"COMMUN_searching" = "recherche";
+"COMMUN_error" = "Erreur";
+"COMMUN_delete" = "Effacer";
+"COMMUN_copy" = "Copie";
+"COMMUN_save" = "Enregistrer";
+"COMMUN_prompt" = "Rapide";
+"COMMUN_add" = "Ajouter";
+"COMMUN_send" = "envoyer";
+"COMMUN_open" = "ouvrir";
+"COMMUN_down" = "Complet";
+"COMMUN_choose" = "Choisir";
+"COMMUN_accept" = "Acceptez";
+"COMMUN_reject" = "Rejeter";
+"COMMUN_wait" = "s.v.p., attendez...";
+"COMMUN_take_phone" = "photographie";
+"COMMUN_gallery_photos" = "Sélectionnez de l'album";
+"COMMUN_select_data" = "Sélectionner une date";
+"COMMUN_HOLDER_IMG" = "PlaceHoder";
+
+// Request.m
+"COMMUN_no_network" = "Pas de connexion réseau";
+"COMMUN_no_login" = "s'il vous plaît vous connecter à nouveau";
+
+// TIME
+
+"TIME_TRANSLATE_EDIT_A" = "Pas de temps";
+"TIME_TRANSLATE_EDIT_B" = "yyyy/M/d HH:mm";
+"TIME_TRANSLATE_EDIT_C" = "M/d/ HH:mm";
+"TIME_TRANSLATE_EDIT_D" = "M/d";
+"TIME_TRANSLATE_EDIT_E" = "%dday%dH%dM";
+"TIME_TRANSLATE_EDIT_F" = "tout à l'heure";
+
+"TIME_TRANSLATE_EDIT_G" = "il y a %.0f Secondes";
+"TIME_TRANSLATE_EDIT_H" = "il y a 1 mn";   // il y a 1 mn
+"TIME_TRANSLATE_EDIT_I" = "il y a %.0f minutes";
+"TIME_TRANSLATE_EDIT_J" = "il y a 1H"; // il y a 1H
+"TIME_TRANSLATE_EDIT_K" = "il y a %d Heures";
+"TIME_TRANSLATE_EDIT_L" = "M/d";
+
+
+
+
+// LoginViewController.h
+
+"Localized_login" = "Connection";
+"Localized_forgot_password" = "mot de passe?";
+"Localized_free_register" = "Inscription";
+"Localized_free_visit" = "Visiteur";
+"Localized_Logo" = "FrenchIcone";
+"Localized_no_avatar_yet" = "Vous n'avez pas d'avatar ou de pseudo, veuillez compléter";
+"Localized_phone_CANT_BE_EMPTY" = "Le numéro de téléphone ne doit pas être vide";
+"Localized_write_real_phone_number" = "Veuillez entrer un numéro de téléphone correct";
+"Localized_pwd_CANT_BE_EMPTY" = "Le mot de passe ne doit pas être vide";
+"Localized_shopping" = "achats";
+"Localized_service" = "service";
+"Localized_social" = "social";
+"Localized_mine" = "mien";
+"Localized_friends" = "amis";
+"Localized_enter_valide_phone_number" = "s.v.p. entrer un numéro de téléphone valide";
+
+
+
+
+
+// WelcomeViewController
+
+"Localized_WelcomeViewController_title" = "Toutes les universités et étudiants chine";
+"Localized_WelcomeViewController_loginBtn" = "Trouver une université";
+"Localized_WelcomeViewController_SignUpBtn" = "Trouver un étudiant";
+
+//SearchListViewController
+"Localized_SearchListViewController_searchText" = "  Nom de l'université";
+"Localized_SearchListViewController_searchBtn" = "Ok";
+"Localized_SearchListViewController_school" = "Université";
+"Localized_SearchListViewController_Student" = "Etudiants";
+"Localized_SearchListViewController_effective" = "Etudiants:";
+
+//SearchDetailsViewController
+"Localized_SearchDetailsViewController_title" = "Informations universitaires";
+"Localized_SearchDetailsViewController_getMore" = "Plus";
+"Localized_SearchDetailsViewController_addReview" = "commentaire";
+"Localized_SearchDetailsViewController_alertController" = "user verification";
+"Localized_SearchDetailsViewController_pseudo" = "Entrez votre nom d'utilisateur";
+"Localized_SearchDetailsViewController_password" = "Tapez votre mot de passe";
+"Localized_SearchDetailsViewController_Signup" = "Inscription";
+
+//BachelorInteractView
+"Localized_BachelorInteractView_textLeft" = "Program: ";
+
+//SchoolLineHeadView
+
+"Localized_SchoolLineHeadView_location" = "%@ , Urban";
+"Localized_SchoolLineHeadView_bachelor" = "Licence";
+"Localized_SchoolLineHeadView_master" = "Maitrise";
+"Localized_SchoolLineHeadView_Phd" = "Doctorat";
+
+
+//SearchListStudentViewController
+"Localized_SearchListStudentViewControllert_searchText" = "  nom de l'étudiant";
+"Localized_SearchListStudentViewController_signForCall" = "Appelle-moi";
+"Localized_SearchListStudentViewController_detailLabel" = "Je ne suis vis plus en Chine";
+"Localized_SearchListStudentViewController_detailLabel_living" = "Je vis actuellement à %@ ";
+
+//SearchDetailsStudent
+
+"Localized_SearchDetailsStudent_title" = "Student Information";
+"Localized_SearchDetailsStudent_call" = "Appelle-moi";
+"Localized_SearchDetailsStudent_sms" = "Ecris moi";
+
+//CDOutLineHeadView
+
+"Localized_CDOutLineHeadView_people" = " %@ utilisateurs";
+"Localized_CDOutLineHeadView_people_zero" = "0 utilisateur";
+"Localized_CDOutLineHeadView_me" = "Moi";
+"Localized_CDOutLineHeadView_Majors" = "spécialité";
+"Localized_CDOutLineHeadView_share" = "Commentaires";
+
+//CDColumnCell
+
+"Localized_CDColumnCell_start" = "début de l'étude";
+"Localized_CDColumnCell_end" = "fin de l'étude";
+
+//CDInteractView
+"Localized_CDInteractView_bio" = "Ma biographie";
+
+
+

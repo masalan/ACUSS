@@ -1,0 +1,155 @@
+/* 
+  Localizable.strings
+  HHSD
+
+  Created by alain serge on 3/17/17.
+  Copyright © 2017 Alain Serge. All rights reserved.
+*/
+//  NSLocalizedString(@"TIME_TRANSLATE_EDIT_A",comment:"")
+
+/***************************** START Localizable App *******************************/
+
+// COMMUN
+"COMMUN_OK" = "好的";
+"COMMUN_yes" = "是";
+"COMMUN_cancel" = "取消";
+"COMMUN_OK_valide" = "确定";
+"COMMUN_no" = "否";
+"COMMUN_search" = "搜索";
+"COMMUN_searching" = "正在搜索";
+"COMMUN_error" = "错误";
+"COMMUN_delete" = "删除";
+"COMMUN_copy" = "复制";
+"COMMUN_save" = "保存";
+"COMMUN_prompt" = "提示";
+"COMMUN_add" = "添加";
+"COMMUN_send" = "发送";
+"COMMUN_open" = "打开";
+"COMMUN_down" = "完成";
+"COMMUN_choose" = "选择";
+"COMMUN_accept" = "接受";
+"COMMUN_reject" = "拒绝";
+"COMMUN_wait" = "请等待...";
+"COMMUN_take_phone" = "拍照";
+"COMMUN_gallery_photos" = "从相册中选取";
+"COMMUN_select_data" = "选择日期";
+"COMMUN_HOLDER_IMG" = "PlaceHoder";
+
+
+// Request.m
+"COMMUN_no_network" = "无网络连接";
+"COMMUN_no_login" = "用户长时间未使用,请重新登陆";
+
+
+
+
+
+//Time
+"TIME_TRANSLATE_EDIT_A" = "无时间";
+"TIME_TRANSLATE_EDIT_B" = "yyyy年M月d日 HH:mm";
+"TIME_TRANSLATE_EDIT_C" = "M月d日 HH:mm";
+"TIME_TRANSLATE_EDIT_D" = "M月d日";
+"TIME_TRANSLATE_EDIT_E" = "%d天%d时%d分";
+"TIME_TRANSLATE_EDIT_F" = "刚刚";
+"TIME_TRANSLATE_EDIT_G" = "%.0f秒前";
+"TIME_TRANSLATE_EDIT_H" = "1分钟前";
+"TIME_TRANSLATE_EDIT_I" = "%.0f分钟前";
+"TIME_TRANSLATE_EDIT_J" = "1小时前";
+"TIME_TRANSLATE_EDIT_K" = "%d小时前";
+"TIME_TRANSLATE_EDIT_L" = "M月d日";
+
+
+// LoginViewController.h
+
+"Localized_login" = "登录";
+"Localized_forgot_password" = "忘记密码?";
+"Localized_free_register" = "免费注册";
+"Localized_free_visit" = "免游客登录";
+"Localized_Logo" = "ChinaIcone";
+"Localized_no_avatar_yet" = "你还没有头像或昵称，请完善";
+"Localized_phone_CANT_BE_EMPTY" = "手机号不能为空";
+"Localized_write_real_phone_number" = "请填写正确的手机号";
+"Localized_pwd_CANT_BE_EMPTY" = "密码不能为空";
+"Localized_shopping" = "购物";
+"Localized_service" = "服务";
+"Localized_social" = "社交";
+"Localized_mine" = "我的";
+"Localized_friends" = "好友";
+"Localized_enter_valide_phone_number" = "请输入正确的手机号";
+
+//  NSLocalizedString(@"Localized_phone_CANT_BE_EMPTY",comment:"")
+
+
+
+/// WelcomeViewController
+
+"Localized_WelcomeViewController_title" = "All Chinese Universities and Students";
+"Localized_WelcomeViewController_loginBtn" = "find a university";
+"Localized_WelcomeViewController_SignUpBtn" = "find a Student";
+
+//SearchListViewController
+"Localized_SearchListViewController_searchText" = "  name of university";
+"Localized_SearchListViewController_searchBtn" = "Find";
+"Localized_SearchListViewController_school" = "School";
+"Localized_SearchListViewController_Student" = "Student";
+"Localized_SearchListViewController_effective" = "Students:";
+
+//SearchDetailsViewController
+"Localized_SearchDetailsViewController_title" = "University informations";
+"Localized_SearchDetailsViewController_getMore" = "More";
+"Localized_SearchDetailsViewController_addReview" = "Review";
+"Localized_SearchDetailsViewController_alertController" = "user verification";
+"Localized_SearchDetailsViewController_pseudo" = "Enter your username";
+"Localized_SearchDetailsViewController_password" = "Enter your password";
+"Localized_SearchDetailsViewController_Signup" = "Sign Up";
+
+//BachelorInteractView
+"Localized_BachelorInteractView_textLeft" = "Program: ";
+
+//SchoolLineHeadView
+
+"Localized_SchoolLineHeadView_location" = "%@ , Urban";
+"Localized_SchoolLineHeadView_bachelor" = "Bachelor";
+"Localized_SchoolLineHeadView_master" = "Master";
+"Localized_SchoolLineHeadView_Phd" = "Phd";
+
+
+//SearchListStudentViewController
+"Localized_SearchListStudentViewControllert_searchText" = "  student name";
+"Localized_SearchListStudentViewController_signForCall" = "Call Me Now";
+"Localized_SearchListStudentViewController_detailLabel" = "i am not in China";
+"Localized_SearchListStudentViewController_detailLabel_living" = "i am currently living in %@ ";
+
+//SearchDetailsStudent
+
+"Localized_SearchDetailsStudent_title" = "Student Information";
+"Localized_SearchDetailsStudent_call" = "Call me";
+"Localized_SearchDetailsStudent_sms" = "email me";
+
+//CDOutLineHeadView
+
+"Localized_CDOutLineHeadView_people" = "\U0000e611 %@ users";
+"Localized_CDOutLineHeadView_people_zero" = "\U0000e611 0 users";
+"Localized_CDOutLineHeadView_me" = "Me";
+"Localized_CDOutLineHeadView_Majors" = "Majors";
+"Localized_CDOutLineHeadView_share" = "Reviews";
+
+//CDColumnCell
+
+"Localized_CDColumnCell_start" = "Start Study";
+"Localized_CDColumnCell_end" = "End Study";
+
+//CDInteractView
+"Localized_CDInteractView_bio" = " My Biography";
+//  NSLocalizedString(@"Localized_CDInteractView_bio",comment:"")
+
+// SignupViewController
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "b0a0e901-97f0-4c19-9c04-1fb3edc33613++5026",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "b0a0e901-97f0-4c19-9c04-1fb3edc33613++5026" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "b0a0e901-97f0-4c19-9c04-1fb3edc33613++5026" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B95DE7F5-8F7D-42A5-945E-E71EDD92FB15",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "b0a0e901-97f0-4c19-9c04-1fb3edc33613++5026" : "ios\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "HHSD",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "HHSD\/HHSD.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.1.88:3330",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "b0a0e901-97f0-4c19-9c04-1fb3edc33613++5026"
+    }
+  ]
+}

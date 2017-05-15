@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainPageViewController">
+            <connections>
+                <outlet property="logoImage" destination="Nm9-U0-NtH" id="XzK-iY-lmh"/>
+                <outlet property="schoolSearch" destination="Vtc-86-TTs" id="aqm-il-RWY"/>
+                <outlet property="studentSearch" destination="lhu-L5-4ad" id="xBx-Fr-TGk"/>
+                <outlet property="titleLabel" destination="cju-fQ-YTO" id="IdD-Ie-uWd"/>
+                <outlet property="userLogin" destination="wal-pu-2L9" id="dje-dg-pa2"/>
+                <outlet property="userSignup" destination="gMY-21-tCe" id="chG-xe-AeO"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Chinese Universities and Students,Services" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cju-fQ-YTO" userLabel="title">
+                    <rect key="frame" x="50" y="37" width="220" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="FG0-nl-vWI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cf-cX-D5k" userLabel="loginVia">
+                    <rect key="frame" x="128" y="406" width="64" height="64"/>
+                    <state key="normal" image="social_login"/>
+                    <connections>
+                        <action selector="loginButtonClick:" destination="-1" eventType="touchUpInside" id="FG4-tZ-qMi"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wal-pu-2L9" userLabel="loginBtn">
+                    <rect key="frame" x="65" y="421" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="Hxi-V8-gfE"/>
+                        <constraint firstAttribute="width" constant="35" id="aZV-94-1gv"/>
+                    </constraints>
+                    <state key="normal" image="userlogin"/>
+                    <connections>
+                        <action selector="loginButtonClick:" destination="-1" eventType="touchUpInside" id="WQq-E7-rJa"/>
+                        <action selector="userLogin:" destination="-1" eventType="touchUpInside" id="7nM-T7-c4M"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMY-21-tCe" userLabel="signupBtn">
+                    <rect key="frame" x="220" y="421" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="F4u-NI-MoH"/>
+                    </constraints>
+                    <state key="normal" image="usersignup"/>
+                    <connections>
+                        <action selector="userSignup:" destination="-1" eventType="touchUpInside" id="vfX-vO-nWh"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhu-L5-4ad" userLabel="studentsBtn">
+                    <rect key="frame" x="85" y="498" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="58Y-oM-PNy"/>
+                        <constraint firstAttribute="width" constant="50" id="XPV-Of-TPl"/>
+                    </constraints>
+                    <state key="normal" image="studentsHome"/>
+                    <connections>
+                        <action selector="studentSearch:" destination="-1" eventType="touchUpInside" id="GPW-vh-uBP"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vtc-86-TTs" userLabel="schoolsBtn">
+                    <rect key="frame" x="185" y="498" width="50" height="50"/>
+                    <state key="normal" image="universitiesHome"/>
+                    <connections>
+                        <action selector="schoolSearch:" destination="-1" eventType="touchUpInside" id="q70-Sw-5Fc"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomeSocial" translatesAutoresizingMaskIntoConstraints="NO" id="Nm9-U0-NtH">
+                    <rect key="frame" x="60" y="131" width="200" height="200"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Vtc-86-TTs" firstAttribute="leading" secondItem="lhu-L5-4ad" secondAttribute="trailing" constant="50" id="0vI-23-AMU"/>
+                <constraint firstItem="wal-pu-2L9" firstAttribute="top" secondItem="gMY-21-tCe" secondAttribute="top" id="5oh-Jy-6K3"/>
+                <constraint firstItem="wal-pu-2L9" firstAttribute="baseline" secondItem="gMY-21-tCe" secondAttribute="baseline" id="9Hz-kW-PON"/>
+                <constraint firstItem="Nm9-U0-NtH" firstAttribute="top" secondItem="cju-fQ-YTO" secondAttribute="bottom" constant="46" id="9S4-fQ-w2G"/>
+                <constraint firstItem="Nm9-U0-NtH" firstAttribute="centerX" secondItem="6Cf-cX-D5k" secondAttribute="centerX" id="AMb-Q6-bNR"/>
+                <constraint firstItem="cju-fQ-YTO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="37" id="KLx-Yw-CGm"/>
+                <constraint firstItem="lhu-L5-4ad" firstAttribute="bottom" secondItem="Vtc-86-TTs" secondAttribute="bottom" id="Qgz-3h-w9U"/>
+                <constraint firstItem="cju-fQ-YTO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ufu-44-nAz"/>
+                <constraint firstItem="gMY-21-tCe" firstAttribute="leading" secondItem="6Cf-cX-D5k" secondAttribute="trailing" constant="28" id="UsJ-OV-I7Z"/>
+                <constraint firstAttribute="bottom" secondItem="lhu-L5-4ad" secondAttribute="bottom" constant="20" id="aov-Ng-QuD"/>
+                <constraint firstItem="wal-pu-2L9" firstAttribute="centerY" secondItem="6Cf-cX-D5k" secondAttribute="centerY" id="bGy-gp-9Rp"/>
+                <constraint firstItem="Nm9-U0-NtH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="60" id="d0M-63-KQI"/>
+                <constraint firstItem="lhu-L5-4ad" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="85" id="dNw-W4-uEK"/>
+                <constraint firstAttribute="trailing" secondItem="gMY-21-tCe" secondAttribute="trailing" constant="65" id="ddk-Kx-GX2"/>
+                <constraint firstItem="cju-fQ-YTO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="dvH-ii-nLm"/>
+                <constraint firstItem="6Cf-cX-D5k" firstAttribute="leading" secondItem="wal-pu-2L9" secondAttribute="trailing" constant="28" id="hGl-k8-5xl"/>
+                <constraint firstItem="wal-pu-2L9" firstAttribute="firstBaseline" secondItem="gMY-21-tCe" secondAttribute="firstBaseline" id="hbC-gD-CGb"/>
+                <constraint firstItem="lhu-L5-4ad" firstAttribute="top" secondItem="Vtc-86-TTs" secondAttribute="top" id="q1N-FC-lLh"/>
+                <constraint firstItem="cju-fQ-YTO" firstAttribute="centerX" secondItem="Nm9-U0-NtH" secondAttribute="centerX" id="qfF-NM-4xn"/>
+                <constraint firstAttribute="trailing" secondItem="Vtc-86-TTs" secondAttribute="trailing" constant="85" id="wBP-Nq-lSb"/>
+                <constraint firstItem="lhu-L5-4ad" firstAttribute="top" secondItem="wal-pu-2L9" secondAttribute="bottom" constant="42" id="xob-Jt-tvB"/>
+                <constraint firstItem="6Cf-cX-D5k" firstAttribute="top" secondItem="Nm9-U0-NtH" secondAttribute="bottom" constant="75" id="zZt-1j-mm4"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="social_login" width="64" height="64"/>
+        <image name="studentsHome" width="64" height="64"/>
+        <image name="universitiesHome" width="64" height="64"/>
+        <image name="userlogin" width="64" height="64"/>
+        <image name="usersignup" width="64" height="64"/>
+        <image name="welcomeSocial" width="320" height="320"/>
+    </resources>
+</document>

@@ -1,0 +1,42 @@
+//
+//  YWY2_M.pch
+//  YWY2_M
+//
+//  Created by 汪达 on 15/9/21.
+//  Copyright © 2015年 汪达. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifndef YWY2_M_pch
+#define YWY2_M_pch
+
+#ifdef __OBJC__
+#import "BaseViewController.h"
+
+
+#import "Macros.h"
+#import "AFNetworking.h"
+#import "UIView+Additions.h"
+#import "BaseViewController.h"
+//#import "Request.h"
+#import "PublicMethod.h"
+#import "JSON_API.h"
+#import "MJExtension.h"
+#import "MBProgressHUD.h"
+#import "SDWebImageManager.h"
+
+
+#import "Define.h"
+#import <Quickblox/Quickblox.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import "AppDelegate.h"
+
+#define WS() __weak typeof(self) weakSelf = self
+
+#import "UIImageView+SDWDImageCache.h"
+#endif
+
+
+#endif
