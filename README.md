@@ -34,6 +34,11 @@ The main you have
 ```
 ![Main Page]( http://newapi.wedhoc.com/git/main.png)
 
+<p align="center">
+  <img src=" http://newapi.wedhoc.com/git/main.png" width="350"/>
+  <img src=" http://newapi.wedhoc.com/git/login.png" width="350"/>
+</p>
+
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
