@@ -8,11 +8,9 @@ ACUSS is an app mobile written in Objective C.
 - [x] Sign Up, Sign In  and Social Login (Facebook,Linkedn, google)
 - [x] Upload File / Data / Stream / MultipartFormData
 - [x] Download using Request or Resume data
-- [x] Authentication with NSURLCredential
 - [x] HTTP Response Validation
 - [x] Pusn Notification
-- [x] Progress Closure & NSProgress
-- [x] cURL Debug Output
+- [x] Edit,delete,Upload etc
 - [x] Comprehensive Unit Test Coverage
 
 ## Requirements
