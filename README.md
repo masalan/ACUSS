@@ -33,10 +33,10 @@ The main you have
 [Link](url) and ![Image](src)
 ```
 
-<p align="center">
+
   ![]( http://newapi.wedhoc.com/git/main.png)
   ![]( http://newapi.wedhoc.com/git/login.png)
-</p>
+
 
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
