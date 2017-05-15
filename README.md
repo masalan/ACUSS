@@ -46,9 +46,10 @@ The main you have
   ![me page]( http://newapi.wedhoc.com/git/ne.png)
   
   <br><br>
-  ### Student Apply for the schoolarship - Schools list- School details - School details Major - Apply for 
+  ### Student Apply for the schoolarship  
   
   Student select the university-->
+   Schools list--> School details --> School details Major --> Apply form
   <br>
   ![schools Pgae]( http://newapi.wedhoc.com/git/schools.png)
   ![students page]( http://newapi.wedhoc.com/git/schoolView.png)
