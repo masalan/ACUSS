@@ -1,5 +1,32 @@
 ## Welcome to ACUSS App
 
+ACUSS is an app mobile written in Objective C.
+
+## Features
+
+- [x] Search engine Students and Schools
+- [x] Sign Up, Sign In  and Social Login (Facebook,Linkedn, google)
+- [x] Upload File / Data / Stream / MultipartFormData
+- [x] Download using Request or Resume data
+- [x] Authentication with NSURLCredential
+- [x] HTTP Response Validation
+- [x] Pusn Notification
+- [x] Progress Closure & NSProgress
+- [x] cURL Debug Output
+- [x] Comprehensive Unit Test Coverage
+
+## Requirements
+
+- iOS 8.0+ / Mac OS X 10.9+ 
+- Xcode 7.1+
+
+## Communication
+
+- If you **need help**, use my skype: sergealain08
+- If you'd like to **ask a general question**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/alamofire).
+- If you **found a bug**, open an issue.
+- If you **have a feature request**, open an issue.
+- If you **want to contribute**, submit a pull request.
 
 You can use the [editor on GitHub](https://github.com/masalan/ACUSS/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
@@ -70,12 +97,10 @@ The main you have
   ![cities Pgae]( http://newapi.wedhoc.com/git/schoolView_major.png)
   ![me page]( http://newapi.wedhoc.com/git/schoolView_major_apply.png)
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Security Disclosure
 
-### Jekyll Themes
+If you believe you have identified a security vulnerability with ACUSS, you should report it as soon as possible via email to alainserge@163.com Please do not post it to a public issue tracker.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/masalan/ACUSS/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## License
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Alamofire is released under the MIT license. See LICENSE for details.
