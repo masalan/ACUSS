@@ -23,7 +23,7 @@ ACUSS is an app mobile written in Objective C.
 ## Communication
 
 - If you **need help**, use my skype: sergealain08
-- If you'd like to **ask a general question**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/alamofire).
+- If you'd like to **ask a general question**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/acuss).
 - If you **found a bug**, open an issue.
 - If you **have a feature request**, open an issue.
 - If you **want to contribute**, submit a pull request.
