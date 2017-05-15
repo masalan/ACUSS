@@ -37,7 +37,11 @@ The main you have
   ![Welcome Pgae]( http://newapi.wedhoc.com/git/main.png)
   ![Login page]( http://newapi.wedhoc.com/git/login.png)
 
+<br>
 
+### After verify the user 
+  ![Welcome Pgae]( http://newapi.wedhoc.com/git/main.png)
+  ![Login page]( http://newapi.wedhoc.com/git/login.png)
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
