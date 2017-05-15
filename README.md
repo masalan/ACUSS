@@ -45,34 +45,7 @@ codeigniter last Version
 # Pust Notification:
 Apply form,Comments,reviews etc
 ``` 
-### Main Features
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-The main you have
-
-# - Social Login (Facebook, Google,Linkedln) 
-# - Sign up  User
-# - Sign In user
-# - Search Engine Students 
-# - Search Engine Schools
-
-# Schools List 
-# Students List 
-# Cities List 
-# User Profile 
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
 
 ### Welcome and Login Page
   ![Welcome Pgae]( http://newapi.wedhoc.com/git/main.png)
