@@ -64,7 +64,7 @@ Apply form,Comments,reviews etc
   
   Student select the university-->
    Schools list--> School details --> School details Major --> Apply form
-  <br>
+  <br><br>
   ![schools Pgae]( http://newapi.wedhoc.com/git/schools.png)
   ![students page]( http://newapi.wedhoc.com/git/schoolView.png)
   ![cities Pgae]( http://newapi.wedhoc.com/git/schoolView_major.png)
