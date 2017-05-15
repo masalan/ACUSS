@@ -37,13 +37,22 @@ The main you have
   ![Welcome Pgae]( http://newapi.wedhoc.com/git/main.png)
   ![Login page]( http://newapi.wedhoc.com/git/login.png)
 
-<br>
+<br><br>
 
 ### Schools - Students- Cities - Me 
   ![schools Pgae]( http://newapi.wedhoc.com/git/schools.png)
   ![students page]( http://newapi.wedhoc.com/git/students.png)
   ![cities Pgae]( http://newapi.wedhoc.com/git/cities.png)
-  ![me page]( http://newapi.wedhoc.com/git/me.png)
+  ![me page]( http://newapi.wedhoc.com/git/ne.png)
+  
+  <br><br>
+  ### Student Apply for the schoolarship - Schools list- School details - School details Major - Apply for 
+  
+  Student select the university-->
+  ![schools Pgae]( http://newapi.wedhoc.com/git/schools.png)
+  ![students page]( http://newapi.wedhoc.com/git/schoolView.png)
+  ![cities Pgae]( http://newapi.wedhoc.com/git/schoolView_major.png)
+  ![me page]( http://newapi.wedhoc.com/git/schoolView_major_apply.png)
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
