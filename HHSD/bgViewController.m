@@ -18,9 +18,7 @@
 
 @interface bgViewController ()<UITableViewDataSource,UITableViewDelegate,BgImgCellDelegate>
 @property (nonatomic, strong) UITableView *tableView;
-
 @property (nonatomic, strong) UIImageView *iconImageView;
-
 @property (nonatomic, strong) BACKGROUND_IMAGES_LIST *capital_M_List;
 @property (nonatomic, strong) UIButton *selectedBtn;
 @property (nonatomic, strong) UIButton *rightNavBtn;
@@ -29,7 +27,7 @@
 @property (nonatomic, copy) NSString *c_id;
 @property (nonatomic, strong) UIView *headView,*myAdView;
 @property (nonatomic, strong) Student_Details *personCenter_MyData;
-
+@property (nonatomic , assign)int                           count;
 
 @end
 
@@ -49,7 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"My current background";
-    
+    [self initUI];
     UIButton *leftBtn = [UIButton createButtonwithFrame:CGRectMake(0, 0, 40, 30)
                                         backgroundColor:KCOLOR_CLEAR
                                              titleColor:KCOLOR_WHITE
@@ -59,13 +57,34 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
 
     
-    __weak typeof(self) weakself = self;
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakself getAllData];
-    }];
+//    __weak typeof(self) weakself = self;
+//    [self.tableView addLegendHeaderWithRefreshingBlock:^{
+//        [weakself getAllData];
+//    }];
     [self.tableView.header beginRefreshing];
-    // Do any additional setup after loading the view.
 }
+
+
+- (void)initUI
+{
+    IMP_BLOCK_SELF(bgViewController);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        block_self.count = 0;
+        [block_self getAllData];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
+    
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
+}
+
+
 
 -(void)AddNewBgImg
 {

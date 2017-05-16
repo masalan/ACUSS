@@ -50,11 +50,32 @@
     [super viewDidLoad];
     self.title = @"admin manager";
     [self getAllData];
-    __weak typeof(self) weakself = self;
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakself getAllData];
-    }];
+    [self initUI];
+
+//    __weak typeof(self) weakself = self;
+//    [self.tableView addLegendHeaderWithRefreshingBlock:^{
+//        [weakself getAllData];
+//    }];
     // Do any additional setup after loading the view.
+}
+
+
+- (void)initUI
+{
+    IMP_BLOCK_SELF(managerAdminPage);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
+    
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -477,6 +498,7 @@
 #pragma mark netWork
 - (void)getAllData
 {
+    IMP_BLOCK_SELF(managerAdminPage);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:self.sess_id forKey:@"sess_id"];
     NSMutableString *string = [NSMutableString stringWithString:urlHeader];
@@ -499,17 +521,16 @@
             {
                 //
             }
-            
             [self tableView];
-            [self.tableView reloadData];
+            [block_self.tableView reloadData];
+            [block_self.tableView.header endRefreshing];
            }
         if([[responseObject objectForKey:@"code"] isEqual:@500])
         {
             
         }
     } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-        [self.tableView.header endRefreshing];
-        
+        [block_self.tableView.header endRefreshing];
     }];
 }
 

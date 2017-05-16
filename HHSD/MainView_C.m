@@ -42,13 +42,11 @@
 @property (nonatomic, strong) UIImageView *leftImageView,*logoSchool;
 @property (nonatomic, strong) Student_Details *individual_M;
 @property (nonatomic, strong) NOOrderView *orderView;
-
-
 //$cycle_id
 @property (nonatomic, strong) NSString *school_id;
 @property (nonatomic, strong) UILabel *nameUniversity,*attributeIcone,*attribute,*levelIcone,*level,*typeIcone,*typeLb,*locationIcone,*location;
-
 @property (nonatomic, strong) UIButton *bottomBtn,*getMore,*addReview;
+@property (nonatomic , assign)int                           count;
 
 
 @end
@@ -92,25 +90,44 @@
     [self myAdView];
     [self showTopView];
     [self tableView];
-    
     //[self bottomView];
-    
     [self selectViewAdmin];
     _Page = 1;
     [self getAllData];
-    __weak typeof(self) weakself = self;
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakself getAllData];
-    }];
-    [self.tableView addGifFooterWithRefreshingBlock:^{
-        [weakself morBtnClick];
-    }];
+    [self initUI];
+
+//    __weak typeof(self) weakself = self;
+//    [self.tableView addLegendHeaderWithRefreshingBlock:^{
+//        [weakself getAllData];
+//    }];
+//    [self.tableView addGifFooterWithRefreshingBlock:^{
+//        [weakself morBtnClick];
+//    }];
     [self.tableView.header beginRefreshing];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(getAllData)
                                                  name:KNOTIFICATION_ZufangSuccessed
                                                object:nil];
+}
+
+- (void)initUI
+{
+    IMP_BLOCK_SELF(MainView_C);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        block_self.count = 0;
+        [block_self getAllData];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
+    
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [block_self morBtnClick];
+    }];
 }
 
 
@@ -296,6 +313,7 @@
 #pragma mark getAllData
 - (void)getAllData
 {
+    IMP_BLOCK_SELF(MainView_C);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:self.sess_id forKey:@"sess_id"];
     [params setObject:[NSString stringWithFormat:@"%ld",(unsigned long)_topSelectedTag] forKey:@"cycle_id"];
@@ -319,16 +337,16 @@
                 {
                     [self.tableView.footer noticeNoMoreData];
                 }
-                [self.tableView reloadData];
+                [block_self.tableView reloadData];
+                [block_self.tableView.header endRefreshing];
             }
             if([[responseObject objectForKey:@"code"] isEqual:@500])
             {
                 [self MBShowHint:responseObject[@"message"]];
             }
         } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-            [self.tableView reloadData];
             _all_majors_list = nil;
-            [self.tableView.header endRefreshing];
+            [block_self.tableView.header endRefreshing];
         }];
         
         
@@ -352,16 +370,16 @@
                 {
                     [self.tableView.footer noticeNoMoreData];
                 }
-                [self.tableView reloadData];
+                [block_self.tableView reloadData];
+                [block_self.tableView.header endRefreshing];
             }
             if([[responseObject objectForKey:@"code"] isEqual:@500])
             {
                 [self MBShowHint:responseObject[@"message"]];
             }
         } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-            [self.tableView reloadData];
             _all_majors_list = nil;
-            [self.tableView.header endRefreshing];
+            [block_self.tableView.header endRefreshing];
         }];
         
         
@@ -383,16 +401,16 @@
                 {
                     [self.tableView.footer noticeNoMoreData];
                 }
-                [self.tableView reloadData];
+                [block_self.tableView reloadData];
+                [block_self.tableView.header endRefreshing];
             }
             if([[responseObject objectForKey:@"code"] isEqual:@500])
             {
                 [self MBShowHint:responseObject[@"message"]];
             }
         } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-            [self.tableView reloadData];
             _all_majors_list = nil;
-            [self.tableView.header endRefreshing];
+            [block_self.tableView.header endRefreshing];
         }];
         
     }
@@ -400,6 +418,7 @@
 
 - (void)getDownData
 {
+    IMP_BLOCK_SELF(MainView_C);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:self.sess_id forKey:@"sess_id"];
     [params setObject:[NSString stringWithFormat:@"%ld",(unsigned long)_topSelectedTag] forKey:@"type"];
@@ -410,23 +429,17 @@
         kSetDict(self.schoolId, @"school_id");
         [string appendString:@"Programs_cylce/majors_list"];//Bachelor List
         [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:NO sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self.tableView.header endRefreshing];
+            [self.tableView.footer endRefreshing];
             _all_majors_list = nil;
             if([[responseObject objectForKey:@"code"] isEqual:@200])
             {
                 SchoolDetail_Column_M_List *tmplist = [SchoolDetail_Column_M_List  objectWithKeyValues:responseObject];
-//                NSMutableArray *array = responseObject[@"data"];
-//                
-//                [array enumerateObjectsUsingBlock:^(id  obj, NSUInteger idx, BOOL *stop) {
-//                    SchoolDetail_Column_M *mode = tmplist.data[idx];
-//                  ///  mode.CourseName = obj[@"description"];
-//
-//                }];
                 
                 [_bachelor.data addObjectsFromArray:tmplist.data];
                 _all_majors_list = _bachelor;
                 [self.tableView.footer noticeNoMoreData];
-                [self.tableView reloadData];
+                [block_self.tableView reloadData];
+                [block_self.tableView.footer endRefreshing];
                 [self getSchoolData];
                  [self getUserData];
             }
@@ -435,9 +448,8 @@
                 [self.tableView.footer noticeNoMoreData];
             }
         } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-            [self.tableView reloadData];
             _all_majors_list = nil;
-            [self.tableView.header endRefreshing];
+            [block_self.tableView.footer endRefreshing];
         }];
         
         
@@ -454,19 +466,13 @@
             {
                 
                 SchoolDetail_Column_M_List *tmplist = [SchoolDetail_Column_M_List  objectWithKeyValues:responseObject];
-//                NSMutableArray *array = responseObject[@"data"];
-//                
-//                [array enumerateObjectsUsingBlock:^(id  obj, NSUInteger idx, BOOL *stop) {
-//                    SchoolDetail_Column_M *mode = tmplist.data[idx];
-//                   // mode.CourseName = obj[@"description"];
-//                    
-//                }];
                 
                 [_master.data addObjectsFromArray:tmplist.data];
                 _all_majors_list = _master;
                 
                 [self.tableView.footer noticeNoMoreData];
-                [self.tableView reloadData];
+                [block_self.tableView reloadData];
+                [block_self.tableView.footer endRefreshing];
                 [self getSchoolData];
                  [self getUserData];
                 
@@ -476,9 +482,8 @@
                 [self.tableView.footer noticeNoMoreData];
             }
         } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-            [self.tableView reloadData];
             _all_majors_list = nil;
-            [self.tableView.header endRefreshing];
+            [block_self.tableView.footer endRefreshing];
         }];
         
         
@@ -494,19 +499,13 @@
             {
                
                 SchoolDetail_Column_M_List *tmplist = [SchoolDetail_Column_M_List  objectWithKeyValues:responseObject];
-//                NSMutableArray *array = responseObject[@"data"];
-//                
-//                [array enumerateObjectsUsingBlock:^(id  obj, NSUInteger idx, BOOL *stop) {
-//                    SchoolDetail_Column_M *mode = tmplist.data[idx];
-//                  //  mode.CourseName = obj[@"description"];
-//                    
-//                }];
                 
                 [_phd.data addObjectsFromArray:tmplist.data];
                 _all_majors_list = _phd;
                 
                 [self.tableView.footer noticeNoMoreData];
-                [self.tableView reloadData];
+                [block_self.tableView reloadData];
+                [block_self.tableView.footer endRefreshing];
                 [self getSchoolData];
                  [self getUserData];
                 
@@ -516,9 +515,8 @@
                 [self.tableView.footer noticeNoMoreData];
             }
         } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-            [self.tableView reloadData];
             _all_majors_list = nil;
-            [self.tableView.header endRefreshing];
+            [block_self.tableView.footer endRefreshing];
         }];
         
     }

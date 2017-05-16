@@ -63,17 +63,34 @@
     self.title = NSLocalizedString(@"Localized_SearchDetailsViewController_title",comment:"");
     [self getAllData];
     [self bottomView];
-  
+    [self initUI];
     DLog(@"%@",NSStringFromCGRect(self.view.frame));
-    __weak typeof(self) weakself = self;
-    
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakself getAllData];
-    }];
+//    __weak typeof(self) weakself = self;
+//    
+//    [self.tableView addLegendHeaderWithRefreshingBlock:^{
+//        [weakself getAllData];
+//    }];
     //[self.tableView.header beginRefreshing];
     
 }
 
+- (void)initUI
+{
+    IMP_BLOCK_SELF(MainView_A_details);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
+    
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
+}
 
 
 #pragma mark

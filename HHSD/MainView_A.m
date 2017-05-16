@@ -11,7 +11,8 @@
 #import "SearchModel.h"
 #import "SearchSchoolListCell.h"
 #import "userAddGraduteMajor.h"
-
+#import "MJRefreshGifHeader.h"
+#import "GYHHeadeRefreshController.h"
 #import "SWTableViewCell.h"
 #import "MainView_C.h"
 
@@ -36,7 +37,7 @@ extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
 @property (nonatomic, strong) UITextField *searchText;
 @property (nonatomic, strong) UIButton *searchBtn;
-
+@property (nonatomic , assign)int                           count;
 @property (nonatomic, strong) NSArray *FilteredResults;
 @property (nonatomic, retain) UIButton *selectedBtn;
 @property (nonatomic, strong) SearchModel *searchList;
@@ -59,10 +60,8 @@ extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
     [super viewDidLoad];
     
     self.title = @"schools A";
-    __weak typeof(self) weakself = self;
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakself getAllData];
-    }];
+    [self initUI];
+
     [self.tableView.header beginRefreshing];
     
     self.FilteredResults = [self.QuickSearch filteredObjectsWithValue:nil];
@@ -70,6 +69,26 @@ extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
     [self benchmarkQuickSearch];
     
     
+}
+
+
+- (void)initUI
+{
+    IMP_BLOCK_SELF(MainView_A);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        block_self.count = 0;
+        [block_self getAllData];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
+    
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
 }
 
 
@@ -164,6 +183,7 @@ extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
 #pragma mark - getAllData
 - (void)getAllData
 {
+    IMP_BLOCK_SELF(MainView_A);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     NSMutableString *string = [NSMutableString stringWithString:urlHeader];
     [string appendString:@"Search/school"];
@@ -177,15 +197,18 @@ extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
                 [self MBShowHint:@"no result"];
                 _searchList = nil;
             }
-            [self.tableView reloadData];
-            [self tableView ];
+            block_self.count += 100;
+            [block_self.tableView reloadData];
+            [block_self.tableView.header endRefreshing];
+            [block_self.tableView.footer endRefreshing];
         }
         if([[responseObject objectForKey:@"code"] isEqual:@500])
         {
             [self MBShowHint:responseObject[@"message"]];
         }
     } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-        [self.tableView.header endRefreshing];
+        [block_self.tableView.header endRefreshing];
+        [block_self.tableView.footer endRefreshing];
     }];
 }
 

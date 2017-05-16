@@ -44,17 +44,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"My Birthday";
-    
     [self tableView];
     [self getAllData];
-    
     self.view.backgroundColor = KCOLOR_THEME;
-    
-    
-    __weak typeof(self) weakself = self;
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakself getAllData];
-    }];
+    [self initUI];
+
+//    __weak typeof(self) weakself = self;
+//    [self.tableView addLegendHeaderWithRefreshingBlock:^{
+//        [weakself getAllData];
+//    }];
     
     UIButton *leftBtn = [UIButton createButtonwithFrame:CGRectMake(0, 0, 40, 30)
                                         backgroundColor:KCOLOR_CLEAR
@@ -64,11 +62,25 @@
     [leftBtn addTarget:self action:@selector(BirthdayEditUser) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     
-    
-    
 }
 
-
+- (void)initUI
+{
+    IMP_BLOCK_SELF(IndividualBirthViewController);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
+    
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
+}
 
 
 - (UITableView *)tableView

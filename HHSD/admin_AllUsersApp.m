@@ -25,7 +25,8 @@
 #import "ecoleSearch.h"
 #import "SearchModel.h"
 #import "UsersModel.h"
-
+#import "MJRefreshGifHeader.h"
+#import "GYHHeadeRefreshController.h"
 
 #import "NOOrderView.h"
 
@@ -54,6 +55,7 @@
 @property (nonatomic, strong) All_Province_List *province_list;
 @property (nonatomic, strong) Province_List_details *province_details;
 @property (nonatomic, strong) NOOrderView *orderView;
+@property (nonatomic , assign)int                           count;
 
 @property (nonatomic, strong) All_Users_list *usersList;
 @property (nonatomic, strong) All_Users_list *allusers_list;
@@ -109,19 +111,33 @@
     _page = 1;
     [self tableView];
     [self getAllData:NO];
-    __weak typeof(self) weakself = self;
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        _page = 1;
-        [weakself getAllData:NO];
-    }];
-    [self.tableView addLegendFooterWithRefreshingBlock:^{
-        [weakself getAllData:YES];
-    }];
-    
+    [self initUI];
     
     [self addSearchBtnRight];
     
 }
+
+
+- (void)initUI
+{
+    IMP_BLOCK_SELF(admin_AllUsersApp);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        block_self.count = 0;
+        [block_self getAllData:NO];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
+    
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [block_self getAllData:YES];
+    }];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

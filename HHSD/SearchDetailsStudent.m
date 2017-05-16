@@ -32,6 +32,8 @@
 @property (nonatomic, strong) UILabel *priceLabel;
 @property (nonatomic, retain) IBOutlet UIProgressView *progress;
 @property (strong, nonatomic) FYLoginTranslation* login;
+@property (nonatomic , assign)int                           count;
+
 @end
 
 @implementation SearchDetailsStudent
@@ -46,19 +48,13 @@
     return self;
 }
 
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Localized_SearchDetailsStudent_title",comment:"");
     [self getAllData];
     self.view.backgroundColor = KTHEME_COLOR;
-    __weak typeof(self) weakself = self;
-    
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakself getAllData];
-    }];
+    [self initUI];
+
     self.progress.progress = 0.0;
 
     NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:KUSERNAME];
@@ -70,6 +66,28 @@
     }
 
 }
+
+
+
+- (void)initUI
+{
+    IMP_BLOCK_SELF(SearchDetailsStudent);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        block_self.count = 0;
+        [block_self getAllData];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
+    
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
+}
+
 #pragma mark
 #pragma mark delegate Ok swicth menu select
 - (void)CDOutLineHeadViewbtnClick:(NSInteger)index

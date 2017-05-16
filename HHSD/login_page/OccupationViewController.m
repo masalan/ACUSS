@@ -12,7 +12,6 @@
 
 @interface OccupationViewController ()<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource,MyPickerDelegate>
 {
-    
     UITableView *_settingTabView;
     NSArray *_lists;
 }
@@ -20,14 +19,10 @@
 @property (nonatomic, strong) MyPicker *picker;
 @property (nonatomic, strong) Student_Details *individual_M;
 @property (nonatomic, strong) NSMutableArray *titleArray;
-
 @property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, strong) UIView *sexView;
-
-
-
 @property (nonatomic, strong) UITableView *tableView;
-
+@property (nonatomic , assign)int                           count;
 
 @end
 
@@ -36,20 +31,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"My occupation";
-    
-    // [self settingTabView];
     [self getAllData];
     [self tableView];
-    
-    
     self.view.backgroundColor = KCOLOR_THEME;
-    
-    
-    __weak typeof(self) weakself = self;
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakself getAllData];
-    }];
-    
+    [self initUI];
+
     
     UIButton *leftBtn = [UIButton createButtonwithFrame:CGRectMake(0, 0, 40, 30)
                                         backgroundColor:KCOLOR_CLEAR
@@ -58,11 +44,26 @@
                                                   title:@"OK"];
     [leftBtn addTarget:self action:@selector(saveSexuser) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
-    
-    
-    
 }
 
+- (void)initUI
+{
+    IMP_BLOCK_SELF(OccupationViewController);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        block_self.count = 0;
+        [block_self getAllData];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
+    
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
+}
 
 - (UITableView *)tableView
 {

@@ -664,6 +664,7 @@
         _popMenu.menuAnimationType = kPopMenuAnimationTypeSina;
         _popMenu.perRowItemCount = 3;
         _popMenu.backgroundColor = KTHEME_COLOR;
+        [_popMenu showMenuAtView:self.view];
     }
     if (_popMenu.isShowed) {
         return;

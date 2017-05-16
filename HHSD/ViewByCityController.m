@@ -23,7 +23,7 @@
 @interface ViewByCityController ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,SWTableViewCellDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) citiesModel *searchCities;
-
+@property (nonatomic , assign)int                           count;
 @property (nonatomic, retain) NSString *Islike;
 @property (nonatomic, retain) NSString *hidden;
 @property (nonatomic, retain) NSString *SID;
@@ -51,7 +51,7 @@
                                                   style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.backgroundColor = KTHEME_COLOR;
+        _tableView.backgroundColor = KCOLOR_WHITE;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         [self.view addSubview:_tableView];
     }
@@ -62,21 +62,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Cities";
-    self.view.backgroundColor = KTHEME_COLOR;
-
+    self.view.backgroundColor = KCOLOR_WHITE;
     [self getAllData];
-    __weak typeof(self) weakself = self;
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakself getAllData];
-    }];
-
-    // Do any additional setup after loading the view.
-    
     //Hide Top bar
-    
     self.navigationController.hidesBarsOnSwipe = YES;
-    
 }
+
+- (void)initUI
+{
+    IMP_BLOCK_SELF(ViewByCityController);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
+    
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -92,6 +101,7 @@
 #pragma mark - getAllData
 - (void)getAllData
 {
+    IMP_BLOCK_SELF(ViewByCityController);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     NSMutableString *string = [NSMutableString stringWithString:urlHeader];
     [string appendString:@"cities/index"];
@@ -104,14 +114,17 @@
                 [self MBShowHint:@"no result"];
                 _searchCities = nil;
             }
-            [self.tableView reloadData];
-            [self tableView ];
+            block_self.count += 100;
+            [block_self.tableView reloadData];
+            [block_self.tableView.header endRefreshing];
+            [block_self.tableView.footer endRefreshing];
         }
         if([[responseObject objectForKey:@"code"] isEqual:@500])
         {
         }
     } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-        [self.tableView.header endRefreshing];
+        [block_self.tableView.header endRefreshing];
+        [block_self.tableView.footer endRefreshing];
     }];
 }
 

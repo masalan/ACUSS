@@ -35,7 +35,8 @@
 #import "MJRefresh.h"
 #import "NSObject+MBHUD.h"
 #import "UIImageView+SDWDImageCache.h"
-
+#import "MJRefreshGifHeader.h"
+#import "GYHHeadeRefreshController.h"
 
 
 //Add tweet sucess
@@ -47,6 +48,13 @@
 
 #define kSetDict(value,key) if (value)[params setObject:value forKey:key]
 #define sss 44
+
+
+#if __has_feature(objc_arc)
+#define IMP_BLOCK_SELF(type) __weak type *block_self=self;
+#else
+#define IMP_BLOCK_SELF(type) __block type *block_self=self;
+#endif
 
 
 //----------------------------------------------------------------------------------------------

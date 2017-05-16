@@ -16,7 +16,6 @@
 #import "LoginViewController.h"
 
 
-
 @interface SearchDetailsViewController ()<UITableViewDataSource,UITableViewDelegate,SchoolLineHeadViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) School_Details *schoolDetail;
@@ -27,7 +26,7 @@
 @property (nonatomic, strong) SchoolDetail_Column_M_List *masterDetail_Column_M_List;
 @property (nonatomic, strong) SchoolDetail_Column_M_List *phdDetail_Column_M_List;
 @property (nonatomic, strong) UITextField *userNameTextField,*passWDTextField;
-
+@property (nonatomic , assign)int                           count;
 @property (nonatomic, assign) NSInteger indexType;
 @property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, strong) UIButton *bottomBtn,*getMore,*addReview;
@@ -70,16 +69,31 @@ NSString *kAttributeTitle = @"Attributed string operation successfully completed
         self.passWDTextField.text = passWd;
         // self.loginUser.enabled = YES;
     }
-    
+    [self initUI];
+
     DLog(@"%@",NSStringFromCGRect(self.view.frame));
-    __weak typeof(self) weakself = self;
-    
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakself getAllData];
-    }];
-    //[self.tableView.header beginRefreshing];
-    
+
 }
+
+- (void)initUI
+{
+    IMP_BLOCK_SELF(SearchDetailsViewController);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        block_self.count = 0;
+        [block_self getAllData];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
+    
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
+}
+
 
 -(void)BtnClickLoginHere:(NSInteger)index
 {

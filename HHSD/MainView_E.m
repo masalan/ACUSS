@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NOOrderView *orderView;
 @property (nonatomic, assign) NSInteger indexSection;
 @property (nonatomic, assign) BOOL refresh;
+@property (nonatomic , assign)int                           count;
 @end
 
 @implementation MainView_E
@@ -29,14 +30,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"My form";
-    
     [self tableView];
-    __weak typeof(self) weakself = self;
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        weakself.refresh = YES;
-        [weakself getAllData];
-    }];
-    
+    [self initUI];
+
     [self getAllData];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(getAllData)
@@ -49,6 +45,22 @@
     UITapGestureRecognizer *tapAction = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionPickerDone)];
     [self.view addGestureRecognizer:tapAction];
 }
+
+- (void)initUI
+{
+    IMP_BLOCK_SELF(MainView_E);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        block_self.count = 0;
+        [block_self getAllData];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
+    
+}
+
 
 -(void)actionPickerDone {
     _refresh = YES;
@@ -180,9 +192,9 @@
 #pragma mark getAllData
 - (void)getAllData
 {
+    IMP_BLOCK_SELF(MainView_E);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:self.sess_id forKey:@"sess_id"];
-    
     NSMutableString *string = [NSMutableString stringWithString:urlHeader];
     [string appendString:@"Programs_cylce/list_form"];
     [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:YES sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -197,6 +209,8 @@
                  [self orderView];
                  self.orderView.hidden = NO;
              }
+             [block_self.tableView reloadData];
+             [block_self.tableView.header endRefreshing];
              
          }
          else if ([[responseObject objectForKey:@"code"] isEqual:@500])
@@ -209,8 +223,7 @@
      }failBlock:^(AFHTTPRequestOperation *operation, NSError *eror)
      {
          _fabu_M_List = nil;
-         [self.tableView reloadData];
-         
+         [block_self.tableView.header endRefreshing];
      }];
 }
 

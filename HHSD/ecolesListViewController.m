@@ -8,9 +8,8 @@
 
 #import "ecolesListViewController.h"
 #import "MainView_C.h"
-
+#import "menuHorizontalView.h"
 #import "SWTableViewCell.h"
-
 #import "IMQuickSearch.h"
 #import "SearchModel.h"
 #import "userAddGraduteMajor.h"
@@ -27,6 +26,11 @@
 
 #import "ecoleSearch.h"
 
+
+#import "MJRefreshGifHeader.h"
+#import "GYHHeadeRefreshController.h"
+
+
 @interface ecolesListViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate,UICollectionViewDelegate,UICollectionViewDataSource,SWTableViewCellDelegate,MySchoolListDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *recordList;
@@ -39,17 +43,15 @@
 @property (nonatomic, strong) NSArray *FilteredResults;
 @property (nonatomic, retain) UIButton *selectedBtn;
 @property (nonatomic, strong) SearchModel *searchList;
-
+@property (nonatomic , assign)int                           count;
 
 @property (nonatomic, retain) NSString *Islike;
 @property (nonatomic, retain) NSString *hidden;
 @property (nonatomic, retain) NSString *SID;
-
 @property (nonatomic, strong) UIButton *rightNavBtn;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, copy) NSString *c_id;
 @property (nonatomic, strong) UIView *headView;
-
 @property (nonatomic, strong) All_Province_List *province_list;
 @property (nonatomic, strong) Province_List_details *province_details;
 
@@ -95,15 +97,34 @@
     [self collectionView];
     [self getCityData];
     [self getAllData];
+     [self initUI];
     
-    __weak typeof(self) weakself = self;
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakself getAllData];
-    }];
-   [self.tableView.header beginRefreshing];
     [self addSearchBtnRight];
     
+
+    
 }
+- (void)initUI
+{
+    IMP_BLOCK_SELF(ecolesListViewController);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        block_self.count = 0;
+        [block_self getAllData];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = NO;
+    self.tableView.header = header;
+    [header beginRefreshing];
+  
+    
+    
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -184,7 +205,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     School_Details *detailsSchool = _searchList.school[indexPath.row];
-    MainView_C *vc = [[MainView_C alloc] init];
+    menuHorizontalView *vc = [[menuHorizontalView alloc] init];
+    //    MainView_C *vc = [[MainView_C alloc] init];
+
     vc.schoolId = detailsSchool.id;
     
     School_data *stats = _searchList.school[indexPath.row];
@@ -432,6 +455,7 @@
 #pragma mark - getAllData
 - (void)getAllData
 {
+    IMP_BLOCK_SELF(ecolesListViewController);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     NSMutableString *string = [NSMutableString stringWithString:urlHeader];
     [string appendString:@"schools/school"];
@@ -445,14 +469,19 @@
                 [self MBShowHint:@"no result"];
                 _searchList = nil;
             }
-            [self.tableView reloadData];
-            [self tableView ];
+            
+            block_self.count += 10;
+            [block_self.tableView reloadData];
+            [block_self.tableView.header endRefreshing];
+            [block_self.tableView.footer endRefreshing];
+            
         }
         if([[responseObject objectForKey:@"code"] isEqual:@500])
         {
         }
     } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-        [self.tableView.header endRefreshing];
+        [block_self.tableView.header endRefreshing];
+        [block_self.tableView.footer endRefreshing];
     }];
 }
 

@@ -23,15 +23,12 @@ UIImagePickerControllerDelegate,ZYQAssetPickerControllerDelegate>
 {
     BOOL isEdit;
 }
-
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ZYQAssetPickerController *picker;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGes;
 @property (nonatomic, strong) NSMutableArray *imageArray;
 @property (nonatomic, strong) UIScrollView *backScrollView;
-
 @property (nonatomic, retain) UIButton *loginUser,*validBtn;
-
 @end
 
 @implementation editApplyForm
@@ -62,9 +59,9 @@ UIImagePickerControllerDelegate,ZYQAssetPickerControllerDelegate>
     [self validBtn];
     self.title = @"edit form";
     [self tableView];
+    [self initUI];
 
-    
-    
+
     UIButton *rightBtn = [UIButton createButtonwithFrame:CGRectMake(0, 0, 80, 30)
                                          backgroundColor:KCOLOR_Clear
                                               titleColor:[PublicMethod getNaviBarItemColor]
@@ -79,6 +76,15 @@ UIImagePickerControllerDelegate,ZYQAssetPickerControllerDelegate>
     
 }
 
+- (void)initUI
+{
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+}
 
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -249,7 +255,6 @@ UIImagePickerControllerDelegate,ZYQAssetPickerControllerDelegate>
                     
                 case 1:
                 {
-                   // static NSString *cellIden = @"titleCell";
                     
                     NSString *cellIden = [NSString stringWithFormat:@"CustomCell%ld%ld",(long)indexPath.section,
                                          (long)indexPath.row];
@@ -275,7 +280,6 @@ UIImagePickerControllerDelegate,ZYQAssetPickerControllerDelegate>
                     
                 case 2:
                 {
-                   // static NSString *cellIden = @"birthdayCell";
                     NSString *cellIden = [NSString stringWithFormat:@"CustomCell%ld%ld",(long)indexPath.section,
                                           (long)indexPath.row];
                     SearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIden];
@@ -299,7 +303,6 @@ UIImagePickerControllerDelegate,ZYQAssetPickerControllerDelegate>
                     
                 case 3:
                 {
-                   // static NSString *cellIden = @"tongueCell";
                     NSString *cellIden = [NSString stringWithFormat:@"CustomCell%ld%ld",(long)indexPath.section,
                                           (long)indexPath.row];
                     SearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIden];
@@ -323,7 +326,6 @@ UIImagePickerControllerDelegate,ZYQAssetPickerControllerDelegate>
                     
                 case 4:
                 {
-                   // static NSString *cellIden = @"phoneCell";
                     NSString *cellIden = [NSString stringWithFormat:@"CustomCell%ld%ld",(long)indexPath.section,
                                           (long)indexPath.row];
                     SearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIden];
@@ -347,7 +349,6 @@ UIImagePickerControllerDelegate,ZYQAssetPickerControllerDelegate>
                     
                 case 5:
                 {
-                    //static NSString *cellIden = @"actualCycleCell";
                     NSString *cellIden = [NSString stringWithFormat:@"CustomCell%ld%ld",(long)indexPath.section,
                                           (long)indexPath.row];
                     SearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIden];
@@ -372,7 +373,6 @@ UIImagePickerControllerDelegate,ZYQAssetPickerControllerDelegate>
                     
                 case 6:
                 {
-                    //static NSString *cellIden = @"actualMajorCell";
                     NSString *cellIden = [NSString stringWithFormat:@"CustomCell%ld%ld",(long)indexPath.section,
                                           (long)indexPath.row];
                     SearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIden];
@@ -406,7 +406,6 @@ UIImagePickerControllerDelegate,ZYQAssetPickerControllerDelegate>
             switch (indexPath.row) {
                 case 0:
                 {
-                   // static NSString *cellIden = @"schoolCell";
                     NSString *cellIden = [NSString stringWithFormat:@"CustomCell%ld%ld",(long)indexPath.section,
                                           (long)indexPath.row];
                     SearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIden];
@@ -430,7 +429,6 @@ UIImagePickerControllerDelegate,ZYQAssetPickerControllerDelegate>
                     
                 case 1:
                 {
-                  //  static NSString *cellIden = @"majorCell";
                     NSString *cellIden = [NSString stringWithFormat:@"CustomCell%ld%ld",(long)indexPath.section,
                                           (long)indexPath.row];
                     SearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIden];
@@ -454,7 +452,6 @@ UIImagePickerControllerDelegate,ZYQAssetPickerControllerDelegate>
                     
                 case 2:
                 {
-                    //static NSString *cellIden = @"cycleCell";
                     NSString *cellIden = [NSString stringWithFormat:@"CustomCell%ld%ld",(long)indexPath.section,
                                           (long)indexPath.row];
                     SearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIden];
@@ -478,7 +475,6 @@ UIImagePickerControllerDelegate,ZYQAssetPickerControllerDelegate>
                     
                 case 3:
                 {
-                  //  static NSString *cellIden = @"tuitionCell";
                     NSString *cellIden = [NSString stringWithFormat:@"CustomCell%ld%ld",(long)indexPath.section,
                                           (long)indexPath.row];
                     SearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIden];

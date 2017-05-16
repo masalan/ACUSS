@@ -29,7 +29,7 @@
 @property (nonatomic, retain) UILabel *woDeShouCangLabel;
 @property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, strong) School_Details *schoolDetail; // Details School
-
+@property (nonatomic , assign)int                           count;
 @property (nonatomic, strong) UIButton *bottomBtn,*getMore,*addReview;
 
 
@@ -109,15 +109,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.title =@"";
     [self getAllData];
-    __weak typeof(self) weakself = self;
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakself getAllData];
+    [self initUI];
+    
+}
+
+
+- (void)initUI
+{
+    IMP_BLOCK_SELF(detailsByMajor);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        block_self.count = 0;
+        [block_self getAllData];
     }];
     
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
     
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -363,6 +378,7 @@
 #pragma mark netWork
 - (void)getAllData
 {
+    IMP_BLOCK_SELF(detailsByMajor);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:self.sess_id forKey:@"sess_id"];
     kSetDict(self.school_details.id, @"id");
@@ -413,7 +429,8 @@
 
             
             
-          [self.tableView reloadData];
+            [block_self.tableView reloadData];
+            [block_self.tableView.header endRefreshing];
              [self tableView];
             [self bottomView];
         }
@@ -421,8 +438,7 @@
         {
         }
     } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-        [self.tableView reloadData];
-        [self.tableView.header endRefreshing];
+        [block_self.tableView.header endRefreshing];
     }];
 }
 

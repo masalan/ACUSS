@@ -7,9 +7,8 @@
 //
 
 #import "admin_AllUniversities.h"
-
-
-
+#import "MJRefreshGifHeader.h"
+#import "GYHHeadeRefreshController.h"
 #import "MainView_C.h"
 #import "SWTableViewCell.h"
 #import "IMQuickSearch.h"
@@ -42,8 +41,7 @@
 @property (nonatomic, strong) NSArray *FilteredResults;
 @property (nonatomic, retain) UIButton *selectedBtn;
 @property (nonatomic, strong) SearchModel *searchList;
-
-
+@property (nonatomic , assign)int                           count;
 @property (nonatomic, retain) NSString *Islike;
 @property (nonatomic, retain) NSString *hidden;
 @property (nonatomic, retain) NSString *SID;
@@ -98,14 +96,30 @@
     [self collectionView];
     [self getCityData];
     [self getAllData];
-    
-    __weak typeof(self) weakself = self;
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakself getAllData];
-    }];
+    [self initUI];
+
     [self.tableView.header beginRefreshing];
     [self addSearchBtnRight];
     
+}
+
+- (void)initUI
+{
+    IMP_BLOCK_SELF(admin_AllUniversities);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        block_self.count = 0;
+        [block_self getAllData];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
+    
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

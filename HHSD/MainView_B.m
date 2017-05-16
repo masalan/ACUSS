@@ -24,6 +24,7 @@
 @property (nonatomic, strong) SearchStudentModel *searchList;
 @property (nonatomic, strong) SearchStudentModel *searchListStudent;
 @property (nonatomic, copy) NSString *sess_ID;
+@property (nonatomic , assign)int                           count;
 
 @end
 
@@ -35,14 +36,32 @@
     [self getAllData];
     [self tableView];
     [self.tableView.header beginRefreshing];
+    [self initUI];
 
-    __weak typeof(self) weakself = self;
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakself getAllData];
-    }];
     
     [self addSearchBtnRightE];
 }
+
+
+- (void)initUI
+{
+    IMP_BLOCK_SELF(MainView_B);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        block_self.count = 0;
+        [block_self getAllData];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
+    
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
+}
+
 
 -(void)addSearchBtnRightE {
     UIButton *barButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 30)];
@@ -166,7 +185,7 @@
 #pragma mark - getAllData
 - (void)getAllData
 {
-    
+    IMP_BLOCK_SELF(MainView_B);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     NSMutableString *string = [NSMutableString stringWithString:urlHeader];
     [string appendString:@"Menu_a/student"];
@@ -181,14 +200,18 @@
             if (_searchListStudent.student.count>0) {
                 self.a_z_dataDic = [self convertTo_A_Z_DICTION:_searchListStudent.student];
             }
-            [self.tableView reloadData];
+            block_self.count += 100;
+            [block_self.tableView reloadData];
+            [block_self.tableView.header endRefreshing];
+            [block_self.tableView.footer endRefreshing];
         }
         if([[responseObject objectForKey:@"code"] isEqual:@500])
         {
           //  [self MBShowHint:responseObject[@"message"]];
         }
     } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-        [self.tableView.header endRefreshing];
+        [block_self.tableView.header endRefreshing];
+        [block_self.tableView.footer endRefreshing];
     }];
 }
 

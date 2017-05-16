@@ -50,7 +50,6 @@
 @interface MainView_D ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, strong) Student_Details *individual_M;
-
 @property (nonatomic, retain) UIImageView *headImageView,*myBgImage,*countryCode;
 @property (nonatomic, retain) UILabel *FullnameLabel,*lineLabel1,*totalLabel,*totalLabels,*totalLast,*nationality,*sex,*majorTotal,*commentsTotal,*viewsTotal;
 @property (nonatomic, retain) UIButton *btnOne,*btnTwo,*btnTree,*btnFour,*topHeader;
@@ -61,9 +60,6 @@
 @property (nonatomic, retain) UILabel *woDeShouCangLabel;
 @property (nonatomic, strong) UIButton *leftNavBtn,*rightNavBtn,*socialBtnLogin;
 @property (nonatomic,strong) NSUserDefaults * userDefaults;
-
-
-
 @property (nonatomic, assign) NSUInteger topSelectedTag;
 @property (nonatomic, assign) NSString *socialLoginTag,*sess_ID,*S_ID,*G_ID,*L_ID,*email,*gender,*last_name,*first_name,*name,*picture,*phone,*location,*social_type;
 @property (nonatomic, assign) NSString *googleIsLogin,*facebookIsLogin,*twitterIsLogin,*instagramIsLogin,*linkedlnIsLogin,*yahooIsLogin;
@@ -75,10 +71,8 @@
 @property (nonatomic, retain) FKDUNetworkOperation *completeAuthOp;
 @property (nonatomic, retain) FKDUNetworkOperation *checkAuthOp;
 @property (nonatomic, retain) FKImageUploadNetworkOperation *uploadOp;
-
 @property (nonatomic, retain) NSString *userID;
-
-
+@property (nonatomic , assign)int                           count;
 
 @end
 
@@ -109,18 +103,28 @@
     [self socialLogOutBtn];
     self.view.backgroundColor = KTHEME_COLOR;
     self.title = @"Me";
-    __weak typeof(self) weakself = self;
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakself getAllData];
-    }];
-     [self.tableView.header beginRefreshing];
-    
+    [self initUI];
     _userDefaults=[NSUserDefaults standardUserDefaults];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startLocating:) name:@"ForceUpdateLocation" object:nil]; // don't forget the ":"
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userAuthenticateCallback:) name:@"UserAuthCallbackNotification" object:nil];
     [GIDSignIn sharedInstance].uiDelegate = self;
 
 }
+
+- (void)initUI
+{
+    IMP_BLOCK_SELF(MainView_D);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        block_self.count = 0;
+        [block_self getAllData];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
    
     
@@ -977,7 +981,7 @@
                         settingMyViewController *vc = [[settingMyViewController alloc] init];
                         [self.navigationController pushViewController:vc animated:YES];
                     }
-                    else if ([_individual_M.admin isEqualToString:@"2"])
+                    else if ([_individual_M.admin isEqualToString:@"6"])
                     {
                         managerAdminPage *vc = [[managerAdminPage alloc] init];
                         [self.navigationController pushViewController:vc animated:YES];
@@ -1030,6 +1034,7 @@
 #pragma mark netWork
 - (void)getAllData
 {
+    IMP_BLOCK_SELF(MainView_D);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:self.sess_id forKey:@"sess_id"];
     NSMutableString *string = [NSMutableString stringWithString:urlHeader];
@@ -1041,8 +1046,8 @@
         {
             _tableView.hidden = NO;
             _individual_M = [Student_Details objectWithKeyValues:responseObject[@"data"]];
-            [self tableView];
-            [self.tableView reloadData];
+            [block_self.tableView reloadData];
+            [block_self.tableView.header endRefreshing];
             [self getAllDataSocial];
     
             if([_individual_M.avatar_user hasPrefix:@"http"]) {
@@ -1130,8 +1135,6 @@
                 {
                     _sex.text = @"\U0000e690";
                 }
-            [self.tableView reloadData];
-
         
         }
         if([[responseObject objectForKey:@"code"] isEqual:@500])
@@ -1139,8 +1142,7 @@
             _tableView.hidden = YES;
         }
     } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-        [self.tableView.header endRefreshing];
-
+        [block_self.tableView.header endRefreshing];
     }];
 }
 

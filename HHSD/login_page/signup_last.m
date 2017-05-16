@@ -30,6 +30,7 @@
 @property (nonatomic, strong) MyDatePicker *datePicker;
 @property (nonatomic, copy) NSString *birthdayString;
 @property (nonatomic, strong) MyPicker *picker;
+@property (nonatomic , assign)int                           count;
 
 
 @end
@@ -48,16 +49,30 @@
     //Hide Top bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [self.navigationController.navigationBar setHidden:NO];
-    
-    
-    __weak typeof(self) weakself = self;
-    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakself getAllData];
-    }];
-    
-    //[self.tableView.header beginRefreshing];
+    [self initUI];
 
 }
+
+
+- (void)initUI
+{
+    IMP_BLOCK_SELF(signup_last);
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        block_self.count = 0;
+        [block_self getAllData];
+    }];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    self.tableView.header = header;
+    [header beginRefreshing];
+    
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [block_self getAllData];
+    }];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
