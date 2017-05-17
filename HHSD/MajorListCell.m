@@ -44,8 +44,9 @@
     _lineFour = [[UILabel alloc] init];
     _languageText = [[UILabel alloc] init];
     _IconDurationLabel = [[UILabel alloc] init];
+    _degreIcon = [[UIImageView alloc] init];
     
-    
+    // UIImage *degreIcon;
     return self;
 }
 - (void)setMode:(SchoolDetail_Column_M *)mode
@@ -66,6 +67,31 @@
     }
     _CourseName.numberOfLines =2;
     [self addSubview:_CourseName];
+    
+    
+    
+   _degreIcon = [UIImageView  resizeImageViewWithImageView:_degreIcon
+                                                     Frame:CGRectMake(SCREEN_WIDTH-80,_CourseName.bottom,60,60)
+                                           backgroundColor:KCOLOR_CLEAR
+                                                     image:nil];
+    if ([mode.cycle_id isEqualToString:@"2"])
+    {
+        _degreIcon.image = [UIImage imageNamed:@"BachelorDegree"];
+    }
+    else if ([mode.cycle_id isEqualToString:@"3"])
+    {
+        _degreIcon.image = [UIImage imageNamed:@"MasterDegree"];
+    }
+    else if ([mode.cycle_id isEqualToString:@"4"])
+    {
+        _degreIcon.image = [UIImage imageNamed:@"PhdDegree"];
+    }
+
+    [self addSubview:_degreIcon];
+    
+    
+    
+
     
     // course Starting date Icone
     _IconeStarting = [UILabel resizeFrameWithLabel:_IconeStarting
@@ -105,7 +131,7 @@
     
     // Line One  --------------------------------------------------------------------------------------------> 1
     _lineOne = [UILabel resizeFrameWithLabel:_lineOne
-                                            frame:CGRectMake(15,_startingDate.bottom+8,SCREEN_WIDTH-30,0.5)
+                                            frame:CGRectMake(15,_startingDate.bottom+8,SCREEN_WIDTH-110,0.5)
                                   backgroundColor:KCOLOR_GRAY_Cell
                                         textColor:KCOLOR_GRAY_Cell
                                              font:KICON_FONT_(13)
@@ -156,7 +182,7 @@
     
     // Line Two  --------------------------------------------------------------------------------------------> 2
     _lineTtwo = [UILabel resizeFrameWithLabel:_lineTtwo
-                                       frame:CGRectMake(15,_deadlineText.bottom+8,SCREEN_WIDTH-30,0.5)
+                                       frame:CGRectMake(15,_deadlineText.bottom+8,SCREEN_WIDTH-110,0.5)
                              backgroundColor:KCOLOR_GRAY_Cell
                                    textColor:KCOLOR_GRAY_Cell
                                         font:KICON_FONT_(13)

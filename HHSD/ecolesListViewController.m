@@ -41,7 +41,7 @@
 @property (nonatomic, strong) UITextField *searchText;
 @property (nonatomic, strong) UIButton *searchBtn;
 @property (nonatomic, strong) NSArray *FilteredResults;
-@property (nonatomic, retain) UIButton *selectedBtn;
+@property (nonatomic, retain) UIButton *selectedBtn,*buttonCell;
 @property (nonatomic, strong) SearchModel *searchList;
 @property (nonatomic , assign)int                           count;
 
@@ -205,8 +205,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     School_Details *detailsSchool = _searchList.school[indexPath.row];
-    menuHorizontalView *vc = [[menuHorizontalView alloc] init];
-    //    MainView_C *vc = [[MainView_C alloc] init];
+     //menuHorizontalView *vc = [[menuHorizontalView alloc] init];
+    MainView_C *vc = [[MainView_C alloc] init];
 
     vc.schoolId = detailsSchool.id;
     
@@ -229,11 +229,8 @@
 
 - (void)setClickView
 {
- 
-    
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:self.sess_id forKey:@"sess_id"];
-    //[params setObject:tmp.SID forKey:@"id"];
     NSMutableString *string = [NSMutableString stringWithString:urlHeader];
     [string appendString:@"Schools/addView"];
     [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:YES sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -288,35 +285,18 @@
     // Like/ Unlike
     if ([_Islike isEqualToString:@"1"])
     {
-        [rightUtilityButtons sw_addUtilityButtonWithColor:
-         [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                    title:@"Unlike"];
+        [rightUtilityButtons sw_addUtilityButtonWithColor:KCOLOR_BLUE  title:@"Unlike"];
     }
     else if ([_Islike isEqualToString:@"0"])
     {
-        [rightUtilityButtons sw_addUtilityButtonWithColor:
-         [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                    title:@"Like"];
+        [rightUtilityButtons sw_addUtilityButtonWithColor:KCOLOR_RED title:@"Like"];
     }
     
-    
-     // Hidden/Show
-    if ([_hidden isEqualToString:@"1"])
-    {
-        [rightUtilityButtons sw_addUtilityButtonWithColor:
-         [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
-                                                    title:@"Show"];
-    }
-    else if ([_hidden isEqualToString:@"0"])
-    {
-        [rightUtilityButtons sw_addUtilityButtonWithColor:
-         [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
-                                                    title:@"Hidden"];
-    }
     
     [cells setRightUtilityButtons:rightUtilityButtons WithButtonWidth:80.0];
     cells.delegate = self;
-    cells.tag = indexPath.row;    
+    cells.tag = indexPath.row;
+    
     return cells;
 }
 
@@ -329,107 +309,47 @@
 {
    
      School_Details *tmp =  _searchList.school[cell.tag];
-    switch (index) {
-        case 0:
-        {
-            NSLog(@" unlike click");
-            _Islike = [NSString stringWithFormat:@"%@",tmp.is_like];
-            if ([_Islike isEqualToString:@"1"])
+    NSLog(@" unlike click");
+    _Islike = [NSString stringWithFormat:@"%@",tmp.is_like];
+    if ([_Islike isEqualToString:@"1"])
+    {
+        NSLog(@" Unlike click");
+        School_Details *tmp =  _searchList.school[cell.tag];
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        [params setObject:self.sess_id forKey:@"sess_id"];
+        [params setObject:tmp.id forKey:@"s_id"];
+        NSMutableString *string = [NSMutableString stringWithString:urlHeader];
+        [string appendString:@"Schools/unlike"];
+        [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:YES sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if([[responseObject objectForKey:@"code"] isEqual:@200])
             {
-              NSLog(@" Unlike click");
-                School_Details *tmp =  _searchList.school[cell.tag];
-                NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                [params setObject:self.sess_id forKey:@"sess_id"];
-                [params setObject:tmp.id forKey:@"s_id"];
-                NSMutableString *string = [NSMutableString stringWithString:urlHeader];
-                [string appendString:@"Schools/unlike"];
-                  [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:YES sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    if([[responseObject objectForKey:@"code"] isEqual:@200])
-                    {
-                        [self getAllData];
-                    }
-                    if([[responseObject objectForKey:@"code"] isEqual:@500])
-                    {
-                    }
-                } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-                    
-                }];
-            }else if ([_Islike isEqualToString:@"0"])
-            {
-                NSLog(@" Like click");
-                School_Details *tmp =  _searchList.school[cell.tag];
-                NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                [params setObject:self.sess_id forKey:@"sess_id"];
-                [params setObject:tmp.id forKey:@"id"];
-                 NSMutableString *string = [NSMutableString stringWithString:urlHeader];
-                [string appendString:@"Schools/like"];
-                [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:YES sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    if([[responseObject objectForKey:@"code"] isEqual:@200])
-                    {
-                        [self getAllData];
-                    }
-                    if([[responseObject objectForKey:@"code"] isEqual:@500])
-                    {
-                    }
-                } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-                }];
+                [self getAllData];
             }
-            
-            break;
-        }
-            break;
-        case 1:
-        {
-            
-           // School_Details *tmp =  _searchList.school[cell.tag];
-            _hidden = [NSString stringWithFormat:@"%@",tmp.hidden];
-            if ([_hidden isEqualToString:@"1"])
+            if([[responseObject objectForKey:@"code"] isEqual:@500])
             {
-                NSLog(@" show click");
-                School_Details *tmp =  _searchList.school[cell.tag];
-                NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                [params setObject:self.sess_id forKey:@"sess_id"];
-                [params setObject:tmp.id forKey:@"id"];
-                NSMutableString *string = [NSMutableString stringWithString:urlHeader];
-                [string appendString:@"Manager/show_school"];
-                [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:YES sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    if([[responseObject objectForKey:@"code"] isEqual:@200])
-                    {
-                        [self getAllData];
-                    }
-                    if([[responseObject objectForKey:@"code"] isEqual:@500])
-                    {
-                    }
-                } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-                    
-                }];
-                
-            }else if ([_hidden isEqualToString:@"0"])
-            {
-                 NSLog(@" hidden click");
-                School_Details *tmp =  _searchList.school[cell.tag];
-                NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                [params setObject:self.sess_id forKey:@"sess_id"];
-                [params setObject:tmp.id forKey:@"id"];
-                NSMutableString *string = [NSMutableString stringWithString:urlHeader];
-                [string appendString:@"Manager/hidden_school"];
-                [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:YES sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    if([[responseObject objectForKey:@"code"] isEqual:@200])
-                    {
-                        [self getAllData];
-                    }
-                    if([[responseObject objectForKey:@"code"] isEqual:@500])
-                    {
-                    }
-                } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-                    
-                }];
-                
             }
-            break;
-        }
-        default:
-            break;
+        } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
+            
+        }];
+    }else if ([_Islike isEqualToString:@"0"])
+    {
+        NSLog(@" Like click");
+        School_Details *tmp =  _searchList.school[cell.tag];
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        [params setObject:self.sess_id forKey:@"sess_id"];
+        [params setObject:tmp.id forKey:@"id"];
+        NSMutableString *string = [NSMutableString stringWithString:urlHeader];
+        [string appendString:@"Schools/like"];
+        [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:YES sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if([[responseObject objectForKey:@"code"] isEqual:@200])
+            {
+                [self getAllData];
+            }
+            if([[responseObject objectForKey:@"code"] isEqual:@500])
+            {
+            }
+        } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
+        }];
     }
 }
 

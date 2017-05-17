@@ -13,6 +13,7 @@
 #import "addSchoolReviewViewController.h"  // Add school review
 #import "detailsByMajor.h"
 #import "NOOrderView.h"
+#import "adminAddMajor.h"
 
 #define SW2 (SCREEN_HEIGHT/3)-40
 #import "UIImageView+SDWDImageCache.h"
@@ -32,7 +33,7 @@
 @property (nonatomic, retain) UIImageView *typeImageView;
 @property (nonatomic, assign) NSUInteger topSelectedTag;
 @property (nonatomic, assign) NSUInteger Page;
-@property (nonatomic, strong) UIButton *zufangBtn, *shiyouBtn, *fangyuanBtn;
+@property (nonatomic, strong) UIButton *zufangBtn, *shiyouBtn, *fangyuanBtn,*hMenuBtn;
 @property (nonatomic, strong) UIView *lineView,*myAdView,*adminViewBtn,*bottomView;
 @property (nonatomic, strong) School_Details *schoolDetail; // Details School
 @property (nonatomic, strong) SchoolDetail_Column_M *detailsMajors;// details colum
@@ -42,9 +43,12 @@
 @property (nonatomic, strong) UIImageView *leftImageView,*logoSchool;
 @property (nonatomic, strong) Student_Details *individual_M;
 @property (nonatomic, strong) NOOrderView *orderView;
-//$cycle_id
-@property (nonatomic, strong) NSString *school_id;
-@property (nonatomic, strong) UILabel *nameUniversity,*attributeIcone,*attribute,*levelIcone,*level,*typeIcone,*typeLb,*locationIcone,*location;
+
+@property (nonatomic, strong) UIScrollView *horizontalMenu;
+//   _cycle_id = @"2";
+@property (nonatomic, strong) NSString *cat_name,*cycle_id,*duration_study;
+@property (nonatomic, strong) NSString *school_id,*CID,*CNAME;
+@property (nonatomic, strong) UILabel *nameUniversity,*attributeIcone,*attribute,*levelIcone,*level,*typeIcone,*typeLb,*locationIcone,*location,*adminName;
 @property (nonatomic, strong) UIButton *bottomBtn,*getMore,*addReview;
 @property (nonatomic , assign)int                           count;
 
@@ -53,6 +57,18 @@
 
 @implementation MainView_C
 
+- (instancetype)init
+{
+    self = [super init];
+    if(self)
+    {
+        _topSelectedTag = 2;
+        _school_id= @"";
+        
+        _Page = 1;
+    }
+    return self;
+}
 
 // ScrollView
 - (TPKeyboardAvoidingScrollView *)backScrollView
@@ -65,57 +81,32 @@
     return _backScrollView;
 }
 
-
-
-- (instancetype)init
-{
-    self = [super init];
-    if(self)
-    {
-        _topSelectedTag = 1;
-        _school_id= @"";
-        
-        _Page = 1;
-    }
-    return self;
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.title = @"Select Featured Program";
     self.view.backgroundColor = KCOLOR_WHITE;
     [self backScrollView];
     [self myAdView];
     [self showTopView];
     [self tableView];
-    //[self bottomView];
-    [self selectViewAdmin];
+    [self initUI];
+    
     _Page = 1;
     [self getAllData];
-    [self initUI];
-
-//    __weak typeof(self) weakself = self;
-//    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-//        [weakself getAllData];
-//    }];
-//    [self.tableView addGifFooterWithRefreshingBlock:^{
-//        [weakself morBtnClick];
-//    }];
     [self.tableView.header beginRefreshing];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(getAllData)
                                                  name:KNOTIFICATION_ZufangSuccessed
                                                object:nil];
+    
 }
+
 
 - (void)initUI
 {
     IMP_BLOCK_SELF(MainView_C);
-    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
-        block_self.count = 0;
+    
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [block_self getAllData];
     }];
     
@@ -125,28 +116,19 @@
     [header beginRefreshing];
     
     
-    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.tableView.footer  = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [block_self morBtnClick];
     }];
+    
 }
 
-
--(void)selectViewAdmin
-{
-    if ([_individual_M.admin isEqualToString:@"6"])
-    {
-        [self adminViewBtn];
-    }else{
-        [self bottomView];
-    }
-}
 
 - (NOOrderView *)orderView {
     if(!_orderView) {
-        _orderView = [[NOOrderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+        _orderView = [[NOOrderView alloc] initWithFrame:CGRectMake(0, (_myAdView.bottom)+45,SCREEN_WIDTH, SCREEN_HEIGHT-((_myAdView.bottom)+150))];
         [self.view addSubview:_orderView];
-        _orderView.titleLabel.text = @"Maintenance";
-        _orderView.orderLabel.text = @"\U0000e603";
+        _orderView.titleLabel.text = @"";
+        _orderView.orderLabel.text = @"\U0000e624";
     }
     return _orderView;
 }
@@ -176,16 +158,47 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentity = @"cell";
-    MajorListCell *cell = [_tableView dequeueReusableCellWithIdentifier:cellIdentity];
-    if(cell == nil) {
-        cell = [[MajorListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    if (_topSelectedTag == 2)
+    {
+        static NSString *cellIdentity = @"cell";
+        MajorListCell *cell = [_tableView dequeueReusableCellWithIdentifier:cellIdentity];
+        if(cell == nil) {
+            cell = [[MajorListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        SchoolDetail_Column_M *mode = _all_majors_list.data[indexPath.row];
+        cell.topSelectedTag = _topSelectedTag;
+        [cell setMode:mode ];
+        return cell;
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    SchoolDetail_Column_M *mode = _all_majors_list.data[indexPath.row];
-    cell.topSelectedTag = _topSelectedTag;
-    [cell setMode:mode ];
-    return cell;
+    else if (_topSelectedTag == 3)
+    {
+        static NSString *cellIdentity = @"cell";
+        MajorListCell *cell = [_tableView dequeueReusableCellWithIdentifier:cellIdentity];
+        if(cell == nil) {
+            cell = [[MajorListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        SchoolDetail_Column_M *mode = _all_majors_list.data[indexPath.row];
+        cell.topSelectedTag = _topSelectedTag;
+        [cell setMode:mode ];
+        return cell;
+    }
+    else if (_topSelectedTag == 4)
+    {
+        static NSString *cellIdentity = @"cell";
+        MajorListCell *cell = [_tableView dequeueReusableCellWithIdentifier:cellIdentity];
+        if(cell == nil) {
+            cell = [[MajorListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        SchoolDetail_Column_M *mode = _all_majors_list.data[indexPath.row];
+        cell.topSelectedTag = _topSelectedTag;
+        [cell setMode:mode ];
+        return cell;
+    }
+    
+    return nil;
 }
 
 
@@ -199,7 +212,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     detailsByMajor *vc = [[detailsByMajor alloc] init];
-     vc.school_details = _all_majors_list.data[indexPath.row];
+    vc.school_details = _all_majors_list.data[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -223,8 +236,15 @@
         if ([[responseObject objectForKey:@"code"] isEqual:@200]) {
             _individual_M = [Student_Details objectWithKeyValues:responseObject[@"data"]];
             
-            NSLog(@"Admin Status-------------------------_>%@",_individual_M.admin);
-
+             NSLog(@"Admin Status-------------------------_>%@",_individual_M.admin);
+            
+            if ([_individual_M.admin isEqualToString:@"6"])
+            {
+                [self adminViewBtn];
+            }else{
+                [self bottomView];
+            }
+            
         }
         
         if ([[responseObject objectForKey:@"code"] isEqual:@500])
@@ -245,67 +265,64 @@
     DLog(@"more");
     _Page += _Page;
     [self getDownData];
-
+    
 }
 
 - (void)headViewClick:(UIButton *)sender
 {
     sender.selected = YES;
-    if(sender.tag ==2)
+    if(sender.tag == 2)  // bachelor
     {
         DLog(@"bachelor");
-        self.title = @"Bachelor courses Name";
-        _topSelectedTag =2;
+        self.title = @"Undergraduate";
+        _topSelectedTag =2;  // bachelor
         _Page = 1;
         if (_bachelor.data.count == 0) {
             [self getAllData];
-            [self orderView];
-            self.orderView.hidden = YES;
         }
         else
             _all_majors_list = _bachelor;
-        
-        [_zufangBtn setTitleColor:KTHEME_COLOR forState:UIControlStateNormal];
-        [_shiyouBtn setTitleColor:KCOLOR_Black_343434 forState:UIControlStateNormal];
-        [_fangyuanBtn setTitleColor:KCOLOR_Black_343434 forState:UIControlStateNormal];
-        _lineView.frame = CGRectMake(0, 42, SCREEN_WIDTH/3, 2);
+        [self.tableView reloadData];
+        [_hMenuBtn setTitleColor:KCOLOR_BLUE forState:UIControlStateNormal];
     }
-    else if(sender.tag == 3)
+    else if(sender.tag == 3)  // Master
     {
         DLog(@"master")
-        self.title = @"Master courses Name";
-        _topSelectedTag =3;
+        self.title = @"PostGraduate";
+        _topSelectedTag =3;  // Master
         _Page = 1;
         if (_master.data.count == 0) {
             [self getAllData];
-            [self orderView];
-            self.orderView.hidden = YES;
         }
         else
             _all_majors_list = _master;
         
-        [_zufangBtn setTitleColor:KCOLOR_Black_343434 forState:UIControlStateNormal];
-        [_shiyouBtn setTitleColor:KTHEME_COLOR forState:UIControlStateNormal];
-        [_fangyuanBtn setTitleColor:KCOLOR_Black_343434 forState:UIControlStateNormal];
-        _lineView.frame = CGRectMake(SCREEN_WIDTH/3, 42, SCREEN_WIDTH/3, 2);
-    }else
+        [_hMenuBtn setTitleColor:KCOLOR_BLUE forState:UIControlStateNormal];
+    }else if(sender.tag == 4)  // Phd
     {
         DLog(@"phd");
-        self.title = @"Phd courses Name";
-        _topSelectedTag = 4;
+        self.title = @"Doctorat";
+        _topSelectedTag = 4;  // Phd
         _Page = 1;
         if (_phd.data.count == 0) {
             [self getAllData];
-            [self orderView];
-            self.orderView.hidden = YES;
         }
         else
             _all_majors_list = _phd;
-        
-        [_zufangBtn setTitleColor:KCOLOR_Black_343434 forState:UIControlStateNormal];
-        [_shiyouBtn setTitleColor:KCOLOR_Black_343434 forState:UIControlStateNormal];
-        [_fangyuanBtn setTitleColor:KTHEME_COLOR forState:UIControlStateNormal];
-        _lineView.frame = CGRectMake(SCREEN_WIDTH/3*2, 42, SCREEN_WIDTH/3, 2);
+        [_hMenuBtn setTitleColor:KCOLOR_BLUE forState:UIControlStateNormal];
+    }else
+    {
+        DLog(@"bachelor");
+        self.title = @"Bachelor courses Name";
+        _topSelectedTag =2;  // bachelor
+        _Page = 1;
+        if (_bachelor.data.count == 0) {
+            [self getAllData];
+        }
+        else
+            _all_majors_list = _bachelor;
+        [self.tableView reloadData];
+        [_hMenuBtn setTitleColor:KCOLOR_BLUE forState:UIControlStateNormal];
     }
     [self.tableView reloadData];
 }
@@ -315,106 +332,63 @@
 {
     IMP_BLOCK_SELF(MainView_C);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    _Page = 1;
     [params setObject:self.sess_id forKey:@"sess_id"];
     [params setObject:[NSString stringWithFormat:@"%ld",(unsigned long)_topSelectedTag] forKey:@"cycle_id"];
     NSMutableString *string = [NSMutableString stringWithString:urlHeader];
-    
-    if (_topSelectedTag == 2)    // bachelor
-    {
-        kSetDict(self.schoolId, @"school_id");
-        [string appendString:@"Programs_cylce/majors_list"];//Bachelor List
-        [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:NO sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self.tableView.header endRefreshing];
-            _all_majors_list = nil;
-            if([[responseObject objectForKey:@"code"] isEqual:@200])
-            {
+    kSetDict(self.schoolId, @"school_id");
+    [string appendString:@"Programs_cylce/majors_list"];//Bachelor List
+    [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:NO sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.tableView.header endRefreshing];
+        _all_majors_list = nil;
+        if([[responseObject objectForKey:@"code"] isEqual:@200])
+        {
+            if (_topSelectedTag == 2) {
                 _bachelor = [SchoolDetail_Column_M_List objectWithKeyValues:responseObject];
                 _all_majors_list = _bachelor;
-                [self getSchoolData];
-                 [self getUserData];
-                
-                if(_all_majors_list.data.count <=15)
-                {
-                    [self.tableView.footer noticeNoMoreData];
-                }
-                [block_self.tableView reloadData];
-                [block_self.tableView.header endRefreshing];
             }
-            if([[responseObject objectForKey:@"code"] isEqual:@500])
-            {
-                [self MBShowHint:responseObject[@"message"]];
-            }
-        } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-            _all_majors_list = nil;
-            [block_self.tableView.header endRefreshing];
-        }];
-        
-        
-    }
-    else if (_topSelectedTag == 3)    // Master
-    {
-        
-        kSetDict(self.schoolId, @"school_id");
-        [string appendString:@"Programs_cylce/majors_list"];//Bachelor List
-        [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:NO sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self.tableView.header endRefreshing];
-            _all_majors_list = nil;
-            if([[responseObject objectForKey:@"code"] isEqual:@200])
+            else if (_topSelectedTag == 3)
             {
                 _master = [SchoolDetail_Column_M_List objectWithKeyValues:responseObject];
                 _all_majors_list = _master;
-                [self getSchoolData];
-                 [self getUserData];
-                
-                if(_all_majors_list.data.count <=15)
-                {
-                    [self.tableView.footer noticeNoMoreData];
-                }
-                [block_self.tableView reloadData];
-                [block_self.tableView.header endRefreshing];
             }
-            if([[responseObject objectForKey:@"code"] isEqual:@500])
-            {
-                [self MBShowHint:responseObject[@"message"]];
-            }
-        } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-            _all_majors_list = nil;
-            [block_self.tableView.header endRefreshing];
-        }];
-        
-        
-    }
-    else    // phd
-    {
-        kSetDict(self.schoolId, @"school_id");
-        [string appendString:@"Programs_cylce/majors_list"];//PHD List
-        [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:NO sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self.tableView.header endRefreshing];
-            _all_majors_list = nil;
-            if([[responseObject objectForKey:@"code"] isEqual:@200])
+            else if (_topSelectedTag == 4)
             {
                 _phd = [SchoolDetail_Column_M_List objectWithKeyValues:responseObject];
                 _all_majors_list = _phd;
-                [self getSchoolData];
-                [self getUserData];
-                if(_all_majors_list.data.count <=15)
-                {
-                    [self.tableView.footer noticeNoMoreData];
-                }
-                [block_self.tableView reloadData];
-                [block_self.tableView.header endRefreshing];
-            }
-            if([[responseObject objectForKey:@"code"] isEqual:@500])
+            }else
             {
-                [self MBShowHint:responseObject[@"message"]];
+                _bachelor = [SchoolDetail_Column_M_List objectWithKeyValues:responseObject];
+                _all_majors_list = _bachelor;
             }
-        } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-            _all_majors_list = nil;
+            
+            if(_all_majors_list.data.count <=15)
+            {
+                [self.tableView.footer noticeNoMoreData];
+            }
+            
+            [block_self.tableView reloadData];
             [block_self.tableView.header endRefreshing];
-        }];
+            [self getSchoolData];
+            [self getUserData];
+        }else
+        {
+            _all_majors_list = nil;
+        }
+        [self.tableView reloadData];
         
-    }
+    }failBlock:^(AFHTTPRequestOperation *operation, NSError *eror)
+     {
+         [block_self.tableView.header endRefreshing];
+         _all_majors_list = nil;
+         [self.tableView reloadData];
+         
+     }];
+    
 }
+
+
+
 
 - (void)getDownData
 {
@@ -423,50 +397,29 @@
     [params setObject:self.sess_id forKey:@"sess_id"];
     [params setObject:[NSString stringWithFormat:@"%ld",(unsigned long)_topSelectedTag] forKey:@"type"];
     NSMutableString *string = [NSMutableString stringWithString:urlHeader];
+    kSetDict(self.schoolId, @"school_id");
+    [string appendString:@"Programs_cylce/majors_list"];
     
-    if (_topSelectedTag == 2)    // bachelor
-    {
-        kSetDict(self.schoolId, @"school_id");
-        [string appendString:@"Programs_cylce/majors_list"];//Bachelor List
-        [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:NO sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self.tableView.footer endRefreshing];
-            _all_majors_list = nil;
-            if([[responseObject objectForKey:@"code"] isEqual:@200])
+    [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:NO sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.tableView.header endRefreshing];
+        _all_majors_list = nil;
+        
+        if([[responseObject objectForKey:@"code"] isEqual:@200])
+        {
+            if (_topSelectedTag == 2)
             {
                 SchoolDetail_Column_M_List *tmplist = [SchoolDetail_Column_M_List  objectWithKeyValues:responseObject];
-                
                 [_bachelor.data addObjectsFromArray:tmplist.data];
                 _all_majors_list = _bachelor;
                 [self.tableView.footer noticeNoMoreData];
                 [block_self.tableView reloadData];
                 [block_self.tableView.footer endRefreshing];
                 [self getSchoolData];
-                 [self getUserData];
+                [self getUserData];
             }
-            if([[responseObject objectForKey:@"code"] isEqual:@500])
+            else if (_topSelectedTag == 3)
             {
-                [self.tableView.footer noticeNoMoreData];
-            }
-        } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-            _all_majors_list = nil;
-            [block_self.tableView.footer endRefreshing];
-        }];
-        
-        
-    }
-    else if (_topSelectedTag == 3)    // Master
-    {
-        
-        kSetDict(self.schoolId, @"school_id");
-        [string appendString:@"Programs_cylce/majors_list"];//Bachelor List
-        [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:NO sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self.tableView.header endRefreshing];
-            _all_majors_list = nil;
-            if([[responseObject objectForKey:@"code"] isEqual:@200])
-            {
-                
                 SchoolDetail_Column_M_List *tmplist = [SchoolDetail_Column_M_List  objectWithKeyValues:responseObject];
-                
                 [_master.data addObjectsFromArray:tmplist.data];
                 _all_majors_list = _master;
                 
@@ -474,53 +427,46 @@
                 [block_self.tableView reloadData];
                 [block_self.tableView.footer endRefreshing];
                 [self getSchoolData];
-                 [self getUserData];
-                
+                [self getUserData];
             }
-            if([[responseObject objectForKey:@"code"] isEqual:@500])
+            else if (_topSelectedTag == 4)
             {
-                [self.tableView.footer noticeNoMoreData];
-            }
-        } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-            _all_majors_list = nil;
-            [block_self.tableView.footer endRefreshing];
-        }];
-        
-        
-    }
-    else    // phd
-    {
-        kSetDict(self.schoolId, @"school_id");
-        [string appendString:@"Programs_cylce/majors_list"];//Bachelor List
-        [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:NO sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [self.tableView.header endRefreshing];
-            _all_majors_list = nil;
-            if([[responseObject objectForKey:@"code"] isEqual:@200])
-            {
-               
                 SchoolDetail_Column_M_List *tmplist = [SchoolDetail_Column_M_List  objectWithKeyValues:responseObject];
-                
                 [_phd.data addObjectsFromArray:tmplist.data];
                 _all_majors_list = _phd;
-                
                 [self.tableView.footer noticeNoMoreData];
                 [block_self.tableView reloadData];
                 [block_self.tableView.footer endRefreshing];
                 [self getSchoolData];
-                 [self getUserData];
-                
-            }
-            if([[responseObject objectForKey:@"code"] isEqual:@500])
-            {
+                [self getUserData];
+            }else{
+                SchoolDetail_Column_M_List *tmplist = [SchoolDetail_Column_M_List  objectWithKeyValues:responseObject];
+                [_phd.data addObjectsFromArray:tmplist.data];
+                _all_majors_list = _phd;
                 [self.tableView.footer noticeNoMoreData];
+                [block_self.tableView reloadData];
+                [block_self.tableView.footer endRefreshing];
+                [self getSchoolData];
+                [self getUserData];
             }
-        } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-            _all_majors_list = nil;
-            [block_self.tableView.footer endRefreshing];
-        }];
+            
+        }else if([[responseObject objectForKey:@"code"] isEqual:@500])
+        {
+            [self.tableView.footer noticeNoMoreData];
+        }
+        [self.tableView reloadData];
         
-    }
+    }failBlock:^(AFHTTPRequestOperation *operation, NSError *eror)
+     {
+         [block_self.tableView.header endRefreshing];
+         _all_majors_list = nil;
+         [self.tableView reloadData];
+         
+     }];
 }
+
+
+
 
 
 // School details (Main)
@@ -539,6 +485,8 @@
             
             self.mainDetails.id = [self.schoolDetail.id copy];
             self.SID = [self.schoolDetail.id copy];
+            self.NAME = [self.schoolDetail.nameSchool copy];
+            
             self.mainDetails.nameSchool = [self.schoolDetail.nameSchool copy];
             self.schoolDetail.indexType = 0;
             [self.tableView reloadData];
@@ -589,7 +537,7 @@
         }
         if([[responseObject objectForKey:@"code"] isEqual:@500])
         {
-           // [self MBShowHint:responseObject[@"message"]];
+            // [self MBShowHint:responseObject[@"message"]];
         }
     } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
         
@@ -709,81 +657,116 @@
 {
     if(!_adminViewBtn)
     {
-        
-        // BUY
-        
         _adminViewBtn = [UIView createViewWithFrame:CGRectMake(0, SCREEN_HEIGHT - 64 - 44, SCREEN_WIDTH, 44)
-                                  backgroundColor:KCOLOR_WHITE];
+                                    backgroundColor:KCOLOR_BLACK];
         [self.view addSubview:_adminViewBtn];
         
-        // 1
+        // adminName
+        _adminName = [UILabel createLabelWithFrame:CGRectMake(SCREEN_WIDTH-54, SCREEN_HEIGHT - 64 - 44-24, 44, 44)
+                                   backgroundColor:KCOLOR_BLACK
+                                         textColor:KCOLOR_WHITE
+                                              font:KICON_FONT_(11)
+                                     textalignment:NSTextAlignmentCenter
+                                              text:@"Admin Edit"];
+        
+        _adminName.layer.cornerRadius = _adminName.size.height/2;
+        _adminName.layer.masksToBounds = YES;
+        _adminName.backgroundColor = KCOLOR_BLACK;
+        
+        _adminName.numberOfLines = 2;
+        [self.view addSubview:_adminName];
+
+        
+        
+        
+
         _bottomBtn = [UIButton createButtonwithFrame:CGRectMake(10, 6, SW3, 32)
                                      backgroundColor:KCOLOR_RED
                                           titleColor:KCOLOR_WHITE
-                                                font:KSYSTEM_FONT_(12)
-                                               title:@"Bachelor"];
+                                                font:KSYSTEM_FONT_(9)
+                                               title:@"Add bachelor major"];
         _bottomBtn.layer.cornerRadius = 5.0;
         _bottomBtn.layer.masksToBounds = YES;
         
         _bottomBtn.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-            if([_bottomBtn.titleLabel.text isEqual: @"Contacts" ])
-            {
-                ContactSchool *vc = [[ContactSchool alloc] init];
-                vc.SID = [self.schoolDetail.id copy];
-                [self.navigationController pushViewController:vc animated:YES];
-            }
+           
+            adminAddMajor *vc = [[adminAddMajor alloc] init];
+            vc.SID = [self.schoolDetail.id copy];
+            vc.NAME = [self.schoolDetail.nameSchool copy];
+            vc.cycleId = bachelor;
+            
+            self.duration_study = @"4";
+            vc.DURATION =  [self.duration_study copy];
+            
+            vc.CID = [self.schoolDetail.cycle_id copy];
+            
+            self.cat_name = @"Bachelor";
+            vc.CNAME = [self.cat_name copy];
+            
+            [self.navigationController pushViewController:vc animated:YES];
+            
             return [RACSignal empty];
         }];
         [_adminViewBtn addSubview:_bottomBtn];  //1
         
         //2
         UIButton *btnStartd = [UIButton createButtonwithFrame:CGRectMake(_bottomBtn.right+3, 6,SW3, 32)
-                                              backgroundColor:KCOLOR_BLUE
+                                              backgroundColor:KTHEME_COLOR
                                                    titleColor:KCOLOR_WHITE
-                                                         font:KSYSTEM_FONT_(12)
-                                                        title:@"Graduate"
+                                                         font:KSYSTEM_FONT_(9)
+                                                        title:@"Add master major"
                                                 conrnerRadius:5.0
                                                   borderWidth:1.0
-                                                  borderColor:KCOLOR_BLUE];
+                                                  borderColor:KTHEME_COLOR];
         
         
         btnStartd.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
             
-            if([btnStartd.titleLabel.text isEqual: @"Master" ])
-            {
-                userAddGraduteMajor *vc = [[userAddGraduteMajor alloc] init];
-                vc.SID = [self.schoolDetail.id copy];
-                [self.navigationController pushViewController:vc animated:YES];
-            }
+            adminAddMajor *vc = [[adminAddMajor alloc] init];
+            vc.SID = [self.schoolDetail.id copy];
+            vc.NAME = [self.schoolDetail.nameSchool copy];
+            vc.cycleId = master;
+            self.duration_study = @"3";
+            vc.DURATION =  [self.duration_study copy];
+            vc.CID = [self.schoolDetail.cycle_id copy];
+            
+            self.cat_name = @"Master";
+            vc.CNAME = [self.cat_name copy];
+            
+            [self.navigationController pushViewController:vc animated:YES];
+            
             return [RACSignal empty];
         }];
         
         [_adminViewBtn addSubview:btnStartd];  // ok
         
-        // ADD REVIEW
+        // 3
         UIButton *btn = [UIButton createButtonwithFrame:CGRectMake(btnStartd.right+3, 6, SW3, 32)
                                         backgroundColor:KCOLOR_GREEN_09bb07
                                              titleColor:KCOLOR_WHITE
-                                                   font:KSYSTEM_FONT_(12)
-                                                  title:@"Comment"
+                                                   font:KSYSTEM_FONT_(10)
+                                                  title:@"Add Phd major"
                                           conrnerRadius:5.0
                                             borderWidth:1.0
                                             borderColor:KCOLOR_GREEN_09bb07];
         
         
         btn.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-            if([btn.titleLabel.text isEqual: @"Phd" ])
-            {
-                addSchoolReviewViewController *vc = [[addSchoolReviewViewController alloc] init];
-                vc.SID = [self.schoolDetail.id copy];
-                [self.navigationController pushViewController:vc animated:YES];
-            }
+            
+            adminAddMajor *vc = [[adminAddMajor alloc] init];
+            vc.SID = [self.schoolDetail.id copy];
+            vc.NAME = [self.schoolDetail.nameSchool copy];
+            vc.cycleId = phd;
+            self.duration_study = @"4";
+            vc.DURATION =  [self.duration_study copy];
+            vc.CID = [self.schoolDetail.cycle_id copy];
+            self.cat_name = @"Phd";
+            vc.CNAME = [self.cat_name copy];
+            [self.navigationController pushViewController:vc animated:YES];
             
             return [RACSignal empty];
         }];
         [_adminViewBtn addSubview:btn]; // ok
-        
-        
         
         [self.view addSubview:_adminViewBtn];
     }
@@ -792,50 +775,40 @@
 
 
 
+
+
 - (void)showTopView
 {
-    UIView *topView = [UIView createViewWithFrame:CGRectMake(0,_myAdView.bottom, SCREEN_WIDTH, 44)
-                                  backgroundColor:KCOLOR_GRAY_f5f5f5];
+    self.horizontalMenu = [[UIScrollView alloc] initWithFrame:CGRectMake(0,_myAdView.bottom, self.view.frame.size.width, 44)];
+    NSArray *namearray = [NSArray array];
+    namearray = @[@"Bachelor",@"Master",@"Phd",@"Introdcution",@"Accommodation",@"Facilities",@"Fee Structure",@"Documents"];
+    int x = 0;
+    for (int i = 0; i <namearray.count; i++) {
+        _hMenuBtn = [UIButton createButtonwithFrame:CGRectMake(x, 0, SCREEN_WIDTH/3, 44)
+                                    backgroundColor:KTHEME_COLOR
+                                         titleColor:KCOLOR_WHITE
+                                               font:kAutoFont_(14)
+                                              title:namearray[i]
+                                      conrnerRadius:8
+                                        borderWidth:3
+                                        borderColor:KCOLOR_WHITE];
+        
+        [_hMenuBtn setBackgroundColor:KTHEME_COLOR];
+        _hMenuBtn.tag = 2-(-i);
+        
+        [_hMenuBtn addTarget:self
+                      action:@selector(headViewClick:)
+            forControlEvents:UIControlEventTouchUpInside];
+        
+        [_horizontalMenu addSubview:_hMenuBtn];
+        x += _hMenuBtn.frame.size.width;
+    }
+    _horizontalMenu.contentSize = CGSizeMake(x, _horizontalMenu.frame.size.height);
+    _horizontalMenu.backgroundColor = KCOLOR_WHITE;
+    _horizontalMenu.showsHorizontalScrollIndicator = NO;
+    _horizontalMenu.indicatorStyle= NO;
+    [self.view addSubview:_horizontalMenu];
     
-    _zufangBtn = [UIButton createButtonwithFrame:CGRectMake(0, 0, SCREEN_WIDTH/3, 44)
-                                 backgroundColor:KCOLOR_Clear
-                                      titleColor:KTHEME_COLOR
-                                            font:kAutoFont_(16)
-                                           title:@"bachelor"];
-    _zufangBtn.tag = 2;
-    [_zufangBtn addTarget:self
-                   action:@selector(headViewClick:)
-         forControlEvents:UIControlEventTouchUpInside];
-    
-    _shiyouBtn = [UIButton createButtonwithFrame:CGRectMake(SCREEN_WIDTH/3, 0, SCREEN_WIDTH/3, 44)
-                                 backgroundColor:KCOLOR_Clear
-                                      titleColor:KCOLOR_Black_343434
-                                            font:kAutoFont_(16)
-                                           title:@"master"];
-    _shiyouBtn.tag = 3;
-    [_shiyouBtn addTarget:self
-                   action:@selector(headViewClick:)
-         forControlEvents:UIControlEventTouchUpInside];
-    
-    _fangyuanBtn = [UIButton createButtonwithFrame:CGRectMake(SCREEN_WIDTH/3*2, 0, SCREEN_WIDTH/3, 44)
-                                   backgroundColor:KCOLOR_Clear
-                                        titleColor:KCOLOR_Black_343434
-                                              font:kAutoFont_(16)
-                                             title:@"phd"];
-    _fangyuanBtn.tag = 4;
-    [_fangyuanBtn addTarget:self
-                     action:@selector(headViewClick:)
-           forControlEvents:UIControlEventTouchUpInside];
-    
-    _lineView = [UIView createViewWithFrame:CGRectMake(0, 42, SCREEN_WIDTH/3, 2)
-                            backgroundColor:KTHEME_COLOR];
-    
-    [topView addSubview:_zufangBtn];
-    [topView addSubview:_shiyouBtn];
-    [topView addSubview:_fangyuanBtn];
-    [topView addSubview:_lineView];
-    
-    [self.view addSubview:topView];
 }
 
 
@@ -913,7 +886,7 @@
                                           font:KICON_FONT_(10)
                                  textalignment:NSTextAlignmentLeft
                                           text:nil];
-       
+        
         [_myAdView addSubview:_level];
         
         
@@ -929,15 +902,15 @@
         
         // Type University
         _typeLb = [UILabel createLabelWithFrame:CGRectMake(_attributeIcone.right+2,_level.bottom, SCREEN_WIDTH-(logo_length+30)-10,20)
-                              backgroundColor:KCOLOR_CLEAR
-                                    textColor:KCOLOR_GRAY
-                                         font:KICON_FONT_(10)
-                                textalignment:NSTextAlignmentLeft
-                                         text:nil];
+                                backgroundColor:KCOLOR_CLEAR
+                                      textColor:KCOLOR_GRAY
+                                           font:KICON_FONT_(10)
+                                  textalignment:NSTextAlignmentLeft
+                                           text:nil];
         
-       
+        
         [_myAdView addSubview:_typeLb];
-         // Type Icone
+        // Type Icone
         _locationIcone = [UILabel createLabelWithFrame:CGRectMake(_logoSchool.right+10,_typeLb.bottom, 20,20)
                                        backgroundColor:KCOLOR_CLEAR
                                              textColor:KCOLOR_RED
@@ -953,7 +926,7 @@
                                              font:KICON_FONT_(10)
                                     textalignment:NSTextAlignmentLeft
                                              text:nil];
-      
+        
         [_myAdView addSubview:_location];
         
         [_backScrollView addSubview:_myAdView];

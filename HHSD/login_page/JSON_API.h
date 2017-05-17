@@ -112,6 +112,7 @@
 @property (nonatomic, copy)NSString *people;
 @property (nonatomic, copy)NSString *create_time;
 @property (nonatomic, copy)NSString *nameSchool;
+@property (nonatomic, copy)NSString *duration_study;
 @property (nonatomic, copy)NSString *province;
 @property (nonatomic, copy)NSString *country;
 @property (nonatomic, copy)NSString *locationName;
@@ -176,6 +177,7 @@
 @interface SchoolDetail_Column_M : NSObject
 @property (nonatomic, strong) NSIndexPath *indexPath;
 @property (nonatomic, copy) NSString *CourseName;
+@property (nonatomic, copy) NSString *cycle_id;
 @property (nonatomic, copy) NSString *startingDate;
 @property (nonatomic, copy) NSString *deadline;
 @property (nonatomic, copy) NSString *language;

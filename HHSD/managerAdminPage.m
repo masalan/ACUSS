@@ -52,11 +52,6 @@
     [self getAllData];
     [self initUI];
 
-//    __weak typeof(self) weakself = self;
-//    [self.tableView addLegendHeaderWithRefreshingBlock:^{
-//        [weakself getAllData];
-//    }];
-    // Do any additional setup after loading the view.
 }
 
 
@@ -72,10 +67,7 @@
     self.tableView.header = header;
     [header beginRefreshing];
     
-    
-    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [block_self getAllData];
-    }];
+
 }
 
 - (void)didReceiveMemoryWarning {

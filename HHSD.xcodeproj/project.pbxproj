@@ -171,6 +171,8 @@
 		9E128AC61E76452D0083C360 /* SCLTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E128ABC1E76452D0083C360 /* SCLTextView.m */; };
 		9E128AC71E76452D0083C360 /* SCLTimerDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E128ABE1E76452D0083C360 /* SCLTimerDisplay.m */; };
 		9E128AC81E76452D0083C360 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E128AC01E76452D0083C360 /* UIImage+ImageEffects.m */; };
+		9E16F8E11ECACD6900A646A4 /* btnTap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E16F8E01ECACD6900A646A4 /* btnTap.m */; };
+		9E16F8E51ECAD46300A646A4 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E16F8E41ECAD46300A646A4 /* UIView+Frame.m */; };
 		9E25D9DE1E977A2600796FBB /* addMajorProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E25D9DD1E977A2300796FBB /* addMajorProgram.m */; };
 		9E27B18B1EA0706D00FCA21D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E27B18A1EA0706D00FCA21D /* OpenGLES.framework */; };
 		9E27B1961EA0722E00FCA21D /* libTestFairy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E27B1931EA0722E00FCA21D /* libTestFairy.a */; };
@@ -179,6 +181,7 @@
 		9E34DB2C1EC04E7C00F466AB /* managerAdminPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E34DB2B1EC04E7C00F466AB /* managerAdminPage.m */; };
 		9E34DB2F1EC05C6A00F466AB /* adminProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E34DB2E1EC05C6A00F466AB /* adminProfileCell.m */; };
 		9E3BB03A1E85691100891CBD /* avatarUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3BB0391E85691100891CBD /* avatarUserViewController.m */; };
+		9E41754B1ECC0C5C00EA9F3F /* adminAddMajor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E41754A1ECC0C5C00EA9F3F /* adminAddMajor.m */; };
 		9E455B971E7F814400A197AC /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9E455B941E7F814400A197AC /* ProgressHUD.bundle */; };
 		9E455B981E7F814400A197AC /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E455B961E7F814400A197AC /* ProgressHUD.m */; };
 		9E455B9E1E7FBE5300A197AC /* RegisterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E455B9D1E7FBE5300A197AC /* RegisterTableViewCell.m */; };
@@ -661,6 +664,10 @@
 		9E128ABE1E76452D0083C360 /* SCLTimerDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLTimerDisplay.m; sourceTree = "<group>"; };
 		9E128ABF1E76452D0083C360 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		9E128AC01E76452D0083C360 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		9E16F8DF1ECACD6900A646A4 /* btnTap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = btnTap.h; sourceTree = "<group>"; };
+		9E16F8E01ECACD6900A646A4 /* btnTap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = btnTap.m; sourceTree = "<group>"; };
+		9E16F8E31ECAD46300A646A4 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		9E16F8E41ECAD46300A646A4 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		9E25D9DC1E977A2200796FBB /* addMajorProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addMajorProgram.h; sourceTree = "<group>"; };
 		9E25D9DD1E977A2300796FBB /* addMajorProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addMajorProgram.m; sourceTree = "<group>"; };
 		9E27B1321EA0692A00FCA21D /* Oswald-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Bold.ttf"; sourceTree = "<group>"; };
@@ -683,6 +690,8 @@
 		9E34DB2E1EC05C6A00F466AB /* adminProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = adminProfileCell.m; sourceTree = "<group>"; };
 		9E3BB0381E85691100891CBD /* avatarUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avatarUserViewController.h; sourceTree = "<group>"; };
 		9E3BB0391E85691100891CBD /* avatarUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = avatarUserViewController.m; sourceTree = "<group>"; };
+		9E4175491ECC0C5C00EA9F3F /* adminAddMajor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = adminAddMajor.h; sourceTree = "<group>"; };
+		9E41754A1ECC0C5C00EA9F3F /* adminAddMajor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = adminAddMajor.m; sourceTree = "<group>"; };
 		9E455B941E7F814400A197AC /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		9E455B951E7F814400A197AC /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		9E455B961E7F814400A197AC /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
@@ -1303,6 +1312,7 @@
 				DC61BC451D9FA3F800F88ED1 /* EAIntroView */,
 				181E90921BE8874C00238CAC /* pinyin */,
 				113F60CB1BC4E84E0018599C /* Image */,
+				9E16F8E61ECAD48C00A646A4 /* Category */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -1775,6 +1785,26 @@
 			path = SCLAlertView;
 			sourceTree = "<group>";
 		};
+		9E16F8E21ECACEB100A646A4 /* MH */ = {
+			isa = PBXGroup;
+			children = (
+				9E16F8DF1ECACD6900A646A4 /* btnTap.h */,
+				9E4715461EC97A8F007F6750 /* menuHorizontalView.h */,
+				9E4715471EC97A8F007F6750 /* menuHorizontalView.m */,
+				9E16F8E01ECACD6900A646A4 /* btnTap.m */,
+			);
+			name = MH;
+			sourceTree = "<group>";
+		};
+		9E16F8E61ECAD48C00A646A4 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				9E16F8E31ECAD46300A646A4 /* UIView+Frame.h */,
+				9E16F8E41ECAD46300A646A4 /* UIView+Frame.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
 		9E27B18F1EA0722200FCA21D /* FACEBOOK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1939,8 +1969,7 @@
 				9EBAE0F71E8E06EA00D4D01D /* MajorListCell.h */,
 				9EBAE0F81E8E06EB00D4D01D /* MajorListCell.m */,
 				9E51A5001EA0BB880062D978 /* details_view */,
-				9E4715461EC97A8F007F6750 /* menuHorizontalView.h */,
-				9E4715471EC97A8F007F6750 /* menuHorizontalView.m */,
+				9E16F8E21ECACEB100A646A4 /* MH */,
 			);
 			name = CC;
 			sourceTree = "<group>";
@@ -2156,6 +2185,8 @@
 		9E9826251E9617350037517E /* ADMIN */ = {
 			isa = PBXGroup;
 			children = (
+				9E4175491ECC0C5C00EA9F3F /* adminAddMajor.h */,
+				9E41754A1ECC0C5C00EA9F3F /* adminAddMajor.m */,
 				9E9826221E96172F0037517E /* addSchoolByAdmin.h */,
 				9E9826231E96172F0037517E /* addSchoolByAdmin.m */,
 				9E25D9DC1E977A2200796FBB /* addMajorProgram.h */,
@@ -2909,6 +2940,7 @@
 				9ED5E9211E777C8A00F74928 /* MainView_E.m in Sources */,
 				9E98261B1E95E88B0037517E /* ContactSchool.m in Sources */,
 				9EF70EAC1E80E9B200CE3A39 /* signup_last.m in Sources */,
+				9E41754B1ECC0C5C00EA9F3F /* adminAddMajor.m in Sources */,
 				11DA72091BDE222200ACB36B /* FMDatabase.m in Sources */,
 				9E8685971E71092E0030801D /* JSON_API.m in Sources */,
 				9E810CC11E7285B30075892C /* NSObject+MJIvar.m in Sources */,
@@ -2942,6 +2974,7 @@
 				11402D7D1BC7537A000155B6 /* NetWork.m in Sources */,
 				11DD96CF1BDDBFEC0083A444 /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				9E455BA11E7FC2DC00A197AC /* SignupViewController.m in Sources */,
+				9E16F8E11ECACD6900A646A4 /* btnTap.m in Sources */,
 				1144EE6D1BC60F2200C2BBAD /* UIButton+Bootstrap.m in Sources */,
 				9E5FB58D1E7D724A00903497 /* schoolUsersMainCell.m in Sources */,
 				113F60971BC4B8630018599C /* LineLabel.m in Sources */,
@@ -3057,6 +3090,7 @@
 				9EF52A681E9DE33F007E06BB /* eleveSearch.m in Sources */,
 				113F60511BC4B6810018599C /* AMPopTip+Entrance.m in Sources */,
 				11B17E0E1BC5258D00334771 /* ATLabel.m in Sources */,
+				9E16F8E51ECAD46300A646A4 /* UIView+Frame.m in Sources */,
 				11430EC51BCF866600DFEED4 /* UIImageView+SDWDImageCache.m in Sources */,
 				9E9826211E95F6C70037517E /* ImagePickerBar.m in Sources */,
 				9E492CB21EA74939004F9176 /* MyFabuTableViewCell.m in Sources */,

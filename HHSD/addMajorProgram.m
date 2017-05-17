@@ -51,6 +51,7 @@
 @end
 
 @implementation addMajorProgram
+
 - (instancetype)init
 {
     self = [super self];

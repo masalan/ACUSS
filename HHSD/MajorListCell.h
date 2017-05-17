@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIButton *selectedBtn,*popView;
 @property (nonatomic, strong) UIView *messageView;
 @property (nonatomic, strong) UILabel *textLeft,*textRigth;
+@property (nonatomic, strong) UIImageView *degreIcon;
 
 @property (nonatomic, strong) SchoolDetail_Column_M *mainMode;
 @property (nonatomic, weak) id  <MajorListCellDelegate>delegate;

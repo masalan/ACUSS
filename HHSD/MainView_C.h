@@ -14,6 +14,8 @@
 @property (nonatomic, strong) School_Details *mainMode;
 @property (nonatomic, strong) School_Details *mainDetails;
 @property (nonatomic, strong) School_Details *SID;
+@property (nonatomic, strong) School_Details *NAME;
+
 @property (nonatomic, strong) SearchModel *searchList;;
 @property (nonatomic, copy) NSString *schoolId;
 @end

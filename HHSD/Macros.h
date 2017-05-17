@@ -9,6 +9,7 @@
 #define Macros_h
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "CountryPicker.h"
+#import "UIView+Frame.h"
 
 #import "MBProgressHUD.h"
 #import "ColorLabel.h"
