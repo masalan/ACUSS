@@ -163,6 +163,7 @@
 		9E0E605C1ECA9967003FD720 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E0E60471ECA9967003FD720 /* UIScrollView+MJRefresh.m */; };
 		9E0E605D1ECA9967003FD720 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E0E60491ECA9967003FD720 /* UIView+MJExtension.m */; };
 		9E0E73CE1E838C9B008D5117 /* userProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E0E73CD1E838C9B008D5117 /* userProfileCell.m */; };
+		9E12876D1ECD635E00B62656 /* userListComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E12876C1ECD635E00B62656 /* userListComments.m */; };
 		9E128AC11E76452D0083C360 /* SCLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E128AB11E76452D0083C360 /* SCLAlertView.m */; };
 		9E128AC21E76452D0083C360 /* SCLAlertViewResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E128AB31E76452D0083C360 /* SCLAlertViewResponder.m */; };
 		9E128AC31E76452D0083C360 /* SCLAlertViewStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E128AB51E76452D0083C360 /* SCLAlertViewStyleKit.m */; };
@@ -196,6 +197,7 @@
 		9E4E6D5B1EB61374009F66BF /* socialMainPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E4E6D591EB61374009F66BF /* socialMainPage.xib */; };
 		9E51A4FF1EA0B9500062D978 /* detailsByMajor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E51A4FE1EA0B94F0062D978 /* detailsByMajor.m */; };
 		9E51A5031EA0BBB50062D978 /* majorViewDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E51A5021EA0BBB50062D978 /* majorViewDetailsCell.m */; };
+		9E5305091ECC422200EB72FB /* introductionViewSchool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5305081ECC422200EB72FB /* introductionViewSchool.m */; };
 		9E56A93F1E7C0F3200FA1A00 /* FYLoginTranslation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E56A93E1E7C0F3200FA1A00 /* FYLoginTranslation.m */; };
 		9E56A9451E7C1A1800FA1A00 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9E56A9471E7C1A1800FA1A00 /* Localizable.strings */; };
 		9E5FB57C1E7D327D00903497 /* MainView_A_one.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5FB57B1E7D327C00903497 /* MainView_A_one.m */; };
@@ -647,6 +649,8 @@
 		9E0E60491ECA9967003FD720 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
 		9E0E73CC1E838C9B008D5117 /* userProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userProfileCell.h; sourceTree = "<group>"; };
 		9E0E73CD1E838C9B008D5117 /* userProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userProfileCell.m; sourceTree = "<group>"; };
+		9E12876B1ECD635E00B62656 /* userListComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userListComments.h; sourceTree = "<group>"; };
+		9E12876C1ECD635E00B62656 /* userListComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userListComments.m; sourceTree = "<group>"; };
 		9E128AB01E76452D0083C360 /* SCLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertView.h; sourceTree = "<group>"; };
 		9E128AB11E76452D0083C360 /* SCLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertView.m; sourceTree = "<group>"; };
 		9E128AB21E76452D0083C360 /* SCLAlertViewResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertViewResponder.h; sourceTree = "<group>"; };
@@ -718,6 +722,8 @@
 		9E51A4FE1EA0B94F0062D978 /* detailsByMajor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailsByMajor.m; sourceTree = "<group>"; };
 		9E51A5011EA0BBB50062D978 /* majorViewDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = majorViewDetailsCell.h; sourceTree = "<group>"; };
 		9E51A5021EA0BBB50062D978 /* majorViewDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = majorViewDetailsCell.m; sourceTree = "<group>"; };
+		9E5305071ECC422200EB72FB /* introductionViewSchool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = introductionViewSchool.h; sourceTree = "<group>"; };
+		9E5305081ECC422200EB72FB /* introductionViewSchool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = introductionViewSchool.m; sourceTree = "<group>"; };
 		9E56A93D1E7C0F3200FA1A00 /* FYLoginTranslation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYLoginTranslation.h; sourceTree = "<group>"; };
 		9E56A93E1E7C0F3200FA1A00 /* FYLoginTranslation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYLoginTranslation.m; sourceTree = "<group>"; };
 		9E56A9461E7C1A1800FA1A00 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1892,6 +1898,10 @@
 				9E896E731EA5D716007F957A /* applyForMajor.m */,
 				9E869A631EB96AD400AC396F /* quickApplyFormNow.h */,
 				9E869A641EB96AD400AC396F /* quickApplyFormNow.m */,
+				9E5305071ECC422200EB72FB /* introductionViewSchool.h */,
+				9E5305081ECC422200EB72FB /* introductionViewSchool.m */,
+				9E12876B1ECD635E00B62656 /* userListComments.h */,
+				9E12876C1ECD635E00B62656 /* userListComments.m */,
 			);
 			name = details_view;
 			sourceTree = "<group>";
@@ -2908,6 +2918,7 @@
 				9E0E60561ECA9967003FD720 /* MJRefreshGifHeader.m in Sources */,
 				9E0E604A1ECA9967003FD720 /* MJRefreshAutoFooter.m in Sources */,
 				11B17E0F1BC5258D00334771 /* iCarousel.m in Sources */,
+				9E5305091ECC422200EB72FB /* introductionViewSchool.m in Sources */,
 				9EF52A6B1E9DEBA1007E06BB /* SearchSchoolListCell.m in Sources */,
 				9EA9317A1E8B537600121FBF /* IMQuickSearchFilter.m in Sources */,
 				9EC2D65B1EA9F10D0092CF5D /* tesingPageEmpty.m in Sources */,
@@ -2930,6 +2941,7 @@
 				9E810CA31E724B7F0075892C /* SearchDetailsViewController.m in Sources */,
 				9EE74B131E790B900013EDEF /* CDOutLineHeadView.m in Sources */,
 				9EC8BB421E84EE9400169362 /* Fullname.m in Sources */,
+				9E12876D1ECD635E00B62656 /* userListComments.m in Sources */,
 				113F60501BC4B6810018599C /* AMPopTip+Draw.m in Sources */,
 				9E8685941E7104350030801D /* MainViewController.m in Sources */,
 				9E0E60531ECA9967003FD720 /* MJRefreshBackNormalFooter.m in Sources */,

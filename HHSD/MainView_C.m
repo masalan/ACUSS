@@ -14,6 +14,7 @@
 #import "detailsByMajor.h"
 #import "NOOrderView.h"
 #import "adminAddMajor.h"
+#import "userListComments.h"
 
 #define SW2 (SCREEN_HEIGHT/3)-40
 #import "UIImageView+SDWDImageCache.h"

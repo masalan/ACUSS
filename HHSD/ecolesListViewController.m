@@ -205,9 +205,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     School_Details *detailsSchool = _searchList.school[indexPath.row];
-     //menuHorizontalView *vc = [[menuHorizontalView alloc] init];
-    MainView_C *vc = [[MainView_C alloc] init];
-
+    menuHorizontalView *vc = [[menuHorizontalView alloc] init];
+    
+    // MainView_C *vc = [[MainView_C alloc] init];
     vc.schoolId = detailsSchool.id;
     
     School_data *stats = _searchList.school[indexPath.row];
@@ -275,21 +275,18 @@
     cells.selectionStyle = UITableViewCellSelectionStyleNone;
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     
-    
-    
     School_Details *tmp =  _searchList.school[indexPath.row];
     _hidden = [NSString stringWithFormat:@"%@",tmp.hidden];
     _Islike = [NSString stringWithFormat:@"%@",tmp.is_like];
     
-    
     // Like/ Unlike
     if ([_Islike isEqualToString:@"1"])
     {
-        [rightUtilityButtons sw_addUtilityButtonWithColor:KCOLOR_BLUE  title:@"Unlike"];
+        [rightUtilityButtons sw_addUtilityButtonWithColor:KCOLOR_RED  title:@"Unlike"];
     }
     else if ([_Islike isEqualToString:@"0"])
     {
-        [rightUtilityButtons sw_addUtilityButtonWithColor:KCOLOR_RED title:@"Like"];
+        [rightUtilityButtons sw_addUtilityButtonWithColor:KCOLOR_BLUE title:@"Like"];
     }
     
     
@@ -505,16 +502,7 @@
 
 
 
-
-
-
-
-
 @end
-
-
-
-
 
 
 

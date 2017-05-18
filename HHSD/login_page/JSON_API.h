@@ -789,6 +789,56 @@
 
 
 
+@interface School_description : NSObject
+@property (nonatomic, copy)NSString *id;
+@property (nonatomic, copy)NSString *details;
+@property (nonatomic, copy)NSString *photo;
+@property (nonatomic, copy)NSString *cityName;
+@property (nonatomic, copy)NSString *nameSchool;
+@property (nonatomic, copy)NSString *comment_total;
+@property (nonatomic, copy)NSString *like_total;
+
+
+@property (nonatomic, copy)NSString *bg_image;
+@property (nonatomic, copy)NSString *avatar_user;
+@property (nonatomic, copy)NSString *verify;
+@property (nonatomic, copy)NSString *realname;
+@property (nonatomic, copy)NSString *nationality;
+@property (nonatomic, copy)NSString *city_name;
+
+
+@property (nonatomic, copy)NSString *info;
+
+
+@property (nonatomic, strong) NSIndexPath *indexPath;
+@end
+
+
+@interface All_comments : NSObject
+@property (nonatomic, strong) NSMutableArray *data;
++ (NSDictionary *)objectClassInArray;
+@end
+
+@interface User_list_view : NSObject
+@property (nonatomic, copy)NSString *id;
+@property (nonatomic, copy)NSString *details;
+@property (nonatomic, copy)NSString *cycle_id;
+@property (nonatomic, copy)NSString *startingDate;
+
+@property (nonatomic, copy)NSArray *images;
+@property (nonatomic, copy)NSString *contents;
+@property (nonatomic, copy)NSString *fullName;
+@property (nonatomic, copy)NSString *nameSchool;
+@property (nonatomic, copy)NSString *country;
+@property (nonatomic, copy)NSString *nationality;
+@property (nonatomic, copy)NSString *avatar_user;
+@property (nonatomic, copy)NSString *create_time;
+@property (nonatomic, copy)NSString *CourseName;
+@property (nonatomic, strong) NSIndexPath *indexPath;
+@end
+
+
+
 
 
 

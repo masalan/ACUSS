@@ -259,5 +259,20 @@
 @end
 
 
+@implementation School_description
+@end
+
+
+@implementation All_comments
++ (NSDictionary *)objectClassInArray
+{
+    return @{
+             @"data": [User_list_view class],
+             };
+}
+@end
+
+@implementation User_list_view
+@end
 
 
