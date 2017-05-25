@@ -303,6 +303,8 @@
 @property (nonatomic, copy) NSString *nickname;
 @property (nonatomic, copy) NSString *group_name;
 @property (nonatomic, copy) NSString *Codecountry;
+@property (nonatomic, copy) NSString *birthday;
+@property (nonatomic, copy) NSString *gender;
 
 @end
 
@@ -1030,8 +1032,31 @@
 
 
 
+@interface Gradutate_details : NSObject
+@property (nonatomic, copy) NSString *avatar_user;
+@property (nonatomic, copy) NSString *fullName;
+@property (nonatomic, copy) NSString *mID;
+@property (nonatomic, copy) NSString *authentify;
+@property (nonatomic, copy) NSString *p_id;
+@property (nonatomic, copy) NSString *p_name;
+@property (nonatomic, copy) NSString *major_name;
+@property (nonatomic, copy) NSString *school_name;
+@property (nonatomic, copy) NSString *message;
+@property (nonatomic, copy) NSString *end_study;
+@property (nonatomic, copy) NSString *mention_obtain;
+@property (nonatomic, copy) NSString *create_time;
+@property (nonatomic, copy) NSString *cdkey;
+
+@property (nonatomic, copy) NSString *nationality;
+@property (nonatomic, copy) NSString *birthday;
+
+@property (nonatomic, strong) NSMutableArray *student;
++ (NSDictionary *)objectClassInArray;
+@end
 
 
+
+// Student_data
 
 
 

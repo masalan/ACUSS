@@ -333,6 +333,12 @@
 		9EF70EAC1E80E9B200CE3A39 /* signup_last.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF70EAB1E80E9B200CE3A39 /* signup_last.m */; };
 		9EF70EAF1E80EDE800CE3A39 /* SignupProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF70EAE1E80EDE800CE3A39 /* SignupProfileCell.m */; };
 		9EF70EB31E81196900CE3A39 /* OccupationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF70EB21E81196900CE3A39 /* OccupationViewController.m */; };
+		9EFE1CC11ED68C69007F1D88 /* graduateTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFE1CC01ED68C69007F1D88 /* graduateTopView.m */; };
+		9EFE1CC51ED68C9D007F1D88 /* graduateFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFE1CC41ED68C9D007F1D88 /* graduateFootView.m */; };
+		9EFE1CC81ED68E1B007F1D88 /* GraduateViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFE1CC71ED68E1B007F1D88 /* GraduateViewCell.m */; };
+		9EFE1CCB1ED6919A007F1D88 /* GraduateStudentDetailHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFE1CCA1ED6919A007F1D88 /* GraduateStudentDetailHeadView.m */; };
+		9EFE1CCF1ED6ACA3007F1D88 /* cellGraduateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFE1CCD1ED6ACA3007F1D88 /* cellGraduateView.m */; };
+		9EFE1CD01ED6ACA3007F1D88 /* cellGraduateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EFE1CCE1ED6ACA3007F1D88 /* cellGraduateView.xib */; };
 		DC2D61DD1D5972E4009A2321 /* playerBack.png in Resources */ = {isa = PBXBuildFile; fileRef = DC2D61DC1D5972E4009A2321 /* playerBack.png */; };
 		DC3861C61DB07CC70065FEEE /* credit_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3861C21DB07CC70065FEEE /* credit_selected@2x.png */; };
 		DC3861C71DB07CC70065FEEE /* credit_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC3861C31DB07CC70065FEEE /* credit_selected@3x.png */; };
@@ -992,6 +998,17 @@
 		9EF70EAE1E80EDE800CE3A39 /* SignupProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupProfileCell.m; sourceTree = "<group>"; };
 		9EF70EB11E81196800CE3A39 /* OccupationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OccupationViewController.h; sourceTree = "<group>"; };
 		9EF70EB21E81196900CE3A39 /* OccupationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OccupationViewController.m; sourceTree = "<group>"; };
+		9EFE1CBF1ED68C69007F1D88 /* graduateTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graduateTopView.h; sourceTree = "<group>"; };
+		9EFE1CC01ED68C69007F1D88 /* graduateTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graduateTopView.m; sourceTree = "<group>"; };
+		9EFE1CC31ED68C9D007F1D88 /* graduateFootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graduateFootView.h; sourceTree = "<group>"; };
+		9EFE1CC41ED68C9D007F1D88 /* graduateFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graduateFootView.m; sourceTree = "<group>"; };
+		9EFE1CC61ED68E1B007F1D88 /* GraduateViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraduateViewCell.h; sourceTree = "<group>"; };
+		9EFE1CC71ED68E1B007F1D88 /* GraduateViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraduateViewCell.m; sourceTree = "<group>"; };
+		9EFE1CC91ED6919A007F1D88 /* GraduateStudentDetailHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraduateStudentDetailHeadView.h; sourceTree = "<group>"; };
+		9EFE1CCA1ED6919A007F1D88 /* GraduateStudentDetailHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraduateStudentDetailHeadView.m; sourceTree = "<group>"; };
+		9EFE1CCC1ED6ACA3007F1D88 /* cellGraduateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cellGraduateView.h; sourceTree = "<group>"; };
+		9EFE1CCD1ED6ACA3007F1D88 /* cellGraduateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cellGraduateView.m; sourceTree = "<group>"; };
+		9EFE1CCE1ED6ACA3007F1D88 /* cellGraduateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = cellGraduateView.xib; sourceTree = "<group>"; };
 		A1D6427A14C4420C1E571FFB /* Pods-HHSD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HHSD.release.xcconfig"; path = "Pods/Target Support Files/Pods-HHSD/Pods-HHSD.release.xcconfig"; sourceTree = "<group>"; };
 		BA7BF3B8A0963B5B9EAA9802 /* Pods-HHSD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HHSD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HHSD/Pods-HHSD.debug.xcconfig"; sourceTree = "<group>"; };
 		DC2D61DC1D5972E4009A2321 /* playerBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playerBack.png; path = HHSD/playerBack.png; sourceTree = SOURCE_ROOT; };
@@ -2379,6 +2396,7 @@
 				9EB615F91ED54E3C00A9F124 /* graduateDetails.m */,
 				9EB615FB1ED55A9000A9F124 /* graduateCellView.h */,
 				9EB615FC1ED55A9000A9F124 /* graduateCellView.m */,
+				9EFE1CC21ED68C79007F1D88 /* Graduate_view */,
 			);
 			name = My_Graduate;
 			sourceTree = "<group>";
@@ -2647,6 +2665,24 @@
 			name = View_signup;
 			sourceTree = "<group>";
 		};
+		9EFE1CC21ED68C79007F1D88 /* Graduate_view */ = {
+			isa = PBXGroup;
+			children = (
+				9EFE1CBF1ED68C69007F1D88 /* graduateTopView.h */,
+				9EFE1CC01ED68C69007F1D88 /* graduateTopView.m */,
+				9EFE1CC31ED68C9D007F1D88 /* graduateFootView.h */,
+				9EFE1CC41ED68C9D007F1D88 /* graduateFootView.m */,
+				9EFE1CC61ED68E1B007F1D88 /* GraduateViewCell.h */,
+				9EFE1CC71ED68E1B007F1D88 /* GraduateViewCell.m */,
+				9EFE1CC91ED6919A007F1D88 /* GraduateStudentDetailHeadView.h */,
+				9EFE1CCA1ED6919A007F1D88 /* GraduateStudentDetailHeadView.m */,
+				9EFE1CCC1ED6ACA3007F1D88 /* cellGraduateView.h */,
+				9EFE1CCD1ED6ACA3007F1D88 /* cellGraduateView.m */,
+				9EFE1CCE1ED6ACA3007F1D88 /* cellGraduateView.xib */,
+			);
+			name = Graduate_view;
+			sourceTree = "<group>";
+		};
 		B249450048024FF0F9A4C837 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2852,6 +2888,7 @@
 				DC61BC751D9FA92700F88ED1 /* 启动页6s plus.png in Resources */,
 				9EEE27C91EB2D005009E52AB /* MainPageViewController.xib in Resources */,
 				DCBBCF8D1D60587D00BC8027 /* sms_quiz.png in Resources */,
+				9EFE1CD01ED6ACA3007F1D88 /* cellGraduateView.xib in Resources */,
 				DCB6A9771DBCB254000D96F7 /* logo152.png in Resources */,
 				11F6AA271BCFE18B001DFA0D /* wechat@2x.png in Resources */,
 				11255D761BE359C100010869 /* Delete@2x.png in Resources */,
@@ -2957,6 +2994,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EFE1CC11ED68C69007F1D88 /* graduateTopView.m in Sources */,
 				113F60931BC4B8630018599C /* UIImage+fixOrientation.m in Sources */,
 				9EAC09061EC2E207003414B2 /* SignupAgence.m in Sources */,
 				9E5FB5901E7D9FE400903497 /* listModelData.m in Sources */,
@@ -2984,6 +3022,7 @@
 				113F60551BC4B6DD0018599C /* BaseViewController.m in Sources */,
 				1144EE861BC64DCA00C2BBAD /* WDTabBar.m in Sources */,
 				9E34DB2F1EC05C6A00F466AB /* adminProfileCell.m in Sources */,
+				9EFE1CCB1ED6919A007F1D88 /* GraduateStudentDetailHeadView.m in Sources */,
 				9E0E60501ECA9967003FD720 /* MJRefreshAutoNormalFooter.m in Sources */,
 				113F602C1BC4A3EB0018599C /* AppDelegate.m in Sources */,
 				9EB827EB1EA8862700E45431 /* SearchTableViewCell.m in Sources */,
@@ -3062,6 +3101,7 @@
 				9EE74B101E79082C0013EDEF /* SearchDetailsStudent.m in Sources */,
 				1144EE701BC60F2200C2BBAD /* UIViewController+Swizzle.m in Sources */,
 				11402D7D1BC7537A000155B6 /* NetWork.m in Sources */,
+				9EFE1CCF1ED6ACA3007F1D88 /* cellGraduateView.m in Sources */,
 				11DD96CF1BDDBFEC0083A444 /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				9E455BA11E7FC2DC00A197AC /* SignupViewController.m in Sources */,
 				9E16F8E11ECACD6900A646A4 /* btnTap.m in Sources */,
@@ -3071,6 +3111,7 @@
 				9EE74B0D1E7906D30013EDEF /* dempPage.m in Sources */,
 				11DA720A1BDE222200ACB36B /* FMDatabaseAdditions.m in Sources */,
 				9EA5BC3E1E87746900808729 /* BackgroundImgCell.m in Sources */,
+				9EFE1CC81ED68E1B007F1D88 /* GraduateViewCell.m in Sources */,
 				113F60A51BC4B8630018599C /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				9E896E741EA5D716007F957A /* applyForMajor.m in Sources */,
 				9EA5E9EF1EAF31B4009B56D4 /* SCTwitter.m in Sources */,
@@ -3217,6 +3258,7 @@
 				9E0A0E981EADEC14002D44AB /* PermissionFullProfileFields.m in Sources */,
 				9E0E605D1ECA9967003FD720 /* UIView+MJExtension.m in Sources */,
 				9E128AC51E76452D0083C360 /* SCLSwitchView.m in Sources */,
+				9EFE1CC51ED68C9D007F1D88 /* graduateFootView.m in Sources */,
 				9ECB737E1E866E9700C6A7FA /* myChineseAddress.m in Sources */,
 				9E810CBC1E7285B30075892C /* MJConst.m in Sources */,
 			);

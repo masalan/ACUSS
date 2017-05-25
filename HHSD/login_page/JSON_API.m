@@ -343,6 +343,16 @@
 
 
 
+@implementation Gradutate_details
+
++ (NSDictionary *)objectClassInArray
+{
+    return @{
+             @"student":[Student_data class],
+             };
+}
+@end
+
 
 
 

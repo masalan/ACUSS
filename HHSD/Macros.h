@@ -105,9 +105,12 @@
  */
 #define KCOLOR_Clear                        [UIColor clearColor]
 #define kSetDict(value,key) if (value)[params setObject:value forKey:key]
+#define KCOLOR_333                   [UIColor colorWithHex:@"#333333"] //内容文字颜色
+#define KCOLOR_GRAY_aaa              [UIColor colorWithHex:@"#aaaaaa"]
 
 #define KCOLOR_WHITE                        [UIColor whiteColor]
 #define KCOLOR_WHITE_fafbfc                        [UIColor colorWithHex:@"#d2d6e2"]
+#define KCOLOR_f0f0f0                [UIColor colorWithHex:@"#f0f0f0"] 
 
 //fafbfc
 #define KCOLOR_BLACK                        [UIColor blackColor]
@@ -282,6 +285,7 @@
 #define KSYSTEM_FONT_18                     [UIFont systemFontOfSize:18]
 #define KSYSTEM_FONT_20                     [UIFont systemFontOfSize:20]
 #define KSYSTEM_FONT_(a)                    [UIFont systemFontOfSize:a]
+#define KICON_BLOD_FONT_(a)  [UIFont fontWithName:@"Helvetica-Bold" size:a] //new
 
 #define KSYSTEM_FONT_Px_KFont(a)            [UIFont systemFontOfSize:(a*72/96)]
 
@@ -378,6 +382,7 @@
  */
 #define kBOUNDS_WIDTH               self.bounds.size.width
 #define KBOUNDS_HEIGHT              self.bounds.size.height
+#define RATE_Height(Height) ([UIScreen mainScreen].bounds.size.width)/320 *(Height)
 
 #define KSCREEN_WIDTH               [[UIScreen mainScreen] bounds].size.width
 #define KSCREEN_HEIGHT              [[UIScreen mainScreen] bounds].size.height
