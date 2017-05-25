@@ -17,9 +17,9 @@
 
 
 @interface BaseViewController : UIViewController
+@property (nonatomic, copy) NSString *sess_id;
 @property (nonatomic, strong) UIView *baseBackView;
 @property (nonatomic, strong) UIView *backTitleLabel;
-@property (nonatomic, copy) NSString *sess_id;
 @property (nonatomic, strong) UIButton *leftBackBtn;
 + (void)presentVC:(UIViewController *)viewController;
 @end

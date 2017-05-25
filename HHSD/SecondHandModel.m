@@ -20,3 +20,18 @@
 }
 
 @end
+
+
+
+@implementation tweet_view
+@end
+
+
+@implementation ALL_TWEET
++ (NSDictionary *)objectClassInArray
+{
+    return @{@"data":[tweet_view class]};
+}
+@end
+
+

@@ -81,11 +81,7 @@
     header.stateLabel.hidden = YES;
     self.tableView.header = header;
     [header beginRefreshing];
-    
-    
-    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [block_self getAllData];
-    }];
+  
 }
 
 #pragma mark
@@ -241,6 +237,7 @@
 // profile (Main)
 - (void)getAllData
 {
+    IMP_BLOCK_SELF(SearchDetailsStudent);
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     NSMutableString *string = [NSMutableString stringWithString:urlHeader];
    kSetDict(self.studentId, @"id");
@@ -252,7 +249,8 @@
         {
             _studentDetail = [Student_Details objectWithKeyValues:responseObject[@"data"]];
             self.studentDetail.indexType = 0;
-            [self.tableView reloadData];
+            [block_self.tableView reloadData];
+            [block_self.tableView.header endRefreshing];
             [self tableView];
             [self bottomView];
             [self getMajor];

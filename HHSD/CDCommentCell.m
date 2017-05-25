@@ -25,6 +25,7 @@
     _bottomImageView = [[UIImageView alloc] init];
     _lineView = [[UIView alloc] init];
     _bottomImageView.hidden = NO;
+    _hasImage = [[UILabel alloc] init];
     return self;
 }
 - (void)setMode:(StudentDetail_Column_M *)mode
@@ -78,8 +79,12 @@
                                           text:@""];
     if(![mode.create_time isKindOfClass:[NSNull class]])
     {
-        _timeLabel.text = [PublicMethod getMDHMWithCreatedTimestamp:mode.create_time];
+        _timeLabel.text = [PublicMethod getYMDHMWithCreatedTimestamp:mode.create_time];
     }
+    else{
+        _timeLabel.text = @"";
+    }
+    
     [self addSubview:_timeLabel];
     CGFloat detailHeight = [[self class] getDetailHeight:mode];
     
@@ -98,6 +103,7 @@
     
     [self addSubview:_detailLabel];
     
+    /*****
     
     CGFloat imageViewWidth = [[self class] getImageViewHeight];
     _bottomImageView.hidden = NO;
@@ -137,8 +143,25 @@
         }];
         [self addSubview:_bottomImageView];
     }
+    ****/
     
+    if ([mode.images isKindOfClass:[NSArray class]] && [mode.images count] == 0) {
+        
+        
+    }
+    else if ([mode.images isKindOfClass:[NSArray class]] && [mode.images count] > 0)
+    {
+        _hasImage = [UILabel resizeFrameWithLabel:_hasImage
+                                            frame:CGRectMake(marginX,_detailLabel.bottom + 5,20,20)
+                                  backgroundColor:KCOLOR_CLEAR
+                                        textColor:KCOLOR_WHITE
+                                             font:KICON_FONT_(18)
+                                    textalignment:NSTextAlignmentLeft
+                                             text:@"\U0000e6fd"];
+        [self addSubview:_hasImage];
+    }
     
+
     
     _lineView = [UIView resizeView:_lineView
                              frame:CGRectMake(0, [[self class] getCellHeight:mode] - 0.5, SCREEN_WIDTH, 0.5)

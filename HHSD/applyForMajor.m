@@ -585,7 +585,7 @@
 {
     DLog(@"duration Of Study");
     [self HiddenKeyboard];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+   // NSMutableDictionary *params = [NSMutableDictionary dictionary];
     NSMutableString *string = [NSMutableString stringWithString:urlHeader];
     [string appendString:@"schools/duration_year"];
     

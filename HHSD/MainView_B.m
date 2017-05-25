@@ -12,7 +12,8 @@
 #import "StudentTableViewCell.h"
 #import "SearchStudentModel.h"
 #import "signup_last.h"
-#import "SearchDetailsStudent.h"
+//#import "SearchDetailsStudent.h"
+#import "userDetailsViewController.h"
 
 #import "eleveSearch.h"
 
@@ -32,7 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title =@"students";
+    self.title =@"students ";
     [self getAllData];
     [self tableView];
     [self.tableView.header beginRefreshing];
@@ -140,12 +141,20 @@
     return cell;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   // Student_Details *mode = _searchListStudent.student[indexPath.row];
-    SearchDetailsStudent *vc = [[SearchDetailsStudent alloc] init];
-   // vc.studentId = [mode.id copy];
-    vc.studentId = _individual_M.id;
+    userDetailsViewController *vc = [[userDetailsViewController alloc] init];
+    NSString *key=[NSString stringWithFormat:@"%c",[ALPHA characterAtIndex:indexPath.section]];
+    NSArray *array=[self.a_z_dataDic objectForKey:key];
+    
+    if (indexPath.row <array.count) {
+        Student_Details *detailsUser = array[indexPath.row];
+        vc.studentId = detailsUser.id;
+    }
+
+ NSLog(@"User ID---------------------------> %@",vc.studentId);
+
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -200,6 +209,7 @@
             if (_searchListStudent.student.count>0) {
                 self.a_z_dataDic = [self convertTo_A_Z_DICTION:_searchListStudent.student];
             }
+            
             block_self.count += 100;
             [block_self.tableView reloadData];
             [block_self.tableView.header endRefreshing];

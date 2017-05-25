@@ -42,6 +42,7 @@
              @"data": [SchoolDetail_Column_M class],
              @"data": [MasterDetail_Column_M class],
              @"data": [PhdDetail_Column_M class],
+             @"data": [User_list_view class],
 
              };
 }
@@ -274,5 +275,90 @@
 
 @implementation User_list_view
 @end
+
+
+
+// move
+
+
+@implementation JiaZhengDingDanMList
++ (NSDictionary *)objectClassInArray
+{
+    return @{
+             @"data": [JiaZhengDingDanM class],
+             };
+}
+@end
+
+
+@implementation PropertyServiceMList
++ (NSDictionary *)objectClassInArray
+{
+    return @{
+             @"data": [PropertyServiceM class],
+             };
+}
+@end
+
+@implementation kuaiDiDingDanM_List
++ (NSDictionary *)objectClassInArray
+{
+    return @{
+             @"orderInfo": [kuaiDiDingDanM class],
+             };
+}
+@end
+
+
+
+@implementation JiaZhengDingDanM
+@end
+
+@implementation PropertyServiceM
+@end
+
+@implementation kuaiDiDingDanM
+@end
+
+
+@implementation JiaZhengDingDanM_Category
+@end
+@implementation PropertyService_Category
+@end
+
+
+
+
+@implementation ALL_GRADUATE
+
++ (NSDictionary *)objectClassInArray
+{
+    return @{@"data":[gradutate_view class]};
+}
+@end
+
+@implementation gradutate_view
+
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

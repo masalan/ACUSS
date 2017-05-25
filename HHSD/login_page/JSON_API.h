@@ -137,6 +137,8 @@
 @property (nonatomic, copy)NSString *content;
 @property (nonatomic, copy)NSString *hidden;
 @property (nonatomic, copy)NSString *is_like;
+@property (nonatomic, copy)NSString *deleted;
+
 @property (nonatomic, copy)NSString *admin;
 @property (nonatomic, copy)NSString *air;
 @property (nonatomic, copy)NSString *average;
@@ -185,6 +187,18 @@
 @property (nonatomic, copy) NSString *fee;
 @property (nonatomic, copy) NSString *cat_name;
 @property (nonatomic, copy) NSString *id;
+
+
+
+@property (nonatomic, copy)NSString *details;
+@property (nonatomic, copy)NSArray *images;
+@property (nonatomic, copy)NSString *contents;
+@property (nonatomic, copy)NSString *fullName;
+@property (nonatomic, copy)NSString *nameSchool;
+@property (nonatomic, copy)NSString *country;
+@property (nonatomic, copy)NSString *nationality;
+@property (nonatomic, copy)NSString *avatar_user;
+@property (nonatomic, copy)NSString *create_time;
 
 @end
 
@@ -376,17 +390,19 @@
 @property (nonatomic, copy) NSString *teacher_name;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *is_buy;
-
 @property (nonatomic, copy) NSString *nickname;
 @property (nonatomic, copy) NSString *group_name;
-
-
 @property (nonatomic, copy) NSString *total_school;
 @property (nonatomic, copy) NSString *total_student;
 @property (nonatomic, copy) NSString *total_application;
 @property (nonatomic, copy) NSString *total_form_delete;
 @property (nonatomic, copy) NSString *total_majors;
 @property (nonatomic, copy) NSString *total_background;
+
+
+@property (nonatomic, copy) NSString *tweet_sent;
+@property (nonatomic, copy) NSString *tweet_receive;
+
 
 @end
 
@@ -750,6 +766,8 @@
 @property (nonatomic, copy)NSString *id;
 @property (nonatomic, copy)NSString *head_image;
 @property (nonatomic, copy)NSString *username;
+@property (nonatomic, copy)NSString *deleted;
+
 @property (nonatomic, copy)NSString *mobile;
 @property (nonatomic, copy)NSString *realname;
 @property (nonatomic, copy)NSString *country;
@@ -808,8 +826,6 @@
 
 
 @property (nonatomic, copy)NSString *info;
-
-
 @property (nonatomic, strong) NSIndexPath *indexPath;
 @end
 
@@ -824,6 +840,7 @@
 @property (nonatomic, copy)NSString *details;
 @property (nonatomic, copy)NSString *cycle_id;
 @property (nonatomic, copy)NSString *startingDate;
+@property (nonatomic, copy)NSString *deadline;
 
 @property (nonatomic, copy)NSArray *images;
 @property (nonatomic, copy)NSString *contents;
@@ -836,6 +853,184 @@
 @property (nonatomic, copy)NSString *CourseName;
 @property (nonatomic, strong) NSIndexPath *indexPath;
 @end
+
+
+
+
+// Move------------------------------>
+
+
+@interface JiaZhengDingDanMList : NSObject
+@property (nonatomic, retain) NSMutableArray *data;
++ (NSDictionary *)objectClassInArray;
+@end
+
+@interface PropertyServiceMList : NSObject
+@property (nonatomic, retain) NSMutableArray *data;
++ (NSDictionary *)objectClassInArray;
+@end
+
+@interface kuaiDiDingDanM_List : NSObject
+@property (nonatomic, retain) NSMutableArray *orderInfo;
++ (NSDictionary *)objectClassInArray;
+@end
+
+
+@interface JiaZhengDingDanM : NSObject
+@property (nonatomic, copy) NSString *visit_time;
+@property (nonatomic, copy) NSString * address;
+@property (nonatomic, copy) NSString * message;
+@property (nonatomic, copy) NSString *appointid;
+@property (nonatomic, copy) NSString *status;
+@property (nonatomic, copy) NSString *contact_name;
+@property (nonatomic, copy) NSString *content;
+@property (nonatomic, copy) NSString *mobile;
+@property (nonatomic, retain)JiaZhengDingDanMList *category;
+@property (nonatomic, strong) NSMutableArray *info_imgs;
+@property (nonatomic, strong) NSString * attitude_score;
+@property (nonatomic, assign)int is_evaluate;
+
+
+// mine
+@property (nonatomic, copy)NSString *details;
+@property (nonatomic, copy)NSString *cycle_id;
+@property (nonatomic, copy)NSString *startingDate;
+@property (nonatomic, copy)NSString *deadline;
+@property (nonatomic, copy)NSArray *image;
+
+@property (nonatomic, copy)NSString *contents;
+@property (nonatomic, copy)NSString *fullName;
+@property (nonatomic, copy)NSString *nameSchool;
+@property (nonatomic, copy)NSString *country;
+@property (nonatomic, copy)NSString *nationality;
+@property (nonatomic, copy)NSString *avatar_user;
+@property (nonatomic, copy)NSString *create_time;
+@property (nonatomic, copy)NSString *CourseName;
+@property (nonatomic, copy)NSString *id;
+@property (nonatomic, copy)NSString *text;
+@property (nonatomic, copy)NSString *city_name;
+@property (nonatomic, copy)NSString *tweet_open;
+
+
+@end
+
+@interface PropertyServiceM : NSObject
+@property (nonatomic, copy) NSString *visit_time;
+@property (nonatomic, copy) NSString * address;
+@property (nonatomic, copy) NSString * message;
+@property (nonatomic, copy) NSString *appoint;
+@property (nonatomic, copy) NSString *appointid;
+@property (nonatomic, copy) NSString *contact_name;
+@property (nonatomic, copy) NSString *content;
+@property (nonatomic, copy) NSString *mobile;
+@property (nonatomic, copy) NSString *status;
+@property (nonatomic, retain)propertyService_topCategory *category;
+@property (nonatomic, strong) NSMutableArray *info_imgs;
+@property (nonatomic, strong) NSString * attitude_score;
+@property (nonatomic, assign)int is_evaluate;
+
+// mine
+@property (nonatomic, copy)NSString *details;
+@property (nonatomic, copy)NSString *cycle_id;
+@property (nonatomic, copy)NSString *startingDate;
+@property (nonatomic, copy)NSString *deadline;
+@property (nonatomic, copy)NSArray *image;
+@property (nonatomic, copy)NSString *contents;
+@property (nonatomic, copy)NSString *fullName;
+@property (nonatomic, copy)NSString *nameSchool;
+@property (nonatomic, copy)NSString *country;
+@property (nonatomic, copy)NSString *nationality;
+@property (nonatomic, copy)NSString *avatar_user;
+@property (nonatomic, copy)NSString *create_time;
+@property (nonatomic, copy)NSString *CourseName;
+@property (nonatomic, copy)NSString *id;
+@property (nonatomic, copy)NSString *text;
+@property (nonatomic, copy)NSString *city_name;
+@property (nonatomic, copy)NSString *tweet_open;
+
+@end
+
+@interface kuaiDiDingDanM : NSObject
+@property (nonatomic, copy) NSString *hairid;
+@property (nonatomic, copy) NSString *express_name;
+@property (nonatomic, copy) NSString *orderNum;
+@property (nonatomic, copy) NSString *status; //0:未接受，1接受,2取消预约,3拒绝接单
+@property (nonatomic, assign)int is_evaluate;
+@property (nonatomic, copy) NSString *delete_time;
+
+// mine
+@property (nonatomic, copy)NSString *details;
+@property (nonatomic, copy)NSString *cycle_id;
+@property (nonatomic, copy)NSString *startingDate;
+@property (nonatomic, copy)NSString *deadline;
+@property (nonatomic, copy)NSArray *image;
+@property (nonatomic, copy)NSString *contents;
+@property (nonatomic, copy)NSString *fullName;
+@property (nonatomic, copy)NSString *nameSchool;
+@property (nonatomic, copy)NSString *country;
+@property (nonatomic, copy)NSString *nationality;
+@property (nonatomic, copy)NSString *avatar_user;
+@property (nonatomic, copy)NSString *create_time;
+@property (nonatomic, copy)NSString *CourseName;
+@property (nonatomic, copy)NSString *id;
+@property (nonatomic, copy)NSString *text;
+@property (nonatomic, copy)NSString *city_name;
+@property (nonatomic, copy)NSString *tweet_open;
+
+@end
+
+
+
+
+
+
+@interface JiaZhengDingDanM_Category : NSObject
+@property (nonatomic, copy) NSString *cate_name;
+@end
+
+@interface PropertyService_Category : NSObject
+@property (nonatomic, copy) NSString *cate_name;
+@end
+
+
+
+
+
+@interface ALL_GRADUATE : NSObject
+@property (nonatomic, strong) NSMutableArray *data;
++ (NSDictionary *)objectClassInArray;
+@end
+
+
+
+@interface gradutate_view : NSObject
+@property (nonatomic, copy) NSString *id;
+@property (nonatomic, copy) NSString *text;
+@property (nonatomic, copy) NSString *fullName;
+@property (nonatomic, copy) NSString *avatar_user;
+@property (nonatomic, copy) NSString *nationality;
+@property (nonatomic, copy) NSString *city_name;
+@property (nonatomic, copy) NSString *authentify;
+
+@property (nonatomic, copy) NSString *issue_type;
+@property (nonatomic, copy) NSString *mID;
+@property (nonatomic, copy) NSString *p_id;
+@property (nonatomic, copy) NSString *p_name;
+@property (nonatomic, copy) NSString *major_name;
+@property (nonatomic, copy) NSString *school_name;
+@property (nonatomic, copy) NSString *message;
+@property (nonatomic, copy) NSString *start_study;
+@property (nonatomic, copy) NSString *end_study;
+@property (nonatomic, copy) NSString *mention_obtain;
+@property (nonatomic, copy) NSString *create_time;
+
+
+@end
+
+
+
+
+
 
 
 

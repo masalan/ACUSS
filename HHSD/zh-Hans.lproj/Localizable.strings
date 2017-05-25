@@ -5,7 +5,7 @@
   Created by alain serge on 3/17/17.
   Copyright © 2017 Alain Serge. All rights reserved.
 */
-//  NSLocalizedString(@"TIME_TRANSLATE_EDIT_A",comment:"")
+//  NSLocalizedString(@"TIME_TRANSLATE_EDIT_D",comment:"")
 
 /***************************** START Localizable App *******************************/
 
@@ -58,6 +58,7 @@
 "TIME_TRANSLATE_EDIT_K" = "%d小时前";
 "TIME_TRANSLATE_EDIT_L" = "M月d日";
 
+//  NSLocalizedString(@"TIME_TRANSLATE_EDIT_B",comment:"")
 
 // LoginViewController.h
 

@@ -11,7 +11,7 @@
 - (void)imageTap:(NSArray *)urlArray index:(NSUInteger )index;
 @end
 @interface CDCommentCell : UITableViewCell
-@property (nonatomic, strong) UILabel *titleLabel,*titlePost;
+@property (nonatomic, strong) UILabel *titleLabel,*titlePost,*hasImage;
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UILabel *detailLabel;
 @property (nonatomic, strong) UIView *bottomImageView;

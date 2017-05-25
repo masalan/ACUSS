@@ -24,7 +24,7 @@
     _orderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     _orderLabel.centerX = self.centerX;
     _orderLabel.centerY = self.centerY - 100;
-    _orderLabel.text = @"\U0000e601";
+    _orderLabel.text = @"\U0000e78b";
     _orderLabel.textColor = KCOLOR_Line_Color;
     _orderLabel.font = KICON_FONT_(80);
     _orderLabel.textAlignment = NSTextAlignmentCenter;

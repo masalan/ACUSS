@@ -44,15 +44,21 @@
 #import "SignupAgence.h" // Signup
 #import "myAgencePage.h"
 
+#import "my_tweet.h"
+#import "myTweetViewController.h"
+#import "allMygraduteList.h"
+
 // Admin is 6
 
+#define SW2 SCREEN_WIDTH/2
 
 @interface MainView_D ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, strong) Student_Details *individual_M;
 @property (nonatomic, retain) UIImageView *headImageView,*myBgImage,*countryCode;
 @property (nonatomic, retain) UILabel *FullnameLabel,*lineLabel1,*totalLabel,*totalLabels,*totalLast,*nationality,*sex,*majorTotal,*commentsTotal,*viewsTotal;
-@property (nonatomic, retain) UIButton *btnOne,*btnTwo,*btnTree,*btnFour,*topHeader;
+@property (nonatomic, retain) UILabel *smsTotals,*moreInfos,*receiveTotal,*sendTotal;
+@property (nonatomic, retain) UIButton *btnOne,*btnTwo,*btnTree,*btnFour,*btnFive,*topHeader;
 @property (nonatomic, retain) UIView *topView;
 @property (nonatomic, retain) UIButton *gouWuQuan;
 @property (nonatomic, retain) UILabel *gouWuquanLabel;
@@ -331,7 +337,7 @@
     if(!_btnOne) {
         _btnOne = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/3, 65)];
         _btnOne.backgroundColor = KCOLOR_CLEAR;
-        [_btnOne addTarget:self action:@selector(MoreStudentDetails) forControlEvents:UIControlEventTouchUpInside];
+        [_btnOne addTarget:self action:@selector(graduateBtnClik) forControlEvents:UIControlEventTouchUpInside];
         
         _lineLabel1 =[UILabel createLabelWithFrame:CGRectMake(SCREEN_WIDTH/3-0.5, 0, 0.5, _btnOne.size.height)
                                    backgroundColor:KCOLOR_Line_Color textColor:nil font:nil
@@ -372,7 +378,7 @@
     if(!_btnTwo) {
         _btnTwo = [[UIButton alloc] initWithFrame:CGRectMake(_btnOne.right, 0, SCREEN_WIDTH/3, 65)];
         _btnTwo.backgroundColor = KCOLOR_CLEAR;
-        [_btnTwo addTarget:self action:@selector(MoreStudentDetails) forControlEvents:UIControlEventTouchUpInside];
+        [_btnTwo addTarget:self action:@selector(commentsBtnClik) forControlEvents:UIControlEventTouchUpInside];
         
         UILabel *lineLabel =[UILabel createLabelWithFrame:CGRectMake(_btnTwo.width-0.25, 0, 0.5, _btnTwo.size.height)
                                           backgroundColor:KCOLOR_Line_Color
@@ -450,15 +456,151 @@
     return _btnTree;
 }
 
+
+// *btnFour,*btnFive
+
+// All tweets
+- (UIButton *)btnFour {
+    if(!_btnFour) {
+        _btnFour = [[UIButton alloc] initWithFrame:CGRectMake(0,_btnOne.bottom, SCREEN_WIDTH/2, 65)];
+        _btnFour.backgroundColor = KCOLOR_CLEAR;
+        [_btnFour addTarget:self action:@selector(tweetBtnClik) forControlEvents:UIControlEventTouchUpInside];
+        
+        UILabel *lineLabel3 =[UILabel createLabelWithFrame:CGRectMake(_btnFour.width-0.25, 0, 0.5, _btnFour.size.height)
+                                           backgroundColor:KCOLOR_Line_Color
+                                                 textColor:nil font:nil textalignment:NSTextAlignmentLeft text:nil];
+        [_btnFour addSubview:lineLabel3];
+        
+        // Send Icon
+        UILabel *imageViewSend =[UILabel createLabelWithFrame:CGRectMake(2,3,(SW2/2)-4,30)
+                                          backgroundColor:KCOLOR_CLEAR
+                                                textColor:KCOLOR_RED
+                                                     font:KICON_FONT_(25)
+                                            textalignment:NSTextAlignmentCenter
+                                                     text:@"\U0000e769"];
+        [_btnFour addSubview:imageViewSend];
+        
+        // Receive Icon
+        UILabel *imageViewRecevie =[UILabel createLabelWithFrame:CGRectMake(imageViewSend.right,3,(SW2/2)-4,30)
+                                              backgroundColor:KCOLOR_CLEAR
+                                                    textColor:KCOLOR_RED
+                                                         font:KICON_FONT_(25)
+                                                textalignment:NSTextAlignmentCenter
+                                                         text:@"\U0000e74c"];
+        [_btnFour addSubview:imageViewRecevie];
+        
+        UILabel *NamelabelSend = [UILabel createLabelWithFrame:CGRectMake(2,imageViewSend.bottom-10,(SW2/2)-4,30)
+                                           backgroundColor:KCOLOR_CLEAR
+                                                 textColor:KCOLOR_GRAY_676767
+                                                      font:KSYSTEM_FONT_(11)
+                                             textalignment:NSTextAlignmentCenter
+                                                      text:@"Send"];
+        [_btnFour addSubview:NamelabelSend];
+        
+        
+        
+        UILabel *NamelabelReceive= [UILabel createLabelWithFrame:CGRectMake(NamelabelSend.right,imageViewRecevie.bottom-10,(SW2/2)-4,30)
+                                               backgroundColor:KCOLOR_CLEAR
+                                                     textColor:KCOLOR_GRAY_676767
+                                                          font:KSYSTEM_FONT_(11)
+                                                 textalignment:NSTextAlignmentCenter
+                                                          text:@"Receive"];
+        [_btnFour addSubview:NamelabelReceive];
+        
+        
+        if(!_sendTotal) {
+            _sendTotal = [UILabel createLabelWithFrame:CGRectMake(2,NamelabelSend.bottom-10,(SW2/2)-4,15)
+                                        backgroundColor:KCOLOR_Clear
+                                              textColor:KCOLOR_GRAY_999999
+                                                   font:KSYSTEM_FONT_(8)
+                                          textalignment:NSTextAlignmentCenter
+                                                   text:@""];
+            [_btnFour addSubview:_sendTotal];
+        }
+        
+        if(!_receiveTotal) {
+            _receiveTotal = [UILabel createLabelWithFrame:CGRectMake(_sendTotal.right,NamelabelReceive.bottom-10,(SW2/2)-4,15)
+                                       backgroundColor:KCOLOR_Clear
+                                             textColor:KCOLOR_GRAY_999999
+                                                  font:KSYSTEM_FONT_(8)
+                                         textalignment:NSTextAlignmentCenter
+                                                  text:@""];
+            [_btnFour addSubview:_receiveTotal];
+        }
+    }
+    return _btnFour;
+}
+
+// More
+- (UIButton *)btnFive {
+    if(!_btnFive) {
+        _btnFive = [[UIButton alloc] initWithFrame:CGRectMake(_btnFour.right,_btnTwo.bottom, SCREEN_WIDTH/2, 65)];
+        _btnFive.backgroundColor = KCOLOR_CLEAR;
+        [_btnFive addTarget:self action:@selector(MoreStudentDetails) forControlEvents:UIControlEventTouchUpInside];
+        
+        UILabel *lineLabel =[UILabel createLabelWithFrame:CGRectMake(_btnFive.width-0.25, 0, 0.5, _btnFive.size.height)
+                                          backgroundColor:KCOLOR_Line_Color
+                                                textColor:nil font:nil textalignment:NSTextAlignmentLeft text:nil];
+        [_btnFive addSubview:lineLabel];
+        
+        UILabel *imageView =[UILabel createLabelWithFrame:CGRectMake(2,3,(SCREEN_WIDTH/2)-4,30)
+                                          backgroundColor:KCOLOR_CLEAR
+                                                textColor:KCOLOR_RED
+                                                     font:KICON_FONT_(25)
+                                            textalignment:NSTextAlignmentCenter
+                                                     text:@"\U0000e753"];
+        [_btnFive addSubview:imageView];
+        
+        UILabel *Namelabel = [UILabel createLabelWithFrame:CGRectMake(2,imageView.bottom-10,(SCREEN_WIDTH/2)-4,30)
+                                           backgroundColor:KCOLOR_CLEAR
+                                                 textColor:KCOLOR_GRAY_676767
+                                                      font:KSYSTEM_FONT_(11)
+                                             textalignment:NSTextAlignmentCenter
+                                                      text:@"more infos"];
+        [_btnFive addSubview:Namelabel];
+        
+        if(!_moreInfos) {
+            _moreInfos = [UILabel createLabelWithFrame:CGRectMake(2,Namelabel.bottom-10,(SCREEN_WIDTH/2)-4,15)
+                                           backgroundColor:KCOLOR_Clear
+                                                 textColor:KCOLOR_GRAY_999999
+                                                      font:KSYSTEM_FONT_(8)
+                                             textalignment:NSTextAlignmentCenter
+                                                      text:@""];
+            [_btnFive addSubview:_moreInfos];
+        }
+    }
+    return _btnFive;
+}
+
+-(void)graduateBtnClik
+{
+    allMygraduteList *vc =[[allMygraduteList alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+
+}
+
 - (void)ViewMyApplyForm {
     MainView_E *vc =[[MainView_E alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)MoreStudentDetails {
+- (void)commentsBtnClik {
     studentMoreViewController *vc =[[studentMoreViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+-(void)tweetBtnClik
+{
+    myTweetViewController *vc = [[myTweetViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)MoreStudentDetails
+{
+   // myTweetViewController *vc = [[myTweetViewController alloc]  init];
+   // [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 #pragma mark UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -503,9 +645,13 @@
             [self btnOne];
             [self btnTwo];
             [self btnTree];
+            [self btnFour];
+            [self btnFive];
             [cell addSubview:_btnOne];
             [cell addSubview:_btnTwo];
             [cell addSubview:_btnTree];
+            [cell addSubview:_btnFour];
+            [cell addSubview:_btnFive];
         }
 
     }
@@ -773,7 +919,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if(indexPath.section == 0 ) {
-        return (indexPath.row == 0) ? distance : 60;
+        return (indexPath.row == 0) ? distance : 130;
     }
     else {
         return 44;
@@ -1122,6 +1268,22 @@
             {
                 _viewsTotal.text = @"";
             }
+            
+            
+            if (_individual_M.tweet_sent) {
+                _sendTotal.text = _individual_M.tweet_sent;
+            }else
+            {
+                _sendTotal.text = @"";
+            }
+            
+            if (_individual_M.tweet_receive) {
+                _receiveTotal.text = _individual_M.tweet_receive;
+            }else
+            {
+                _receiveTotal.text = @"";
+            }
+            
             
                 if([_individual_M.sex  isEqualToString:@"0"])
                 {

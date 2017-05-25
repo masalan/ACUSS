@@ -214,6 +214,10 @@
 {
     detailsByMajor *vc = [[detailsByMajor alloc] init];
     vc.school_details = _all_majors_list.data[indexPath.row];
+    
+    NSLog(@"school_details--------------------------->%@",vc.school_details);
+
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -572,9 +576,6 @@
 {
     if(!_bottomView)
     {
-        
-        // BUY
-        
         _bottomView = [UIView createViewWithFrame:CGRectMake(0, SCREEN_HEIGHT - 64 - 44, SCREEN_WIDTH, 44)
                                   backgroundColor:KCOLOR_WHITE];
         [self.view addSubview:_bottomView];

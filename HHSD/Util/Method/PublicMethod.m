@@ -247,7 +247,7 @@
 {
     NSDate *date=[NSDate dateWithTimeIntervalSince1970:[createdTimestamp integerValue]];
     NSDateFormatter *dateFormater=[[NSDateFormatter alloc] init];
-    [dateFormater setDateFormat:@"yyyy年M月d日 HH:mm"];
+    [dateFormater setDateFormat:NSLocalizedString(@"TIME_TRANSLATE_EDIT_B",comment:"")];
     return [dateFormater stringFromDate:date];
 }
 +(NSString *)getYMDHMWithGetTimestamp:(NSString *)createdTimestamp
@@ -275,7 +275,7 @@
 {
     NSDate *date=[NSDate dateWithTimeIntervalSince1970:[createdTimestamp integerValue]];
     NSDateFormatter *dateFormater=[[NSDateFormatter alloc] init];
-    [dateFormater setDateFormat:@"M月d日"];
+    [dateFormater setDateFormat:NSLocalizedString(@"TIME_TRANSLATE_EDIT_D",comment:"")];
     return [dateFormater stringFromDate:date];
 }
 +(NSString *)getDateOfMDWithCreatedTimestamp:(NSString *)createdTimestamp

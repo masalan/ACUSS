@@ -112,6 +112,8 @@
 //fafbfc
 #define KCOLOR_BLACK                        [UIColor blackColor]
 #define KCOLOR_BLACK_32343a                         [UIColor colorWithHex:@"#34373e"]
+#define KCOLOR_TWEET_BG                         [UIColor colorWithHex:@"#05923f"]
+
 
 #define KCOLOR_CLEAR                        [UIColor clearColor]
 #define KCOLOR_GRAY                         [UIColor grayColor]

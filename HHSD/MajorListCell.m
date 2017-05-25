@@ -46,7 +46,6 @@
     _IconDurationLabel = [[UILabel alloc] init];
     _degreIcon = [[UIImageView alloc] init];
     
-    // UIImage *degreIcon;
     return self;
 }
 - (void)setMode:(SchoolDetail_Column_M *)mode
@@ -63,7 +62,7 @@
     if (mode.CourseName) {
         _CourseName.text = [NSString stringWithFormat:@"%@",mode.CourseName];
     }else{
-        _CourseName.text = [NSString stringWithFormat:@"..."];
+        _CourseName.text = [NSString stringWithFormat:@""];
     }
     _CourseName.numberOfLines =2;
     [self addSubview:_CourseName];

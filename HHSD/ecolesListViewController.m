@@ -31,7 +31,7 @@
 #import "GYHHeadeRefreshController.h"
 
 
-@interface ecolesListViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate,UICollectionViewDelegate,UICollectionViewDataSource,SWTableViewCellDelegate,MySchoolListDelegate>
+@interface ecolesListViewController ()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate,SWTableViewCellDelegate,MySchoolListDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *recordList;
 @property (nonatomic, strong) IMQuickSearch *QuickSearch;
@@ -44,12 +44,11 @@
 @property (nonatomic, retain) UIButton *selectedBtn,*buttonCell;
 @property (nonatomic, strong) SearchModel *searchList;
 @property (nonatomic , assign)int                           count;
-
+@property (nonatomic, strong) UIButton *editBtn;
 @property (nonatomic, retain) NSString *Islike;
 @property (nonatomic, retain) NSString *hidden;
 @property (nonatomic, retain) NSString *SID;
 @property (nonatomic, strong) UIButton *rightNavBtn;
-@property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, copy) NSString *c_id;
 @property (nonatomic, strong) UIView *headView;
 @property (nonatomic, strong) All_Province_List *province_list;
@@ -77,10 +76,9 @@
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT -64 - 44) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.tableFooterView = [[UIView alloc] init];
+       // _tableView.tableFooterView = [[UIView alloc] init];
         _tableView.backgroundColor = KCOLOR_CLEAR;
         [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];  // hide separtor line
-
         [self.view addSubview:_tableView];
     }
     return _tableView;
@@ -92,13 +90,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"schools";
-        
     [self tableView];
-    [self collectionView];
-    [self getCityData];
+    [self initUI];
     [self getAllData];
-     [self initUI];
-    
     [self addSearchBtnRight];
     
 
@@ -108,7 +102,6 @@
 {
     IMP_BLOCK_SELF(ecolesListViewController);
     MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
-        block_self.count = 0;
         [block_self getAllData];
     }];
     
@@ -117,10 +110,7 @@
     self.tableView.header = header;
     [header beginRefreshing];
   
-    
-    
-    
-    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [block_self getAllData];
     }];
 }
@@ -135,7 +125,10 @@
 {
     [super viewWillAppear:YES];
     DLog(@"%@",self.title);
+    [self getAllData];
 }
+
+
 
 -(void)addSearchBtnRight {
     UIButton *barButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 30)];
@@ -155,28 +148,7 @@
 }
 
 
-#pragma mark
-#pragma mark otherAction
-- (void)rightNavBtnClick:(UIButton *)sender
-{
-    DLog(@"City click");
-    sender.selected = !sender.selected;
-    if(sender.selected)
-    {
-        [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionLayoutSubviews animations:^{
-            self.collectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 44);
-        } completion:^(BOOL finished) {
-            
-        }];
-    }else
-    {
-        [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionLayoutSubviews animations:^{
-            self.collectionView.frame = CGRectMake(0, - SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 44);
-        } completion:^(BOOL finished) {
-            
-        }];
-    }
-}
+
 
 #pragma mark
 #pragma mark TableViewDelegate
@@ -206,10 +178,7 @@
 {
     School_Details *detailsSchool = _searchList.school[indexPath.row];
     menuHorizontalView *vc = [[menuHorizontalView alloc] init];
-    
-    // MainView_C *vc = [[MainView_C alloc] init];
     vc.schoolId = detailsSchool.id;
-    
     School_data *stats = _searchList.school[indexPath.row];
     NSString *hidden;
     hidden = stats.hidden;
@@ -379,6 +348,7 @@
     kSetDict(_searchText.text, @"nameSchool");
     [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:NO sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.tableView.header endRefreshing];
+        _searchList = nil;
         if([[responseObject objectForKey:@"code"] isEqual:@200])
         {
             _searchList = [SearchModel objectWithKeyValues:responseObject[@"data"]];
@@ -386,93 +356,23 @@
                 [self MBShowHint:@"no result"];
                 _searchList = nil;
             }
-            
+            [self tableView];
             block_self.count += 10;
             [block_self.tableView reloadData];
-            [block_self.tableView.header endRefreshing];
-            [block_self.tableView.footer endRefreshing];
+            //[block_self.tableView.header endRefreshing];
             
         }
         if([[responseObject objectForKey:@"code"] isEqual:@500])
         {
+            [block_self.tableView reloadData];
         }
+        
     } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
+        _searchList = nil;
         [block_self.tableView.header endRefreshing];
-        [block_self.tableView.footer endRefreshing];
     }];
 }
 
-#pragma mark
-#pragma mark UICollectionViewDelegate && UICollectionViewDataSource
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return 1;
-}
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return self.province_list.list.count;
-}
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    CityViewSelectCell *cell = [[CityViewSelectCell alloc] init];
-    cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"HouseCareCell" forIndexPath:indexPath];
-    Province_List_details *mode = self.province_list.list[indexPath.row];
-    cell.titleLabel.text = mode.province;
-    
-    return cell;
-}
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    return UIEdgeInsetsZero;
-}
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-{
-    return CGSizeZero;
-}
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
-{
-    return CGSizeZero;
-}
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    return CGSizeMake(SCREEN_WIDTH/4,44);
-}
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    Province_List_details *mode = self.province_list.list[indexPath.row];
-    self.c_id =[mode.id copy];
-    [self getAllData];
-    [self rightNavBtnClick:self.rightNavBtn];
-    
-    
-}
-
-#pragma mark
-#pragma mark getAllData
-// get province select
-- (void)getCityData
-{
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    NSMutableString *string = [NSMutableString stringWithString:urlHeader];
-    [string appendString:@"Schools/provinces"];
-    [[NetWork shareInstance] netWorkWithUrl:string params:params isPost:YES sucessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.collectionView = nil;
-        if([[responseObject objectForKey:@"code"] isEqual:@200])
-        {
-            self.province_list = [All_Province_List objectWithKeyValues:responseObject[@"data"]];
-            [self.collectionView reloadData];
-        }
-        if([[responseObject objectForKey:@"code"] isEqual:@500])
-        {
-
-        }
-    } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
-        [self.tableView.header endRefreshing];
-    }];
-    
-}
 
 
 

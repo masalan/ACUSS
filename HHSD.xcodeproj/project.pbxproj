@@ -200,6 +200,9 @@
 		9E5305091ECC422200EB72FB /* introductionViewSchool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5305081ECC422200EB72FB /* introductionViewSchool.m */; };
 		9E56A93F1E7C0F3200FA1A00 /* FYLoginTranslation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E56A93E1E7C0F3200FA1A00 /* FYLoginTranslation.m */; };
 		9E56A9451E7C1A1800FA1A00 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9E56A9471E7C1A1800FA1A00 /* Localizable.strings */; };
+		9E5997371ED29368004FD4B7 /* userDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5997361ED29368004FD4B7 /* userDetailsViewController.m */; };
+		9E59973A1ED2B5D3004FD4B7 /* my_tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5997391ED2B5D3004FD4B7 /* my_tweet.m */; };
+		9E59973E1ED2BBD8004FD4B7 /* TweetCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E59973D1ED2BBD8004FD4B7 /* TweetCellView.m */; };
 		9E5FB57C1E7D327D00903497 /* MainView_A_one.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5FB57B1E7D327C00903497 /* MainView_A_one.m */; };
 		9E5FB57F1E7D32F100903497 /* MainView_A_two.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5FB57E1E7D32F100903497 /* MainView_A_two.m */; };
 		9E5FB5821E7D330900903497 /* MainView_A_tree.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5FB5811E7D330900903497 /* MainView_A_tree.m */; };
@@ -208,6 +211,10 @@
 		9E5FB5901E7D9FE400903497 /* listModelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5FB58F1E7D9FE300903497 /* listModelData.m */; };
 		9E5FB5931E7E276800903497 /* GroupStudentHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5FB5921E7E276800903497 /* GroupStudentHeadView.m */; };
 		9E5FB5971E7E293100903497 /* StudentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5FB5961E7E293100903497 /* StudentTableViewCell.m */; };
+		9E6E9D8C1ED3C672001217C6 /* myTweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6E9D8B1ED3C672001217C6 /* myTweetViewController.m */; };
+		9E6E9D901ED3C784001217C6 /* jiaZhengDingDanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6E9D8F1ED3C784001217C6 /* jiaZhengDingDanCell.m */; };
+		9E6E9D931ED3CE26001217C6 /* kuaiDiDingDanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6E9D921ED3CE26001217C6 /* kuaiDiDingDanCell.m */; };
+		9E6E9D961ED3D751001217C6 /* CancelOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6E9D951ED3D751001217C6 /* CancelOrderViewController.m */; };
 		9E7BC6001E9480B300163B01 /* ecolesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7BC5FF1E9480B300163B01 /* ecolesListViewController.m */; };
 		9E7BC6041E94869A00163B01 /* CityViewSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7BC6031E94869A00163B01 /* CityViewSelectCell.m */; };
 		9E810C9E1E724B450075892C /* SearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E810C9D1E724B450075892C /* SearchListViewController.m */; };
@@ -258,6 +265,9 @@
 		9EAE0C8E1E8C9D620072D09B /* paysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE0C8D1E8C9D620072D09B /* paysViewController.m */; };
 		9EAE0C911E8CCFBA0072D09B /* CountryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE0C901E8CCFBA0072D09B /* CountryViewController.m */; };
 		9EAE0C941E8CDF930072D09B /* MainView_A_details.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE0C931E8CDF930072D09B /* MainView_A_details.m */; };
+		9EB615F61ED54E0B00A9F124 /* allMygraduteList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB615F51ED54E0B00A9F124 /* allMygraduteList.m */; };
+		9EB615FA1ED54E3C00A9F124 /* graduateDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB615F91ED54E3C00A9F124 /* graduateDetails.m */; };
+		9EB615FD1ED55A9000A9F124 /* graduateCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB615FC1ED55A9000A9F124 /* graduateCellView.m */; };
 		9EB827E71EA8806E00E45431 /* editApplyForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB827E61EA8806E00E45431 /* editApplyForm.m */; };
 		9EB827EB1EA8862700E45431 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB827EA1EA8862700E45431 /* SearchTableViewCell.m */; };
 		9EB827EE1EA887C200E45431 /* DescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB827ED1EA887C200E45431 /* DescriptionTableViewCell.m */; };
@@ -729,6 +739,12 @@
 		9E56A9461E7C1A1800FA1A00 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9E56A9481E7C1A2800FA1A00 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9E56A9491E7C1A3500FA1A00 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9E5997351ED29368004FD4B7 /* userDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userDetailsViewController.h; sourceTree = "<group>"; };
+		9E5997361ED29368004FD4B7 /* userDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userDetailsViewController.m; sourceTree = "<group>"; };
+		9E5997381ED2B5D3004FD4B7 /* my_tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_tweet.h; sourceTree = "<group>"; };
+		9E5997391ED2B5D3004FD4B7 /* my_tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = my_tweet.m; sourceTree = "<group>"; };
+		9E59973C1ED2BBD8004FD4B7 /* TweetCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetCellView.h; sourceTree = "<group>"; };
+		9E59973D1ED2BBD8004FD4B7 /* TweetCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetCellView.m; sourceTree = "<group>"; };
 		9E5FB57A1E7D327C00903497 /* MainView_A_one.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView_A_one.h; sourceTree = "<group>"; };
 		9E5FB57B1E7D327C00903497 /* MainView_A_one.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView_A_one.m; sourceTree = "<group>"; };
 		9E5FB57D1E7D32F100903497 /* MainView_A_two.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView_A_two.h; sourceTree = "<group>"; };
@@ -745,6 +761,14 @@
 		9E5FB5921E7E276800903497 /* GroupStudentHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupStudentHeadView.m; sourceTree = "<group>"; };
 		9E5FB5951E7E293100903497 /* StudentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentTableViewCell.h; sourceTree = "<group>"; };
 		9E5FB5961E7E293100903497 /* StudentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentTableViewCell.m; sourceTree = "<group>"; };
+		9E6E9D8A1ED3C672001217C6 /* myTweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myTweetViewController.h; sourceTree = "<group>"; };
+		9E6E9D8B1ED3C672001217C6 /* myTweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myTweetViewController.m; sourceTree = "<group>"; };
+		9E6E9D8E1ED3C784001217C6 /* jiaZhengDingDanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jiaZhengDingDanCell.h; sourceTree = "<group>"; };
+		9E6E9D8F1ED3C784001217C6 /* jiaZhengDingDanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jiaZhengDingDanCell.m; sourceTree = "<group>"; };
+		9E6E9D911ED3CE26001217C6 /* kuaiDiDingDanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kuaiDiDingDanCell.h; sourceTree = "<group>"; };
+		9E6E9D921ED3CE26001217C6 /* kuaiDiDingDanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kuaiDiDingDanCell.m; sourceTree = "<group>"; };
+		9E6E9D941ED3D751001217C6 /* CancelOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CancelOrderViewController.h; sourceTree = "<group>"; };
+		9E6E9D951ED3D751001217C6 /* CancelOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancelOrderViewController.m; sourceTree = "<group>"; };
 		9E7BC5FE1E9480B300163B01 /* ecolesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ecolesListViewController.h; sourceTree = "<group>"; };
 		9E7BC5FF1E9480B300163B01 /* ecolesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ecolesListViewController.m; sourceTree = "<group>"; };
 		9E7BC6021E94869A00163B01 /* CityViewSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityViewSelectCell.h; sourceTree = "<group>"; };
@@ -842,6 +866,12 @@
 		9EAE0C901E8CCFBA0072D09B /* CountryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryViewController.m; sourceTree = "<group>"; };
 		9EAE0C921E8CDF930072D09B /* MainView_A_details.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView_A_details.h; sourceTree = "<group>"; };
 		9EAE0C931E8CDF930072D09B /* MainView_A_details.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView_A_details.m; sourceTree = "<group>"; };
+		9EB615F41ED54E0B00A9F124 /* allMygraduteList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allMygraduteList.h; sourceTree = "<group>"; };
+		9EB615F51ED54E0B00A9F124 /* allMygraduteList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = allMygraduteList.m; sourceTree = "<group>"; };
+		9EB615F81ED54E3C00A9F124 /* graduateDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graduateDetails.h; sourceTree = "<group>"; };
+		9EB615F91ED54E3C00A9F124 /* graduateDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graduateDetails.m; sourceTree = "<group>"; };
+		9EB615FB1ED55A9000A9F124 /* graduateCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graduateCellView.h; sourceTree = "<group>"; };
+		9EB615FC1ED55A9000A9F124 /* graduateCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graduateCellView.m; sourceTree = "<group>"; };
 		9EB827E51EA8806E00E45431 /* editApplyForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = editApplyForm.h; sourceTree = "<group>"; };
 		9EB827E61EA8806E00E45431 /* editApplyForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = editApplyForm.m; sourceTree = "<group>"; };
 		9EB827E91EA8862700E45431 /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
@@ -1942,6 +1972,18 @@
 			name = COMMUN;
 			sourceTree = "<group>";
 		};
+		9E59973B1ED2BBBA004FD4B7 /* TWeet */ = {
+			isa = PBXGroup;
+			children = (
+				9E5997381ED2B5D3004FD4B7 /* my_tweet.h */,
+				9E5997391ED2B5D3004FD4B7 /* my_tweet.m */,
+				9E59973C1ED2BBD8004FD4B7 /* TweetCellView.h */,
+				9E59973D1ED2BBD8004FD4B7 /* TweetCellView.m */,
+				9E6E9D8D1ED3C75B001217C6 /* tousMesMessages */,
+			);
+			name = TWeet;
+			sourceTree = "<group>";
+		};
 		9E5FB5751E7D2FE200903497 /* AA */ = {
 			isa = PBXGroup;
 			children = (
@@ -1967,6 +2009,8 @@
 				9E5FB5941E7E279A00903497 /* BB_view */,
 				9EF52A661E9DE33F007E06BB /* eleveSearch.h */,
 				9EF52A671E9DE33F007E06BB /* eleveSearch.m */,
+				9E5997351ED29368004FD4B7 /* userDetailsViewController.h */,
+				9E5997361ED29368004FD4B7 /* userDetailsViewController.m */,
 			);
 			name = BB;
 			sourceTree = "<group>";
@@ -1992,6 +2036,8 @@
 				9ED5E91D1E777C7E00F74928 /* MainView_D.m */,
 				9E0E73CF1E838CC5008D5117 /* viewProfileU */,
 				9E9826181E95E8560037517E /* FeedBack */,
+				9E59973B1ED2BBBA004FD4B7 /* TWeet */,
+				9EB615F71ED54E1600A9F124 /* My_Graduate */,
 			);
 			name = DD;
 			sourceTree = "<group>";
@@ -2063,6 +2109,21 @@
 			);
 			name = register_page;
 			path = login_page;
+			sourceTree = "<group>";
+		};
+		9E6E9D8D1ED3C75B001217C6 /* tousMesMessages */ = {
+			isa = PBXGroup;
+			children = (
+				9E6E9D8A1ED3C672001217C6 /* myTweetViewController.h */,
+				9E6E9D8B1ED3C672001217C6 /* myTweetViewController.m */,
+				9E6E9D8E1ED3C784001217C6 /* jiaZhengDingDanCell.h */,
+				9E6E9D8F1ED3C784001217C6 /* jiaZhengDingDanCell.m */,
+				9E6E9D911ED3CE26001217C6 /* kuaiDiDingDanCell.h */,
+				9E6E9D921ED3CE26001217C6 /* kuaiDiDingDanCell.m */,
+				9E6E9D941ED3D751001217C6 /* CancelOrderViewController.h */,
+				9E6E9D951ED3D751001217C6 /* CancelOrderViewController.m */,
+			);
+			name = tousMesMessages;
 			sourceTree = "<group>";
 		};
 		9E7BC6011E94864700163B01 /* MainSearchSchol */ = {
@@ -2307,6 +2368,19 @@
 				9E4715401EC93C66007F6750 /* myAgencePage.m */,
 			);
 			name = AgenceMain;
+			sourceTree = "<group>";
+		};
+		9EB615F71ED54E1600A9F124 /* My_Graduate */ = {
+			isa = PBXGroup;
+			children = (
+				9EB615F41ED54E0B00A9F124 /* allMygraduteList.h */,
+				9EB615F51ED54E0B00A9F124 /* allMygraduteList.m */,
+				9EB615F81ED54E3C00A9F124 /* graduateDetails.h */,
+				9EB615F91ED54E3C00A9F124 /* graduateDetails.m */,
+				9EB615FB1ED55A9000A9F124 /* graduateCellView.h */,
+				9EB615FC1ED55A9000A9F124 /* graduateCellView.m */,
+			);
+			name = My_Graduate;
 			sourceTree = "<group>";
 		};
 		9EB827E81EA885FD00E45431 /* applyViewBack */ = {
@@ -2896,6 +2970,7 @@
 				9EA931731E8B525400121FBF /* MainView_A.m in Sources */,
 				9E128AC61E76452D0083C360 /* SCLTextView.m in Sources */,
 				113F604F1BC4B6810018599C /* AMPopTip+Animation.m in Sources */,
+				9E5997371ED29368004FD4B7 /* userDetailsViewController.m in Sources */,
 				1144EE891BC654A400C2BBAD /* WDTabBarViewController.m in Sources */,
 				9EA931791E8B537600121FBF /* IMQuickSearch.m in Sources */,
 				9E7BC6001E9480B300163B01 /* ecolesListViewController.m in Sources */,
@@ -2938,6 +3013,7 @@
 				9EAC09021EC2C748003414B2 /* admin_AllUniversities.m in Sources */,
 				9E5FB5931E7E276800903497 /* GroupStudentHeadView.m in Sources */,
 				DC61BC4B1D9FA3F800F88ED1 /* EAIntroView.m in Sources */,
+				9EB615FA1ED54E3C00A9F124 /* graduateDetails.m in Sources */,
 				9E810CA31E724B7F0075892C /* SearchDetailsViewController.m in Sources */,
 				9EE74B131E790B900013EDEF /* CDOutLineHeadView.m in Sources */,
 				9EC8BB421E84EE9400169362 /* Fullname.m in Sources */,
@@ -2978,9 +3054,11 @@
 				113F60A21BC4B8630018599C /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				9EE579451E8A3AEF00C47AB9 /* studentMoreViewController.m in Sources */,
 				1144EE681BC60F2200C2BBAD /* NSObject+Common.m in Sources */,
+				9E6E9D8C1ED3C672001217C6 /* myTweetViewController.m in Sources */,
 				9ECB737A1E86680600C6A7FA /* CNCityAreaModel.m in Sources */,
 				113F60951BC4B8630018599C /* UIViewController+DismissKeyboard.m in Sources */,
 				9E0E604E1ECA9967003FD720 /* MJRefreshHeader.m in Sources */,
+				9E59973A1ED2B5D3004FD4B7 /* my_tweet.m in Sources */,
 				9EE74B101E79082C0013EDEF /* SearchDetailsStudent.m in Sources */,
 				1144EE701BC60F2200C2BBAD /* UIViewController+Swizzle.m in Sources */,
 				11402D7D1BC7537A000155B6 /* NetWork.m in Sources */,
@@ -2997,10 +3075,12 @@
 				9E896E741EA5D716007F957A /* applyForMajor.m in Sources */,
 				9EA5E9EF1EAF31B4009B56D4 /* SCTwitter.m in Sources */,
 				9ECB737B1E86680600C6A7FA /* CNCityPickerView.m in Sources */,
+				9E6E9D901ED3C784001217C6 /* jiaZhengDingDanCell.m in Sources */,
 				9ECB73661E86474900C6A7FA /* demoPageT.m in Sources */,
 				9EAAF8751E7551D600EEC052 /* MasterInteractView.m in Sources */,
 				113F60C61BC4BA7E0018599C /* ZYQAssetPickerController.m in Sources */,
 				9E869A681EB96D0400AC396F /* SendMessageTableViewCell.m in Sources */,
+				9EB615FD1ED55A9000A9F124 /* graduateCellView.m in Sources */,
 				9ED1BE0E1E82066500EB212A /* fullNameViewController.m in Sources */,
 				9EE74B1C1E79104A0013EDEF /* CDCommentCell.m in Sources */,
 				9E128AC41E76452D0083C360 /* SCLButton.m in Sources */,
@@ -3047,6 +3127,7 @@
 				113F60BD1BC4BA3E0018599C /* UIView+FadeAnimation.m in Sources */,
 				9EC8BB461E84F12700169362 /* IndividualBirthViewController.m in Sources */,
 				9E25D9DE1E977A2600796FBB /* addMajorProgram.m in Sources */,
+				9EB615F61ED54E0B00A9F124 /* allMygraduteList.m in Sources */,
 				9ED1BE151E82125E00EB212A /* CountryPicker.m in Sources */,
 				1144EE6F1BC60F2200C2BBAD /* UIImage+Common.m in Sources */,
 				9ECB73791E86680600C6A7FA /* CNCityAreaFactory.m in Sources */,
@@ -3055,6 +3136,7 @@
 				11F4F8291BE05D000042BB88 /* ImageSizeWithUrlString.m in Sources */,
 				9E869A651EB96AD400AC396F /* quickApplyFormNow.m in Sources */,
 				113F60C01BC4BA3E0018599C /* UIView+RoundedCorners.m in Sources */,
+				9E59973E1ED2BBD8004FD4B7 /* TweetCellView.m in Sources */,
 				113F60A11BC4B8630018599C /* UIView+MGBadgeView.m in Sources */,
 				9EE74B191E790E2C0013EDEF /* CDInteractView.m in Sources */,
 				113F60921BC4B8630018599C /* UIImage+Color.m in Sources */,
@@ -3067,6 +3149,7 @@
 				9ECB73781E86680600C6A7FA /* CNCityAreaCitiesModel.m in Sources */,
 				11A1F6CD1BDB66D8004E8BEC /* PDKTCollectionViewWaterfallLayout.m in Sources */,
 				9E3BB03A1E85691100891CBD /* avatarUserViewController.m in Sources */,
+				9E6E9D961ED3D751001217C6 /* CancelOrderViewController.m in Sources */,
 				9E0A0E9B1EADEC14002D44AB /* LinkedInAuthorizationViewController.m in Sources */,
 				9E0A0E9E1EADEC14002D44AB /* LinkedInServiceManager.m in Sources */,
 				11DA720C1BDE222200ACB36B /* FMDatabaseQueue.m in Sources */,
@@ -3086,6 +3169,7 @@
 				9ED5E91B1E777C7200F74928 /* MainView_C.m in Sources */,
 				9EAAF8711E7551AE00EEC052 /* BachelorInteractView.m in Sources */,
 				113F60B91BC4BA3E0018599C /* UIColor+expanded.m in Sources */,
+				9E6E9D931ED3CE26001217C6 /* kuaiDiDingDanCell.m in Sources */,
 				9ED68C5A1EC1610B00B328C5 /* ViewByCityController.m in Sources */,
 				9E4715451EC97A47007F6750 /* APHorizontalMenu.m in Sources */,
 				11B17E181BC5258D00334771 /* VPImageCropperViewController.m in Sources */,
