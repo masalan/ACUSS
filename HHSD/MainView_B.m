@@ -16,6 +16,7 @@
 #import "userDetailsViewController.h"
 
 #import "eleveSearch.h"
+#import "MyCodeViewController.h"
 
 
 @interface MainView_B ()<UITableViewDataSource, UITableViewDelegate>
@@ -33,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title =@"students ";
+    self.title =@"students";
     [self getAllData];
     [self tableView];
     [self.tableView.header beginRefreshing];
@@ -217,7 +218,7 @@
         }
         if([[responseObject objectForKey:@"code"] isEqual:@500])
         {
-          //  [self MBShowHint:responseObject[@"message"]];
+
         }
     } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
         [block_self.tableView.header endRefreshing];
@@ -336,7 +337,7 @@
         }
         if([[responseObject objectForKey:@"code"] isEqual:@500])
         {
-           // [self MBShowHint:responseObject[@"message"]];
+
         }
     } failBlock:^(AFHTTPRequestOperation *operation, NSError *eror) {
     }];

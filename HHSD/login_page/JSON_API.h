@@ -364,7 +364,7 @@
 @property (nonatomic, assign) NSInteger indexType;
 @property (nonatomic, copy)NSString *Codecountry;
 @property (nonatomic, copy)NSString *signup_end;
-
+@property (nonatomic, copy)NSString *fullName;
 @property (nonatomic, copy)NSString *realname;
 @property (nonatomic, copy)NSString *profession;
 @property (nonatomic, copy)NSString *mobile;
@@ -374,12 +374,11 @@
 @property (nonatomic, copy)NSString *province_name;
 @property (nonatomic, copy)NSString *city_name;
 @property (nonatomic, copy)NSString *area_name;
-@property (nonatomic, copy)NSString *fullName;
 @property (nonatomic, copy)NSString *living_in_china;
 @property (nonatomic, copy)NSString *is_agence;
 @property (nonatomic, assign) BOOL isShowProgress;
 @property (nonatomic, copy) NSString *isShowProgressString;
-
+@property (nonatomic, copy) NSString *username;
 
 @property (nonatomic, copy) NSString *cat_name;
 @property (nonatomic, copy) NSString *major_total;

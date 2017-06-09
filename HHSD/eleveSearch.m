@@ -11,7 +11,7 @@
 #import "SearchListStudentViewController.h"
 #import "SearchStudentModel.h"
 #import "SearchDetailsStudent.h"
-
+#import "userDetailsViewController.h"
 
 #define imageStartX 60
 #define textFieldStartX 25
@@ -290,7 +290,8 @@ UITextFieldDelegate>
  } else
  {
  Student_Details *detailsStudent = _searchListStudent.student[indexPath.row];
- SearchDetailsStudent *vc = [[SearchDetailsStudent alloc] init];
+ //SearchDetailsStudent *vc = [[SearchDetailsStudent alloc] init];
+userDetailsViewController *vc = [[userDetailsViewController alloc] init];
  vc.studentId = detailsStudent.id;
  [[NSNotificationCenter defaultCenter]postNotificationName:@"SaveSearchList" object:nil];
  [self.navigationController pushViewController:vc animated:YES];

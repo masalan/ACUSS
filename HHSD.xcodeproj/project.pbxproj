@@ -294,6 +294,7 @@
 		9ECB737B1E86680600C6A7FA /* CNCityPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ECB73761E86680600C6A7FA /* CNCityPickerView.m */; };
 		9ECB737E1E866E9700C6A7FA /* myChineseAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ECB737D1E866E9700C6A7FA /* myChineseAddress.m */; };
 		9ECB73811E869C0000C6A7FA /* bgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ECB73801E869BFF00C6A7FA /* bgViewController.m */; };
+		9ECF79181ED80C860098D406 /* MyCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ECF79171ED80C860098D406 /* MyCodeViewController.m */; };
 		9ED1BE0B1E8205F000EB212A /* nationalityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED1BE0A1E8205F000EB212A /* nationalityViewController.m */; };
 		9ED1BE0E1E82066500EB212A /* fullNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED1BE0D1E82066500EB212A /* fullNameViewController.m */; };
 		9ED1BE141E82125E00EB212A /* CountryPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9ED1BE101E82125E00EB212A /* CountryPicker.bundle */; };
@@ -927,6 +928,8 @@
 		9ECB737D1E866E9700C6A7FA /* myChineseAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myChineseAddress.m; sourceTree = "<group>"; };
 		9ECB737F1E869BFF00C6A7FA /* bgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bgViewController.h; sourceTree = "<group>"; };
 		9ECB73801E869BFF00C6A7FA /* bgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bgViewController.m; sourceTree = "<group>"; };
+		9ECF79161ED80C860098D406 /* MyCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCodeViewController.h; sourceTree = "<group>"; };
+		9ECF79171ED80C860098D406 /* MyCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCodeViewController.m; sourceTree = "<group>"; };
 		9ED1BE091E8205F000EB212A /* nationalityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nationalityViewController.h; sourceTree = "<group>"; };
 		9ED1BE0A1E8205F000EB212A /* nationalityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nationalityViewController.m; sourceTree = "<group>"; };
 		9ED1BE0C1E82066500EB212A /* fullNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fullNameViewController.h; sourceTree = "<group>"; };
@@ -2491,6 +2494,15 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		9ECF79191ED810BE0098D406 /* QR */ = {
+			isa = PBXGroup;
+			children = (
+				9ECF79161ED80C860098D406 /* MyCodeViewController.h */,
+				9ECF79171ED80C860098D406 /* MyCodeViewController.m */,
+			);
+			name = QR;
+			sourceTree = "<group>";
+		};
 		9ED1BE0F1E82125E00EB212A /* CountryPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -2514,6 +2526,7 @@
 				9E7BC6011E94864700163B01 /* MainSearchSchol */,
 				9ED68C5B1EC1611E00B328C5 /* CityPage */,
 				9EAC09071EC2E20D003414B2 /* AgenceMain */,
+				9ECF79191ED810BE0098D406 /* QR */,
 			);
 			name = USERS;
 			sourceTree = "<group>";
@@ -3107,6 +3120,7 @@
 				9E16F8E11ECACD6900A646A4 /* btnTap.m in Sources */,
 				1144EE6D1BC60F2200C2BBAD /* UIButton+Bootstrap.m in Sources */,
 				9E5FB58D1E7D724A00903497 /* schoolUsersMainCell.m in Sources */,
+				9ECF79181ED80C860098D406 /* MyCodeViewController.m in Sources */,
 				113F60971BC4B8630018599C /* LineLabel.m in Sources */,
 				9EE74B0D1E7906D30013EDEF /* dempPage.m in Sources */,
 				11DA720A1BDE222200ACB36B /* FMDatabaseAdditions.m in Sources */,
